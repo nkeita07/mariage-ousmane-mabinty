@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariage - Ousmane & Mabinty</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SECTION 1 : LA COUVERTURE -->
+    <header id="welcome-cover" class="hero-section">
+        <div class="hero-content">
+            <p class="subtitle">NOUS NOUS MARIONS</p>
+            <h1 class="names">OUSMANE FOTE CAMARA<br><span class="ampersand">&</span><br>MABINTY YOULA</h1>
+            <p class="quote">« Deux cœurs, une même destinée »</p>
+            <button id="btn-open" class="btn-primary">Ouvrir l'invitation</button>
+        </div>
+    </header>
+
+    <!-- L'ENVELOPPE (Modale) -->
+    <div id="envelope-modal" class="modal-overlay hidden">
+        <div class="envelope-content">
+            <div class="envelope-flap"></div>
+            <p class="modal-subtitle">VOTRE INVITATION</p>
+            <h2>Bienvenue</h2>
+            <p>C'est avec une immense joie que nous vous invitons à partager cette journée qui changera notre vie.</p>
+            <button id="btn-discover" class="btn-dark">Découvrir notre journée</button>
+        </div>
+    </div>
+
+    <!-- LE CONTENU PRINCIPAL -->
+    <main id="main-content" class="hidden">
+        
+        <section class="intro-section">
+            <p class="subtitle-small">L'INVITATION</p>
+            <h2>Célébrons l'amour</h2>
+            <p class="intro-text">Ont l'immense plaisir de vous inviter à partager ce moment unique de notre union.</p>
+            
+            <div class="info-badges">
+                <div class="badge">📅 Ven 27 Nov 2026</div>
+                <div class="badge">⏰ Dès 09h00</div>
+                <div class="badge">📍 Kamsar</div>
+            </div>
+
+            <!-- LE COMPTE À REBOURS -->
+            <div id="countdown" class="countdown-container"></div>
+        </section>
+
+        <!-- Programme et Carte -->
+        <section class="program-section">
+            <div class="program-grid">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125345.24151703698!2d-14.686524354228943!3d10.655822396349514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDM5JzIxLjAiTiAxNMKwMzknMTEuNSJX!5e0!3m2!1sfr!2sfr!4v1634567890123!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                
+                <div class="timeline-container">
+                    <p class="subtitle-small">PROGRAMME</p>
+                    <h3>La journée</h3>
+                    
+                    <div class="timeline-item">
+                        <span class="time">09h00</span>
+                        <div class="timeline-desc">
+                            <h4>Mariage Religieux & Civil</h4>
+                            <p>Chez la mariée au bâtiment M12, Kamsar Cité</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="time">19h00</span>
+                        <div class="timeline-desc">
+                            <h4>Réception</h4>
+                            <p>Guinai fare à Dougoufissa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulaire RSVP -->
+        <section id="rsvp" class="rsvp-section">
+            <h2>Confirmation</h2>
+            
+            <!-- LE COMPTEUR ANIMÉ -->
+            <div class="presence-counter">
+                <span id="guest-count">0</span>
+                <p>Personnes ont déjà confirmé leur présence !</p>
+            </div>
+            
+            <!-- Lien Google Sheets -->
+            <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbz7aI8H_3zvgAr9E5cxwUFjit91s2xFgXGNHpMy0qb9yAZF9jh8kMERJbWRCamcpauw7w/exec" method="POST" class="rsvp-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" required placeholder="Votre Prénom & Nom">
+                </div>
+                <div class="form-group">
+                    <select id="presence" name="presence" required>
+                        <option value="" disabled selected>Serez-vous présent ?</option>
+                        <option value="oui">Oui, je serai là !</option>
+                        <option value="non">Non, malheureusement</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="3" placeholder="Laissez un mot aux mariés..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="color: white;">Envoyer</button>
+            </form>
+            
+            <!-- Message de succès -->
+            <div id="form-message" class="hidden" style="margin-top:20px; color: #D4AF37; font-weight: 600; text-align: center; font-size: 1.2rem;">
+                Merci ! Votre réponse a bien été enregistrée.
+            </div>
+        </section>
+
+        <!-- SECTION LIVRE D'OR (Carrousel) -->
+        <section class="guestbook-section">
+            <p class="subtitle-small">LIVRE D'OR</p>
+            <h2>Vos mots doux</h2>
+            <div class="carousel-container">
+                <div id="carousel-track" class="carousel-track">
+                    <div class="carousel-msg">
+                        <p class="msg-text">Chargement des messages...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

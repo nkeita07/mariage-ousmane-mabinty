@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F8F5F0;
+    color: #333;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .quote {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    text-align: center;
+}
+
+/* --- ETATS CACHÉS (Pour les animations JS) --- */
+.hidden { display: none !important; }
+.fade-in { animation: fadeIn 0.8s ease-in forwards; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- SECTION 1 : COUVERTURE --- */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(rgba(20, 20, 20, 0.6), rgba(20, 20, 20, 0.7)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80') center/cover;
+    transition: opacity 0.5s ease;
+}
+
+.subtitle { font-size: 0.8rem; letter-spacing: 5px; color: #D4AF37; margin-bottom: 20px; }
+.names { font-size: 2.8rem; color: #FFF; line-height: 1.3; margin-bottom: 10px; }
+.ampersand { font-family: 'Great Vibes', cursive; font-size: 4rem; color: #D4AF37; }
+.quote { font-size: 1.2rem; color: #DDD; font-style: italic; margin-bottom: 40px; }
+
+/* Boutons */
+.btn-primary {
+    background-color: #D4AF37; color: #111; padding: 15px 35px; border-radius: 30px;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer;
+}
+.btn-dark {
+    background-color: #333; color: #FFF; padding: 15px 35px; border-radius: 30px;
+    font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; margin-top: 20px;
+}
+
+/* --- L'ENVELOPPE (Modale) --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex; justify-content: center; align-items: center; z-index: 1000;
+}
+
+.envelope-content {
+    background: #FFF; width: 90%; max-width: 450px; padding: 50px 30px 40px;
+    text-align: center; position: relative; border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.envelope-flap {
+    position: absolute; top: 0; left: 0; width: 100%; height: 80px;
+    background-color: #D4AF37;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.modal-subtitle { font-size: 0.7rem; letter-spacing: 3px; color: #888; margin-bottom: 10px; text-transform: uppercase; margin-top: 30px; }
+.envelope-content h2 { font-size: 2.2rem; margin-bottom: 15px; color: #333; }
+.envelope-content p { font-size: 0.95rem; color: #555; }
+
+/* --- CONTENU PRINCIPAL --- */
+section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
+.subtitle-small { font-size: 0.75rem; letter-spacing: 3px; color: #888; text-transform: uppercase; text-align: center; margin-bottom: 10px; }
+.intro-section h2 { font-size: 2.5rem; margin-bottom: 20px; color: #333; }
+.intro-text { text-align: center; font-size: 1rem; color: #555; max-width: 600px; margin: 0 auto 40px; }
+
+/* Badges (Date, Heure, Lieu) */
+.info-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+.badge {
+    background: #FFF; padding: 15px 20px; border-radius: 10px; font-weight: 500; font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03); flex: 1; min-width: 250px; text-align: center; border: 1px solid #EEE;
+}
+
+/* --- COMPTE À REBOURS --- */
+.countdown-container { display: flex; justify-content: center; gap: 15px; margin-top: 40px; }
+.countdown-container div {
+    background: #FFFFFF; padding: 20px 15px; border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px; min-width: 80px; text-align: center; color: #B89645;
+    font-size: 1.8rem; font-family: 'Playfair Display', serif; box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+.countdown-container span {
+    display: block; font-size: 0.75rem; font-family: 'Montserrat', sans-serif;
+    font-weight: 400; text-transform: uppercase; color: #777777; margin-top: 10px; letter-spacing: 2px;
+}
+
+/* Programme & Carte */
+.program-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 20px; }
+@media(min-width: 768px) { .program-grid { grid-template-columns: 1fr 1fr; } }
+
+.map-container { background: #E5E5E5; border-radius: 15px; overflow: hidden; min-height: 300px; }
+.timeline-container { background: #FFF; padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+
+.timeline-item { display: flex; margin-top: 30px; border-left: 2px solid #D4AF37; padding-left: 20px; position: relative; }
+.timeline-item::before {
+    content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px;
+    background: #D4AF37; border-radius: 50%;
+}
+.time { font-family: 'Playfair Display', serif; color: #D4AF37; font-size: 1.2rem; min-width: 70px; font-weight: bold; }
+.timeline-desc h4 { margin-bottom: 5px; color: #333; }
+.timeline-desc p { font-size: 0.85rem; color: #777; }
+
+/* RSVP */
+.rsvp-section { background: #FFF; text-align: center; border-radius: 15px; padding: 60px 20px; margin-bottom: 50px; }
+.rsvp-form { max-width: 500px; margin: 30px auto 0; text-align: left; }
+.form-group { margin-bottom: 20px; }
+input, select, textarea {
+    width: 100%; padding: 15px; border: 1px solid #DDD; border-radius: 8px; font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem; background: #F8F5F0;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: #D4AF37; }
+
+/* --- COMPTEUR DE PRÉSENCES --- */
+.presence-counter {
+    text-align: center;
+    margin: 20px auto 40px;
+    padding: 20px;
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 15px;
+    border: 1px dashed #D4AF37;
+    max-width: 400px;
+}
+
+#guest-count {
+    display: block;
+    font-size: 3.5rem;
+    font-family: 'Playfair Display', serif;
+    color: #D4AF37;
+    font-weight: bold;
+    line-height: 1;
+    animation: pulseText 2s infinite;
+}
+
+.presence-counter p {
+    font-size: 0.8rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+@keyframes pulseText {
+    0% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.08); opacity: 1; text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+    100% { transform: scale(1); opacity: 0.9; }
+}
+
+/* --- CARROUSEL / LIVRE D'OR --- */
+.guestbook-section {
+    padding: 60px 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.carousel-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+.carousel-msg {
+    min-width: 100%;
+    background: #FFF;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-sizing: border-box;
+}
+
+.msg-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.msg-author {
+    font-weight: 600;
+    color: #D4AF37;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+}
