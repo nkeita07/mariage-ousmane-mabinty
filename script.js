@@ -1,23 +1,40 @@
-// --- GESTION DE L'ENVELOPPE ET DE L'AFFICHAGE ---
-const btnOpen = document.getElementById('btn-open');
-const btnDiscover = document.getElementById('btn-discover');
-const welcomeCover = document.getElementById('welcome-cover');
-const envelopeModal = document.getElementById('envelope-modal');
+// --- GESTION DE L'ENVELOPPE DYNAMIQUE (POP + SEQUENTIEL) ---
+const envelopeWrapper = document.getElementById('envelope-wrapper');
+const seal = document.getElementById('seal');
+const flap = document.getElementById('flap');
+const card = document.querySelector('.envelope-card');
+const clickText = document.getElementById('click-text');
 const mainContent = document.getElementById('main-content');
+let isOpened = false;
 
-if (btnOpen) {
-    btnOpen.addEventListener('click', function() {
-        envelopeModal.classList.remove('hidden');
-    });
-}
+// Bloque le défilement au chargement
+document.body.style.overflow = 'hidden';
 
-if (btnDiscover) {
-    btnDiscover.addEventListener('click', function() {
-        envelopeModal.classList.add('hidden');
-        welcomeCover.style.display = 'none';
-        mainContent.classList.remove('hidden');
-        mainContent.classList.add('fade-in');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+if (envelopeWrapper) {
+    envelopeWrapper.addEventListener('click', function() {
+        if (!isOpened) {
+            isOpened = true;
+            
+            // 1. Le texte disparait et le sceau éclate
+            clickText.classList.add('text-hidden');
+            seal.classList.add('seal-popped');
+
+            // 2. Après l'éclatement du sceau, le rabat s'ouvre
+            setTimeout(() => {
+                flap.classList.add('flap-open');
+            }, 300); // 300ms après le clic
+
+            // 3. Après l'ouverture du rabat, la carte sort
+            setTimeout(() => {
+                card.classList.add('card-out');
+            }, 1000); // 1s après le clic
+
+            // 4. Après la sortie de la carte, on fait glisser vers le bas
+            setTimeout(() => {
+                document.body.style.overflow = 'auto'; 
+                mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 2500); // 2.5s après le clic
+        }
     });
 }
 
@@ -36,40 +53,35 @@ const compteARebours = setInterval(function() {
     const divCountdown = document.getElementById("countdown");
     
     if (divCountdown) {
-        divCountdown.innerHTML = `
-            <div>${jours}<span>Jours</span></div>
-            <div>${heures}<span>Heures</span></div>
-            <div>${minutes}<span>Min</span></div>
-            <div>${secondes}<span>Sec</span></div>
-        `;
-        
-        if (distance < 0) {
+        if (distance > 0) {
+            divCountdown.innerHTML = `
+                <div class="c-item"><span class="c-num">${jours}</span><span class="c-label">Jours</span></div>
+                <div class="c-item"><span class="c-num">${heures}</span><span class="c-label">Heures</span></div>
+                <div class="c-item"><span class="c-num">${minutes}</span><span class="c-label">Min</span></div>
+                <div class="c-item"><span class="c-num">${secondes}</span><span class="c-label">Sec</span></div>
+            `;
+        } else {
             clearInterval(compteARebours);
-            divCountdown.innerHTML = "<div style='width:100%; font-size:1.5rem;'>C'est le grand jour !</div>";
+            divCountdown.innerHTML = "<div class='c-num' style='font-size:2.5rem;'>C'est le grand jour !</div>";
         }
     }
 }, 1000);
 
-// --- GESTION DE L'ENVOI DU FORMULAIRE VERS GOOGLE SHEETS ---
+// --- GESTION DU FORMULAIRE RSVP (GOOGLE SHEETS) ---
 const form = document.getElementById('rsvp-form');
 const formMessage = document.getElementById('form-message');
 
 if (form) {
     form.addEventListener('submit', e => {
         e.preventDefault(); 
-        
         const btn = form.querySelector('button[type="submit"]');
         btn.innerText = "Envoi en cours..."; 
         
-        fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form)
-        })
+        fetch(form.action, { method: 'POST', body: new FormData(form) })
         .then(response => {
             form.style.display = 'none'; 
             formMessage.classList.remove('hidden'); 
-            // Optionnel : Recharger les données pour mettre à jour le compteur en direct
-            fetchMessages();
+            fetchMessages(); 
         })
         .catch(error => {
             console.error('Erreur!', error.message);
@@ -78,7 +90,7 @@ if (form) {
     });
 }
 
-// --- RECUPERATION DES DONNEES (COMPTEUR + CARROUSEL) ---
+// --- RECUPERATION DES DONNEES (COMPTEUR OUI + LIVRE D'OR) ---
 const carouselTrack = document.getElementById('carousel-track');
 const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbz7aI8H_3zvgAr9E5cxwUFjit91s2xFgXGNHpMy0qb9yAZF9jh8kMERJbWRCamcpauw7w/exec';
 
@@ -90,14 +102,12 @@ function animateValue(id, start, end, duration) {
     let range = end - start;
     let current = start;
     let increment = end > start ? 1 : -1;
-    let stepTime = Math.abs(Math.floor(duration / Math.max(range, 1))); // Eviter division par 0
+    let stepTime = Math.abs(Math.floor(duration / Math.max(range, 1))); 
     let obj = document.getElementById(id);
     let timer = setInterval(function() {
         current += increment;
         obj.innerHTML = current;
-        if (current == end) {
-            clearInterval(timer);
-        }
+        if (current == end) { clearInterval(timer); }
     }, stepTime);
 }
 
@@ -105,16 +115,12 @@ function fetchMessages() {
     fetch(googleScriptUrl)
         .then(response => response.json())
         .then(data => {
-            // 1. Mise à jour du compteur
             if (document.getElementById('guest-count')) {
                 animateValue("guest-count", 0, data.totalOui || 0, 1500); 
             }
-
-            // 2. Affichage des messages
             if (carouselTrack) {
                 if (data.messages && data.messages.length > 0) {
                     carouselTrack.innerHTML = ''; 
-                    
                     data.messages.forEach(item => {
                         const msgDiv = document.createElement('div');
                         msgDiv.className = 'carousel-msg';
@@ -124,7 +130,6 @@ function fetchMessages() {
                         `;
                         carouselTrack.appendChild(msgDiv);
                     });
-                    
                     startCarousel(); 
                 } else {
                     carouselTrack.innerHTML = '<div class="carousel-msg"><p class="msg-text">Soyez le premier à laisser un message !</p></div>';
@@ -132,7 +137,7 @@ function fetchMessages() {
             }
         })
         .catch(error => {
-            console.error("Erreur de chargement des données:", error);
+            console.error("Erreur:", error);
             if(carouselTrack) carouselTrack.innerHTML = '<div class="carousel-msg"><p class="msg-text">Impossible de charger les messages.</p></div>';
         });
 }
@@ -141,20 +146,13 @@ function startCarousel() {
     let currentIndex = 0;
     const slides = document.querySelectorAll('.carousel-msg');
     const totalSlides = slides.length;
-
     if(totalSlides <= 1) return;
-
     setInterval(() => {
         currentIndex++;
-        if (currentIndex >= totalSlides) {
-            currentIndex = 0; 
-        }
+        if (currentIndex >= totalSlides) { currentIndex = 0; }
         const translateX = currentIndex * -100;
         carouselTrack.style.transform = `translateX(${translateX}%)`;
-    }, 4000); 
+    }, 4500); 
 }
 
-// On lance la récupération dès l'ouverture de la page
-if (carouselTrack) {
-    fetchMessages();
-}
+if (carouselTrack) { fetchMessages(); }

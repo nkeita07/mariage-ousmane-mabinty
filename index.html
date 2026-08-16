@@ -8,113 +8,183 @@
 </head>
 <body>
 
-    <!-- SECTION 1 : LA COUVERTURE -->
-    <header id="welcome-cover" class="hero-section">
-        <div class="hero-content">
-            <p class="subtitle">NOUS NOUS MARIONS</p>
-            <h1 class="names">OUSMANE FOTE CAMARA<br><span class="ampersand">&</span><br>MABINTY YOULA</h1>
-            <p class="quote">« Deux cœurs, une même destinée »</p>
-            <button id="btn-open" class="btn-primary">Ouvrir l'invitation</button>
-        </div>
-    </header>
+    <!-- ÉCRAN D'INTRODUCTION : ENVELOPPE & SCEAU DYNAMIQUE -->
+    <div id="intro-screen" class="intro-screen classic-light">
+        <div class="envelope-wrapper" id="envelope-wrapper">
+            
+            <div class="envelope-body">
+                <div class="envelope-inside"></div>
 
-    <!-- L'ENVELOPPE (Modale) -->
-    <div id="envelope-modal" class="modal-overlay hidden">
-        <div class="envelope-content">
-            <div class="envelope-flap"></div>
-            <p class="modal-subtitle">VOTRE INVITATION</p>
-            <h2>Bienvenue</h2>
-            <p>C'est avec une immense joie que nous vous invitons à partager cette journée qui changera notre vie.</p>
-            <button id="btn-discover" class="btn-dark">Découvrir notre journée</button>
+                <div class="envelope-card">
+                    <div class="card-content-border">
+                        <p class="card-pre">L'invitation officielle</p>
+                        <h1 class="card-names">Ousmane <br><span class="amp-card">&</span><br> Mabinty</h1>
+                        <div class="card-divider"></div>
+                        <p class="card-date-small">20 & 21 Novembre 2026</p>
+                    </div>
+                </div>
+
+                <div class="envelope-front"></div>
+                
+                <div class="envelope-flap" id="flap">
+                    <div class="flap-face flap-front"></div>
+                    <div class="flap-face flap-back"></div>
+                </div>
+                
+                <div class="wax-seal" id="seal">
+                    <span class="initials">O<span class="amp">&</span>M</span>
+                </div>
+            </div>
+            
+            <p class="click-instruction" id="click-text">Touchez le sceau pour ouvrir</p>
         </div>
     </div>
 
-    <!-- LE CONTENU PRINCIPAL -->
-    <main id="main-content" class="hidden">
+    <!-- LE CONTENU PRINCIPAL DU SITE -->
+    <main id="main-content">
         
-        <section class="intro-section">
-            <p class="subtitle-small">L'INVITATION</p>
-            <h2>Célébrons l'amour</h2>
-            <p class="intro-text">Ont l'immense plaisir de vous inviter à partager ce moment unique de notre union.</p>
-            
-            <div class="info-badges">
-                <div class="badge">📅 Ven 27 Nov 2026</div>
-                <div class="badge">⏰ Dès 09h00</div>
-                <div class="badge">📍 Kamsar</div>
-            </div>
-
-            <!-- LE COMPTE À REBOURS -->
-            <div id="countdown" class="countdown-container"></div>
+        <section class="sec-hero">
+            <p class="fade-text">Vous êtes chaleureusement invités<br>à célébrer l'union de</p>
+            <h1 class="main-names">Ousmane<br><span class="amp-main">&</span><br>Mabinty</h1>
+            <p class="tagline">Une histoire écrite à deux.</p>
         </section>
 
-        <!-- Programme et Carte -->
-        <section class="program-section">
-            <div class="program-grid">
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125345.24151703698!2d-14.686524354228943!3d10.655822396349514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDM5JzIxLjAiTiAxNMKwMzknMTEuNSJX!5e0!3m2!1sfr!2sfr!4v1634567890123!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-                
-                <div class="timeline-container">
-                    <p class="subtitle-small">PROGRAMME</p>
-                    <h3>La journée</h3>
+        <section class="sec-quote">
+            <div class="flourish">✦ ❦ ✦</div>
+            <p class="quote-text">"L'amour ne se voit pas avec les yeux, mais avec le cœur."</p>
+            <p class="quote-author">— William Shakespeare</p>
+        </section>
+
+        <section class="sec-date">
+            <p class="sur-title">Notez ces dates</p>
+            <h2 class="date-title">20 & 21 novembre 2026</h2>
+            <p class="sub-title">Des jours que nous attendons avec impatience</p>
+        </section>
+
+        <section class="sec-countdown">
+            <p class="sur-title">L'attente touche à sa fin.</p>
+            <div id="countdown" class="c-layout">
+                <!-- Rempli par le JS -->
+            </div>
+            <p class="sub-title">Chaque seconde nous rapproche de vous.</p>
+        </section>
+
+        <!-- SÉPARATEUR ÉLÉGANT AVEC BAGUES SANS FOND (SVG Vectoriel) -->
+        <section class="sec-transition">
+            <div class="line-separator"></div>
+            <p class="transition-text">Pour toujours.</p>
+            
+            <div class="rings-wrapper">
+                <svg class="wedding-rings-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <!-- Dégradé métallique très brillant -->
+                        <linearGradient id="gold" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#9C7721" />
+                            <stop offset="25%" stop-color="#D4AF37" />
+                            <stop offset="50%" stop-color="#FFF3B0" />
+                            <stop offset="75%" stop-color="#D4AF37" />
+                            <stop offset="100%" stop-color="#9C7721" />
+                        </linearGradient>
+                        <!-- Ombre portée chaleureuse pour le volume -->
+                        <filter id="drop-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" flood-color="#4A2511" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
                     
+                    <circle cx="38" cy="35" r="18" fill="none" stroke="url(#gold)" stroke-width="4.5" filter="url(#drop-shadow)" />
+                    <circle cx="62" cy="35" r="18" fill="none" stroke="url(#gold)" stroke-width="4.5" filter="url(#drop-shadow)" />
+                    <path d="M 50 21 A 18 18 0 0 0 50 49" fill="none" stroke="url(#gold)" stroke-width="4.5" stroke-linecap="round" />
+                    <g transform="translate(62, 13)">
+                        <polygon points="0,-7 6,0 0,8 -6,0" fill="#FDFAF2" stroke="#B88E28" stroke-width="1" filter="url(#drop-shadow)" />
+                        <polygon points="-4,-1 4,-1 0,6" fill="#FFFFFF" />
+                        <path d="M-4,-1 L0,-5 L4,-1 Z" fill="#F4EFE6" />
+                    </g>
+                </svg>
+            </div>
+            
+            <div class="line-separator"></div>
+        </section>
+
+        <section class="sec-program">
+            <p class="sur-title">Programme</p>
+            <h2 class="section-title">Le grand jour approche...</h2>
+            <p class="sub-title" style="margin-bottom: 40px;">Et nous serions honorés de le partager avec vous.</p>
+            
+            <div class="program-grid">
+                <div class="timeline-container">
                     <div class="timeline-item">
-                        <span class="time">09h00</span>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            <span class="day">Ven 20</span>
+                            <span class="time">09h00</span>
+                        </div>
                         <div class="timeline-desc">
                             <h4>Mariage Religieux & Civil</h4>
-                            <p>Chez la mariée au bâtiment M12, Kamsar Cité</p>
+                            <p>Chez la mariée au bâtiment M12,<br>Kamsar Cité</p>
                         </div>
                     </div>
                     
                     <div class="timeline-item">
-                        <span class="time">19h00</span>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            <span class="day">Sam 21</span>
+                            <span class="time">19h00</span>
+                        </div>
                         <div class="timeline-desc">
                             <h4>Réception</h4>
                             <p>Guinai fare à Dougoufissa</p>
                         </div>
                     </div>
                 </div>
+                
+                <div class="map-container">
+                    <div class="map-frame">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125345.24151703698!2d-14.686524354228943!3d10.655822396349514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDM5JzIxLjAiTiAxNMKwMzknMTEuNSJX!5e0!3m2!1sfr!2sfr!4v1634567890123!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Formulaire RSVP -->
-        <section id="rsvp" class="rsvp-section">
-            <h2>Confirmation</h2>
-            
-            <!-- LE COMPTEUR ANIMÉ -->
-            <div class="presence-counter">
-                <span id="guest-count">0</span>
-                <p>Personnes ont déjà confirmé leur présence !</p>
-            </div>
-            
-            <!-- Lien Google Sheets -->
-            <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbz7aI8H_3zvgAr9E5cxwUFjit91s2xFgXGNHpMy0qb9yAZF9jh8kMERJbWRCamcpauw7w/exec" method="POST" class="rsvp-form">
-                <div class="form-group">
-                    <input type="text" id="name" name="name" required placeholder="Votre Prénom & Nom">
+        <section id="rsvp" class="sec-rsvp-wrapper">
+            <div class="rsvp-card">
+                <div class="flourish" style="font-size: 1.5rem; margin-bottom: 5px;">✉</div>
+                <p class="sur-title">RSVP</p>
+                <h2 class="section-title">Confirmation</h2>
+                
+                <div class="presence-counter">
+                    <span id="guest-count">0</span>
+                    <p>Personnes ont déjà répondu présent</p>
                 </div>
-                <div class="form-group">
-                    <select id="presence" name="presence" required>
-                        <option value="" disabled selected>Serez-vous présent ?</option>
-                        <option value="oui">Oui, je serai là !</option>
-                        <option value="non">Non, malheureusement</option>
-                    </select>
+                
+                <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbz7aI8H_3zvgAr9E5cxwUFjit91s2xFgXGNHpMy0qb9yAZF9jh8kMERJbWRCamcpauw7w/exec" method="POST" class="rsvp-form">
+                    <div class="form-group-elegant">
+                        <input type="text" id="name" name="name" required placeholder=" ">
+                        <label for="name">Votre Prénom & Nom</label>
+                    </div>
+                    <div class="form-group-elegant select-group">
+                        <select id="presence" name="presence" required>
+                            <option value="" disabled selected hidden>Serez-vous parmi nous ?</option>
+                            <option value="oui">Oui, avec grande joie !</option>
+                            <option value="non">Non, malheureusement</option>
+                        </select>
+                    </div>
+                    <div class="form-group-elegant">
+                        <textarea id="message" name="message" rows="1" placeholder=" "></textarea>
+                        <label for="message">Un petit mot pour les mariés</label>
+                    </div>
+                    <button type="submit" class="btn-rsvp">Envoyer ma réponse</button>
+                </form>
+                
+                <!-- LE NOUVEAU MESSAGE DE SUCCÈS ÉMOTIONNEL -->
+                <div id="form-message" class="hidden msg-success">
+                    Merci du fond du cœur ! ❤️<br>Votre réponse nous remplit de joie.<br>Nous avons tellement hâte de partager ce moment unique avec vous ✨
                 </div>
-                <div class="form-group">
-                    <textarea id="message" name="message" rows="3" placeholder="Laissez un mot aux mariés..."></textarea>
-                </div>
-                <button type="submit" class="btn-primary" style="color: white;">Envoyer</button>
-            </form>
-            
-            <!-- Message de succès -->
-            <div id="form-message" class="hidden" style="margin-top:20px; color: #D4AF37; font-weight: 600; text-align: center; font-size: 1.2rem;">
-                Merci ! Votre réponse a bien été enregistrée.
             </div>
         </section>
 
-        <!-- SECTION LIVRE D'OR (Carrousel) -->
-        <section class="guestbook-section">
-            <p class="subtitle-small">LIVRE D'OR</p>
-            <h2>Vos mots doux</h2>
+        <section class="sec-guestbook">
+            <div class="flourish">✦ ❦ ✦</div>
+            <h2 class="section-title">Vos mots doux</h2>
             <div class="carousel-container">
                 <div id="carousel-track" class="carousel-track">
                     <div class="carousel-msg">
