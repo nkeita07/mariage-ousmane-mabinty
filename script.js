@@ -1,45 +1,31 @@
-// --- GESTION DE L'ENVELOPPE DYNAMIQUE (POP + SEQUENTIEL) ---
-const envelopeWrapper = document.getElementById('envelope-wrapper');
-const seal = document.getElementById('seal');
-const flap = document.getElementById('flap');
-const card = document.querySelector('.envelope-card');
-const clickText = document.getElementById('click-text');
+// --- GESTION DE L'OUVERTURE DU RIDEAU ---
+const introScreen = document.getElementById('intro-screen');
+const curtainTrigger = document.getElementById('curtain-trigger');
 const mainContent = document.getElementById('main-content');
 let isOpened = false;
 
 // Bloque le défilement au chargement
 document.body.style.overflow = 'hidden';
 
-if (envelopeWrapper) {
-    envelopeWrapper.addEventListener('click', function() {
+if (curtainTrigger) {
+    curtainTrigger.addEventListener('click', function() {
         if (!isOpened) {
             isOpened = true;
             
-            // 1. Le texte disparait et le sceau éclate
-            clickText.classList.add('text-hidden');
-            seal.classList.add('seal-popped');
+            // 1. Déclenche l'écartement des volets du rideau
+            introScreen.classList.add('open');
 
-            // 2. Après l'éclatement du sceau, le rabat s'ouvre
+            // 2. Après l'animation, débloque le scroll et supprime l'écran d'intro
             setTimeout(() => {
-                flap.classList.add('flap-open');
-            }, 300); // 300ms après le clic
-
-            // 3. Après l'ouverture du rabat, la carte sort
-            setTimeout(() => {
-                card.classList.add('card-out');
-            }, 1000); // 1s après le clic
-
-            // 4. Après la sortie de la carte, on fait glisser vers le bas
-            setTimeout(() => {
-                document.body.style.overflow = 'auto'; 
-                mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 2500); // 2.5s après le clic
+                document.body.style.overflow = 'auto';
+                introScreen.style.display = 'none';
+            }, 1400); 
         }
     });
 }
 
 // --- COMPTE À REBOURS ---
-const dateMariage = new Date("Nov 27, 2026 09:00:00").getTime();
+const dateMariage = new Date("Nov 20, 2026 09:00:00").getTime();
 
 const compteARebours = setInterval(function() {
     const maintenant = new Date().getTime();

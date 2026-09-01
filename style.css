@@ -25,41 +25,185 @@ h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time { font-family: 'Cor
 .hidden { display: none !important; }
 
 /* =========================================
-   ÉCRAN D'INTRODUCTION ET ENVELOPPE
+   ÉCRAN D'OUVERTURE : RIDEAU AVEC COMPOSITION FLORALE & SCEAU DORÉ
    ========================================= */
-.intro-screen.classic-light { position: relative; width: 100%; height: 100vh; background-color: var(--bg-cream); background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.intro-screen.curtain-mode {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    z-index: 100;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.envelope-wrapper { position: relative; z-index: 10; cursor: pointer; width: 90%; max-width: 400px; height: 260px; perspective: 2000px; }
-.envelope-body { position: relative; width: 100%; height: 100%; background: #EBE4DD; box-shadow: 0 20px 40px rgba(114, 45, 53, 0.15); border-radius: 4px; }
-.envelope-inside { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #DFD5CD; border-radius: 4px; z-index: 1; }
+.curtain-panel {
+    position: absolute;
+    top: 0;
+    width: 50%; height: 100%;
+    background-color: #FAF6F0;
+    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 101;
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+}
 
-.envelope-flap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform-origin: top; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); z-index: 4; }
-.flap-face { position: absolute; top: 0; left: 0; width: 100%; height: 100%; backface-visibility: hidden; clip-path: polygon(0 0, 100% 0, 50% 55%); }
-.flap-front { background: #F4EBE3; background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1)); }
-.flap-back { background: linear-gradient(135deg, var(--gold-light), var(--gold-dark)); transform: rotateX(180deg); }
+.curtain-left {
+    left: 0;
+    border-right: 1px solid rgba(201, 155, 65, 0.3);
+}
 
-.wax-seal { position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; background: radial-gradient(circle at 30% 30%, #FF5A54 0%, var(--wax-red) 40%, var(--wax-dark) 100%); border-radius: 50%; border: 2px solid #A6211C; z-index: 10; box-shadow: 0 6px 12px rgba(140, 22, 18, 0.4), inset 0 3px 6px rgba(255,255,255,0.4), inset 0 -3px 6px rgba(0,0,0,0.3); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s; }
-.wax-seal::after { content: ''; position: absolute; width: 72px; height: 72px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); box-shadow: inset 0 2px 5px rgba(0,0,0,0.2); }
-.wax-seal .initials { font-family: 'Great Vibes', cursive; color: var(--gold-light); font-size: 1.8rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); z-index: 2; display: inline-block; line-height: 1; margin-top: 5px; }
-.wax-seal .amp { font-size: 1.2rem; margin: 0 2px; }
+.curtain-right {
+    right: 0;
+    border-left: 1px solid rgba(201, 155, 65, 0.3);
+}
 
-.envelope-front { position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; background: #F2E9E1; clip-path: polygon(0 100%, 100% 100%, 100% 0, 50% 55%, 0 0); z-index: 3; background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); border-top: 1px solid rgba(114, 45, 53, 0.05); }
+.intro-screen.open .curtain-left { transform: translateX(-100%); }
+.intro-screen.open .curtain-right { transform: translateX(100%); }
 
-.envelope-card { position: absolute; top: 15px; left: 15px; width: calc(100% - 30px); height: calc(100% - 30px); background: #FFF; z-index: 2; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 0 15px rgba(0,0,0,0.05); border-radius: 2px; }
-.card-content-border { width: 90%; height: 85%; border: 1px solid var(--gold-light); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; }
-.card-pre { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-taupe); margin-bottom: 15px; }
-.card-names { font-size: 2.2rem; color: var(--text-burgundy); line-height: 1; margin-bottom: 10px;}
-.card-names .amp-card { font-family: 'Great Vibes', cursive; color: var(--gold-dark); font-size: 2.5rem; }
-.card-divider { width: 40px; height: 1px; background-color: var(--gold-light); margin: 15px 0; }
-.card-date-small { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; letter-spacing: 2px; color: var(--text-taupe); text-transform: uppercase;}
+.curtain-center {
+    position: absolute;
+    z-index: 102;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
 
-.click-instruction { text-align: center; color: var(--text-taupe); margin-top: 50px; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; animation: pulseClassic 2s infinite; transition: opacity 0.3s; }
+.floral-center-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    height: 320px;
+}
 
-.seal-popped { transform: translate(-50%, -50%) scale(1.5) !important; opacity: 0 !important; }
-.flap-open { transform: rotateX(180deg) !important; }
-.card-out { transform: translateY(-130px) !important; z-index: 5 !important; box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important; }
-.text-hidden { opacity: 0 !important; }
-@keyframes pulseClassic { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+.floral-bouquet-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Sceau doré au centre de la fleur */
+.wax-seal-gold-center {
+    position: absolute;
+    width: 72px; height: 72px;
+    background: radial-gradient(circle at 35% 35%, #FFEFA6 0%, #E8CA88 40%, #C99B41 75%, #7A5615 100%);
+    border-radius: 50%;
+    border: 2px solid #FFEFA6;
+    box-shadow: 0 10px 25px rgba(92, 44, 22, 0.35), inset 0 2px 4px rgba(255,255,255,0.7);
+    display: flex; justify-content: center; align-items: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
+}
+
+.curtain-center:hover .wax-seal-gold-center {
+    transform: scale(1.1);
+}
+
+.branch-engraving-svg {
+    width: 32px;
+    height: 40px;
+    opacity: 0.85;
+}
+
+/* L'étiquette en biais "Cliquez pour ouvrir" */
+.seal-ribbon-tag-angled {
+    position: absolute;
+    bottom: 95px;
+    right: 5px;
+    transform: rotate(-12deg);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--gold-light);
+    padding: 5px 16px;
+    border-radius: 2px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    z-index: 3;
+}
+
+.seal-ribbon-tag-angled span {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.1rem;
+    color: var(--text-burgundy);
+    white-space: nowrap;
+}
+
+.intro-screen.open .curtain-center {
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+}
+
+/* =========================================
+   STYLE DES PHOTOS DES MARIÉS
+   ========================================= */
+.hero-photo-container {
+    position: relative;
+    width: 220px;
+    height: 280px;
+    margin: 20px auto 30px;
+    border-radius: 120px 120px 10px 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(114, 45, 53, 0.15);
+    border: 3px solid var(--gold-light);
+}
+
+.hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.sec-couple-photo {
+    width: 100%;
+    padding: 4vh 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.framed-photo-card {
+    background: #FFF;
+    border: 1px solid var(--gold-light);
+    padding: 15px 15px 25px 15px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 15px 30px rgba(114, 45, 53, 0.08);
+    text-align: center;
+    border-radius: 2px;
+}
+
+.photo-frame-inner {
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+.framed-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+.framed-photo-card:hover .framed-photo {
+    transform: scale(1.03);
+}
+
+.photo-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--text-burgundy);
+}
 
 /* =========================================
    CONTENU PRINCIPAL DU SITE
@@ -69,8 +213,8 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
 .sub-title { font-size: 0.95rem; color: var(--text-taupe); text-align: center; font-style: italic; font-family: 'Cormorant Garamond', serif; }
 .section-title { font-size: 2.2rem; margin-bottom: 10px; }
 
-.sec-hero { padding-top: 10vh; }
-.fade-text { font-size: 1.1rem; color: var(--text-taupe); text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; margin-bottom: 20px; }
+.sec-hero { padding-top: 12vh; }
+.fade-text { font-size: 1.1rem; color: var(--text-taupe); text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; margin-bottom: 10px; }
 .main-names { font-size: 4rem; line-height: 1; margin-bottom: 20px; }
 .amp-main { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--gold-dark); }
 .tagline { font-size: 1.2rem; font-family: 'Cormorant Garamond', serif; color: var(--text-burgundy); }
@@ -86,7 +230,6 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
 .c-num { font-size: 3rem; font-family: 'Cormorant Garamond', serif; color: var(--text-burgundy); line-height: 1; }
 .c-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); margin-top: 5px; }
 
-/* SÉPARATEUR SANS FOND (Bagues SVG) */
 .sec-transition { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 15px; padding: 4vh 20px; margin: 2vh auto; width: 100%; max-width: 650px; }
 .line-separator { flex: 1; height: 1px; background-color: var(--gold-dark); opacity: 0.3; }
 .transition-text { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: var(--gold-dark); line-height: 1; white-space: nowrap; }
@@ -94,7 +237,7 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
 .wedding-rings-svg { height: 55px; width: auto; margin-left: 5px; animation: floatRings 4s ease-in-out infinite; }
 @keyframes floatRings { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
 
-/* PROGRAMME ET TIMELINE ÉLÉGANTES */
+/* PROGRAMME ET TIMELINE */
 .program-grid { display: grid; grid-template-columns: 1fr; gap: 50px; width: 100%; margin-top: 20px; align-items: stretch; }
 @media(min-width: 768px) { .program-grid { grid-template-columns: 1.2fr 1fr; gap: 60px; } }
 
@@ -112,15 +255,12 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
 .timeline-desc h4 { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text-burgundy); margin-bottom: 8px; text-align: left; }
 .timeline-desc p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--text-taupe); font-style: italic; text-align: left; }
 
-/* La Carte façon Polaroid */
 .map-container { display: flex; align-items: center; justify-content: center; }
 .map-frame { width: 100%; border-radius: 4px; overflow: hidden; min-height: 300px; height: 100%; background: #FFF; border: 1px solid var(--gold-light); padding: 8px; box-shadow: 0 15px 35px rgba(114, 45, 53, 0.08); }
 .map-frame iframe { width: 100%; height: 100%; border-radius: 2px; filter: grayscale(30%) sepia(20%) contrast(90%); transition: 0.3s; }
 .map-frame iframe:hover { filter: none; }
 
-/* =========================================
-   FORMULAIRE RSVP
-   ========================================= */
+/* FORMULAIRE RSVP */
 .sec-rsvp-wrapper { width: 100%; padding: 8vh 20px; }
 .rsvp-card { background: #FFF; border: 1px solid var(--gold-light); padding: 50px 40px; border-radius: 2px; width: 100%; max-width: 600px; margin: 0 auto; box-shadow: 0 15px 35px rgba(114, 45, 53, 0.05); text-align: center; }
 .presence-counter { margin: 10px auto 30px; padding-bottom: 25px; border-bottom: 1px dashed #DFD5CD; max-width: 100%; }
@@ -141,7 +281,6 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
 .btn-rsvp { width: 100%; background: transparent; color: var(--text-burgundy); border: 1px solid var(--text-burgundy); padding: 18px; border-radius: 2px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.4s ease; margin-top: 10px; }
 .btn-rsvp:hover { background: var(--text-burgundy); color: #FFF; letter-spacing: 4px; }
 
-/* LE NOUVEAU STYLE DU MESSAGE DE SUCCÈS */
 .msg-success { 
     color: var(--text-burgundy); 
     font-family: 'Cormorant Garamond', serif; 
@@ -151,7 +290,6 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
     margin-top: 30px; 
     text-align: center; 
     line-height: 1.4;
-    animation: fadeIn 1s ease-in forwards;
 }
 
 /* LIVRE D'OR */
@@ -161,9 +299,7 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
 .msg-text { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: var(--text-burgundy); margin-bottom: 15px; }
 .msg-author { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); }
 
-/* =========================================
-   MEDIA QUERIES (RESPONSIVE MOBILE)
-   ========================================= */
+/* MEDIA QUERIES (MOBILE) */
 @media (max-width: 768px) {
     .main-names { font-size: 3rem; }
     .amp-main { font-size: 2.5rem; }
@@ -172,6 +308,9 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
     
     .c-num { font-size: 2.2rem; }
     .c-layout { gap: 15px; }
+
+    .hero-photo-container { width: 180px; height: 230px; }
+    .photo-frame-inner { height: 280px; }
 
     .sec-transition { gap: 10px; }
     .transition-text { font-size: 2.2rem; }
@@ -184,9 +323,8 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
     .timeline-date .day { font-size: 1.5rem; }
     
     .map-frame { min-height: 250px; }
-    
     .rsvp-card { padding: 40px 20px; }
-    .envelope-wrapper { height: 220px; }
     
-    .msg-success { font-size: 1.2rem; }
+    .floral-center-wrapper { width: 180px; height: 240px; }
+    .wax-seal-gold-center { width: 60px; height: 60px; }
 }
