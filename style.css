@@ -1,233 +1,297 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
-    --bg-cream: #F9F6F0;
-    --text-burgundy: #722D35;
-    --text-taupe: #9D8C86;
+    --bg-cream: #FFFFFF;
+    --text-burgundy: #622229;
+    --text-taupe: #78685E;
     --gold-light: #E8CA88;
     --gold-dark: #C99B41;
-    --wax-red: #D1302A;
-    --wax-dark: #8C1612;
+    --envelope-color: #F8F4EF;
 }
 
-/* ANTI-DÉBORDEMENT GLOBAL */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { width: 100%; max-width: 100vw; overflow-x: hidden; scroll-behavior: smooth; }
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--bg-cream);
-    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    background-color: #FFFFFF;
+    color: var(--text-burgundy);
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+#bg-sparkles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 1; opacity: 0.95;
+}
+
+main { position: relative; z-index: 2; }
+
+h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-weight: 600; 
+    text-align: center; 
     color: var(--text-burgundy);
 }
 
-h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time { font-family: 'Cormorant Garamond', serif; font-weight: 500; text-align: center; }
 .hidden { display: none !important; }
 
-/* =========================================
-   ÉCRAN D'OUVERTURE : RIDEAU AVEC COMPOSITION FLORALE & SCEAU DORÉ
-   ========================================= */
-.intro-screen.curtain-mode {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100vh;
-    z-index: 100;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.curtain-panel {
-    position: absolute;
-    top: 0;
-    width: 50%; height: 100%;
-    background-color: #FAF6F0;
-    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-    transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
-    z-index: 101;
-    box-shadow: 0 0 30px rgba(0,0,0,0.1);
-}
-
-.curtain-left {
-    left: 0;
-    border-right: 1px solid rgba(201, 155, 65, 0.3);
-}
-
-.curtain-right {
-    right: 0;
-    border-left: 1px solid rgba(201, 155, 65, 0.3);
-}
-
-.intro-screen.open .curtain-left { transform: translateX(-100%); }
-.intro-screen.open .curtain-right { transform: translateX(100%); }
-
-.curtain-center {
-    position: absolute;
-    z-index: 102;
-    cursor: pointer;
+/* HERO */
+.sec-hero { 
+    padding-top: 8vh; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
-.floral-center-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 240px;
-    height: 320px;
-}
-
-.floral-bouquet-svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-/* Sceau doré au centre de la fleur */
-.wax-seal-gold-center {
-    position: absolute;
-    width: 72px; height: 72px;
-    background: radial-gradient(circle at 35% 35%, #FFEFA6 0%, #E8CA88 40%, #C99B41 75%, #7A5615 100%);
-    border-radius: 50%;
-    border: 2px solid #FFEFA6;
-    box-shadow: 0 10px 25px rgba(92, 44, 22, 0.35), inset 0 2px 4px rgba(255,255,255,0.7);
-    display: flex; justify-content: center; align-items: center;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 2;
-}
-
-.curtain-center:hover .wax-seal-gold-center {
-    transform: scale(1.1);
-}
-
-.branch-engraving-svg {
-    width: 32px;
-    height: 40px;
-    opacity: 0.85;
-}
-
-/* L'étiquette en biais "Cliquez pour ouvrir" */
-.seal-ribbon-tag-angled {
-    position: absolute;
-    bottom: 95px;
-    right: 5px;
-    transform: rotate(-12deg);
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid var(--gold-light);
-    padding: 5px 16px;
-    border-radius: 2px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-    z-index: 3;
-}
-
-.seal-ribbon-tag-angled span {
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.1rem;
+.main-names-inline { 
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem; 
+    font-weight: 600;
     color: var(--text-burgundy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px; 
+    text-align: center;
     white-space: nowrap;
 }
 
-.intro-screen.open .curtain-center {
-    opacity: 0;
-    transform: scale(0.5);
-    pointer-events: none;
+.amp-inline { 
+    font-family: 'Great Vibes', cursive; 
+    font-size: 3rem; 
+    color: var(--gold-dark); 
+    font-weight: 400;
+    margin: 0 5px;
 }
 
-/* =========================================
-   STYLE DES PHOTOS DES MARIÉS
-   ========================================= */
-.hero-photo-container {
+.hero-photo-frame-luxe {
     position: relative;
-    width: 220px;
-    height: 280px;
-    margin: 20px auto 30px;
-    border-radius: 120px 120px 10px 10px;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(114, 45, 53, 0.15);
-    border: 3px solid var(--gold-light);
-}
-
-.hero-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-}
-
-.sec-couple-photo {
-    width: 100%;
-    padding: 4vh 20px;
+    width: 270px;
+    height: 350px;
+    margin: 10px auto 30px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.framed-photo-card {
-    background: #FFF;
+.frame-outer-gold {
+    position: absolute;
+    width: 100%; height: 100%;
     border: 1px solid var(--gold-light);
-    padding: 15px 15px 25px 15px;
-    max-width: 420px;
-    width: 100%;
-    box-shadow: 0 15px 30px rgba(114, 45, 53, 0.08);
-    text-align: center;
-    border-radius: 2px;
+    border-radius: 135px 135px 10px 10px;
+    box-shadow: 0 20px 45px rgba(98, 34, 41, 0.08);
 }
 
-.photo-frame-inner {
+.frame-inner-gold {
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    border: 2px solid var(--gold-dark);
+    border-radius: 127px 127px 8px 8px;
+    overflow: hidden;
+    background: #FFFFFF;
+}
+
+.hero-photo { 
+    width: 100%; height: 100%; 
+    object-fit: cover; 
+    object-position: center top; 
+}
+
+.gold-crest-emblem {
+    position: absolute;
+    bottom: -15px;
+    background: #FFFFFF;
+    padding: 2px 15px;
+    border: 1px solid var(--gold-light);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    letter-spacing: 4px;
+}
+
+.fade-text { 
+    font-size: 1.2rem; 
+    color: var(--text-taupe); 
+    text-align: center; 
+    font-family: 'Cormorant Garamond', serif; 
+    font-style: italic; 
+    margin-bottom: 12px; 
+    padding: 0 15px;
+}
+
+.tagline { 
+    font-size: 1.2rem; 
+    font-family: 'Cormorant Garamond', serif; 
+    color: var(--text-burgundy); 
+    letter-spacing: 1px;
+}
+
+/* CARTE PHOTO DU COUPLE ASSIS */
+.sec-quote {
+    padding: 6vh 20px 8vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.art-photo-card {
+    background: #FFFFFF;
+    border: 1px solid var(--gold-light);
+    padding: 12px 12px 18px 12px;
+    border-radius: 2px;
+    box-shadow: 0 15px 35px rgba(98, 34, 41, 0.08);
+    max-width: 380px;
     width: 100%;
-    height: 380px;
+    margin-bottom: 30px;
+    transition: transform 0.4s ease;
+}
+
+.art-photo-card:hover {
+    transform: translateY(-4px);
+}
+
+.art-photo-inner {
+    width: 100%;
+    height: 420px;
     overflow: hidden;
     border-radius: 2px;
-    margin-bottom: 15px;
 }
 
-.framed-photo {
+.art-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
-    transition: transform 0.5s ease;
+    object-position: center 20%;
 }
 
-.framed-photo-card:hover .framed-photo {
-    transform: scale(1.03);
+.flourish { color: var(--gold-dark); font-size: 1.1rem; margin-bottom: 15px; letter-spacing: 5px; opacity: 0.8; }
+.quote-text { font-style: italic; line-height: 1.4; max-width: 700px; margin-bottom: 15px; font-weight: 500; text-align: center; }
+
+/* ÉCRAN INTRO ENVELOPPE */
+.intro-screen.envelope-mode {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background-color: #FFFFFF;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    z-index: 100; overflow: hidden;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
-.photo-caption {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.2rem;
-    color: var(--text-burgundy);
+.envelope-container {
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+    width: 90%; max-width: 420px; height: 270px;
+    perspective: 2000px;
 }
 
-/* =========================================
-   CONTENU PRINCIPAL DU SITE
-   ========================================= */
+.envelope-body-3d {
+    position: relative;
+    width: 100%; height: 100%;
+    background: var(--envelope-color);
+    box-shadow: 0 25px 60px rgba(114, 45, 53, 0.15);
+    border-radius: 4px;
+    border: 1px solid rgba(232, 202, 136, 0.5);
+}
+
+.envelope-inside { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #EFE8DF; border-radius: 4px; z-index: 1; }
+
+.envelope-card-inner {
+    position: absolute;
+    top: 12px; left: 15px;
+    width: calc(100% - 30px); height: calc(100% - 24px);
+    background: #FFFFFF; z-index: 2;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.06); border-radius: 2px;
+}
+
+.card-border-gold { width: 90%; height: 86%; border: 1px solid var(--gold-light); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; }
+.card-pre { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-taupe); margin-bottom: 8px; }
+.card-names { font-size: 2.2rem; color: var(--text-burgundy); line-height: 1; margin-bottom: 6px; }
+.card-names .amp-card { font-family: 'Great Vibes', cursive; color: var(--gold-dark); font-size: 2.4rem; }
+.card-mini-line { width: 35px; height: 1px; background-color: var(--gold-light); margin: 8px 0; }
+.card-date { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; letter-spacing: 2px; color: var(--text-taupe); text-transform: uppercase; }
+
+.envelope-flap-3d {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    transform-origin: top; transform-style: preserve-3d;
+    transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1); z-index: 4;
+}
+
+.flap-face { position: absolute; top: 0; left: 0; width: 100%; height: 100%; backface-visibility: hidden; clip-path: polygon(0 0, 100% 0, 50% 55%); }
+.flap-front { background: #FDFBF7; border-bottom: 1px solid rgba(232, 202, 136, 0.6); }
+.flap-back { background: linear-gradient(135deg, #E2E8F0, #94A3B8); transform: rotateX(180deg); }
+
+.envelope-pocket {
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
+    background: #F8F4EF; clip-path: polygon(0 100%, 100% 100%, 100% 0, 50% 55%, 0 0);
+    z-index: 3; border-top: 1px solid rgba(201, 155, 65, 0.2);
+}
+
+.wax-seal-silver-3d {
+    position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);
+    width: 84px; height: 84px;
+    background: radial-gradient(circle at 32% 32%, #FFFFFF 0%, #F1F5F9 35%, #CBD5E1 70%, #94A3B8 90%, #64748B 100%);
+    border-radius: 50%; border: 2px solid #FFFFFF;
+    box-shadow: 0 12px 28px rgba(71, 85, 105, 0.35), inset 0 3px 6px rgba(255, 255, 255, 0.95), inset 0 -3px 6px rgba(100, 116, 139, 0.5);
+    z-index: 10; display: flex; justify-content: center; align-items: center;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.wax-seal-silver-3d:hover { transform: translate(-50%, -50%) scale(1.08); }
+.wax-seal-svg { width: 100%; height: 100%; }
+
+.invite-label-tag {
+    position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.98); border: 1px solid var(--gold-light);
+    padding: 7px 22px; border-radius: 2px; box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    z-index: 11; white-space: nowrap;
+}
+
+.invite-label-tag span { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; color: var(--text-burgundy); font-weight: 600; }
+.click-instruction { text-align: center; color: var(--text-taupe); margin-top: 60px; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; animation: pulseClassic 2s infinite; transition: opacity 0.3s; }
+
+.flap-open { transform: rotateX(180deg) !important; }
+.card-out { transform: translateY(-150px) !important; z-index: 5 !important; box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important; }
+.seal-popped { transform: translate(-50%, -50%) scale(1.4) !important; opacity: 0 !important; }
+.text-hidden { opacity: 0 !important; }
+
+@keyframes pulseClassic { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+/* COMITÉ D'HONNEUR & SECTIONS */
 section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
-.sur-title { font-size: 0.75rem; letter-spacing: 4px; color: var(--text-taupe); text-transform: uppercase; margin-bottom: 10px; text-align: center; }
-.sub-title { font-size: 0.95rem; color: var(--text-taupe); text-align: center; font-style: italic; font-family: 'Cormorant Garamond', serif; }
-.section-title { font-size: 2.2rem; margin-bottom: 10px; }
+.sur-title { font-size: 0.75rem; letter-spacing: 4px; color: var(--text-taupe); text-transform: uppercase; margin-bottom: 10px; text-align: center; font-weight: 500; }
+.sub-title { font-size: 1rem; color: var(--text-taupe); text-align: center; font-style: italic; font-family: 'Cormorant Garamond', serif; }
+.section-title { font-size: 2.4rem; margin-bottom: 10px; }
 
-.sec-hero { padding-top: 12vh; }
-.fade-text { font-size: 1.1rem; color: var(--text-taupe); text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; margin-bottom: 10px; }
-.main-names { font-size: 4rem; line-height: 1; margin-bottom: 20px; }
-.amp-main { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--gold-dark); }
-.tagline { font-size: 1.2rem; font-family: 'Cormorant Garamond', serif; color: var(--text-burgundy); }
+.sec-honors { width: 100%; padding: 6vh 20px; }
+.card-mini-divider { width: 50px; height: 1px; background-color: var(--gold-light); margin: 10px auto 30px; }
 
-.flourish { color: var(--text-taupe); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 5px; }
-.quote-text { font-size: 1.8rem; font-style: italic; line-height: 1.4; max-width: 700px; margin-bottom: 15px; }
-.quote-author { font-size: 0.85rem; color: var(--text-taupe); text-transform: uppercase; letter-spacing: 2px; }
+.honors-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    width: 100%; max-width: 720px; margin: 10px auto;
+}
 
-.date-title { font-size: 3.2rem; margin-bottom: 10px; }
+.honor-card {
+    background: #FFF; border: 1px solid var(--gold-light);
+    padding: 22px 15px; border-radius: 2px; text-align: center;
+    box-shadow: 0 10px 25px rgba(114, 45, 53, 0.04);
+}
 
+.honor-role { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-taupe); display: block; margin-bottom: 6px; }
+.honor-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-burgundy); font-weight: 600; }
+
+.date-title { font-size: 3.4rem; margin-bottom: 10px; }
 .c-layout { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin: 20px 0; }
 .c-item { display: flex; flex-direction: column; align-items: center; min-width: 60px; }
-.c-num { font-size: 3rem; font-family: 'Cormorant Garamond', serif; color: var(--text-burgundy); line-height: 1; }
+.c-num { font-size: 3.2rem; font-family: 'Cormorant Garamond', serif; color: var(--text-burgundy); line-height: 1; font-weight: 600; }
 .c-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); margin-top: 5px; }
 
 .sec-transition { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 15px; padding: 4vh 20px; margin: 2vh auto; width: 100%; max-width: 650px; }
@@ -245,15 +309,15 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
 .timeline-container::before { content: ''; position: absolute; left: 0; top: 15px; bottom: 30px; width: 1px; background-color: var(--gold-light); opacity: 0.6; }
 .timeline-item { position: relative; display: flex; align-items: flex-start; margin-bottom: 50px; }
 .timeline-item:last-child { margin-bottom: 0; }
-.timeline-dot { position: absolute; left: -25px; top: 10px; width: 10px; height: 10px; background: var(--bg-cream); border: 2px solid var(--gold-dark); transform: rotate(45deg); }
+.timeline-dot { position: absolute; left: -25px; top: 10px; width: 10px; height: 10px; background: #FFF; border: 2px solid var(--gold-dark); transform: rotate(45deg); }
 
 .timeline-date { display: flex; flex-direction: column; min-width: 100px; margin-right: 20px; text-align: left; }
-.timeline-date .day { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--text-burgundy); line-height: 1; margin-bottom: 5px; }
-.timeline-date .time { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-taupe); letter-spacing: 1px; }
+.timeline-date .day { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--text-burgundy); line-height: 1; margin-bottom: 5px; font-weight: 600; }
+.timeline-date .time { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-taupe); letter-spacing: 1px; font-weight: 500; }
 
 .timeline-desc { padding-top: 5px; text-align: left; }
 .timeline-desc h4 { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text-burgundy); margin-bottom: 8px; text-align: left; }
-.timeline-desc p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--text-taupe); font-style: italic; text-align: left; }
+.timeline-desc p { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--text-taupe); font-style: italic; text-align: left; }
 
 .map-container { display: flex; align-items: center; justify-content: center; }
 .map-frame { width: 100%; border-radius: 4px; overflow: hidden; min-height: 300px; height: 100%; background: #FFF; border: 1px solid var(--gold-light); padding: 8px; box-shadow: 0 15px 35px rgba(114, 45, 53, 0.08); }
@@ -264,12 +328,12 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
 .sec-rsvp-wrapper { width: 100%; padding: 8vh 20px; }
 .rsvp-card { background: #FFF; border: 1px solid var(--gold-light); padding: 50px 40px; border-radius: 2px; width: 100%; max-width: 600px; margin: 0 auto; box-shadow: 0 15px 35px rgba(114, 45, 53, 0.05); text-align: center; }
 .presence-counter { margin: 10px auto 30px; padding-bottom: 25px; border-bottom: 1px dashed #DFD5CD; max-width: 100%; }
-.presence-counter #guest-count { font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; color: var(--gold-dark); line-height: 1; }
-.presence-counter p { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); margin-top: 5px; }
+.presence-counter #guest-count { font-size: 3.8rem; font-family: 'Cormorant Garamond', serif; color: var(--gold-dark); line-height: 1; font-weight: 600; }
+.presence-counter p { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); margin-top: 5px; font-weight: 500; }
 
 .rsvp-form { margin-top: 20px; width: 100%; }
 .form-group-elegant { position: relative; margin-bottom: 35px; text-align: left; }
-.form-group-elegant input, .form-group-elegant textarea, .form-group-elegant select { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid #DFD5CD; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--text-burgundy); border-radius: 0; transition: border-color 0.3s; resize: none; }
+.form-group-elegant input, .form-group-elegant textarea, .form-group-elegant select { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid #DFD5CD; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--text-burgundy); border-radius: 0; transition: border-color 0.3s; resize: none; }
 .form-group-elegant input:focus, .form-group-elegant textarea:focus, .form-group-elegant select:focus { outline: none; border-bottom-color: var(--gold-dark); }
 .form-group-elegant label { position: absolute; top: 12px; left: 0; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--text-taupe); pointer-events: none; transition: 0.3s ease all; text-transform: uppercase; letter-spacing: 1px; }
 .form-group-elegant input:focus ~ label, .form-group-elegant input:not(:placeholder-shown) ~ label, .form-group-elegant textarea:focus ~ label, .form-group-elegant textarea:not(:placeholder-shown) ~ label { top: -15px; font-size: 0.65rem; color: var(--gold-dark); }
@@ -278,39 +342,43 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
 .select-group select:focus, .select-group select:valid { color: var(--text-burgundy); border-bottom-color: var(--gold-dark); }
 .select-group::after { content: '▼'; font-size: 0.6rem; color: var(--gold-dark); position: absolute; right: 0; top: 15px; pointer-events: none; }
 
-.btn-rsvp { width: 100%; background: transparent; color: var(--text-burgundy); border: 1px solid var(--text-burgundy); padding: 18px; border-radius: 2px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.4s ease; margin-top: 10px; }
+.btn-rsvp { width: 100%; background: transparent; color: var(--text-burgundy); border: 1px solid var(--text-burgundy); padding: 18px; border-radius: 2px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.4s ease; margin-top: 10px; }
 .btn-rsvp:hover { background: var(--text-burgundy); color: #FFF; letter-spacing: 4px; }
 
-.msg-success { 
-    color: var(--text-burgundy); 
-    font-family: 'Cormorant Garamond', serif; 
-    font-style: italic; 
-    font-size: 1.4rem; 
-    font-weight: 500; 
-    margin-top: 30px; 
-    text-align: center; 
-    line-height: 1.4;
-}
+.msg-success { color: var(--text-burgundy); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.45rem; font-weight: 600; margin-top: 30px; text-align: center; line-height: 1.4; }
 
 /* LIVRE D'OR */
 .carousel-container { width: 100%; overflow: hidden; margin-top: 30px; }
 .carousel-track { display: flex; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); width: 100%; }
 .carousel-msg { min-width: 100%; padding: 20px; text-align: center; }
-.msg-text { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: var(--text-burgundy); margin-bottom: 15px; }
-.msg-author { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); }
+.msg-text { font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; font-style: italic; color: var(--text-burgundy); margin-bottom: 15px; }
+.msg-author { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); font-weight: 500; }
 
 /* MEDIA QUERIES (MOBILE) */
 @media (max-width: 768px) {
-    .main-names { font-size: 3rem; }
-    .amp-main { font-size: 2.5rem; }
-    .date-title { font-size: 2.2rem; }
+    .main-names-inline { font-size: 2.2rem; gap: 8px; }
+    .amp-inline { font-size: 2rem; }
+    
+    .hero-photo-frame-luxe { width: 230px; height: 300px; }
+    .frame-outer-gold { border-radius: 115px 115px 10px 10px; }
+    .frame-inner-gold { border-radius: 107px 107px 8px 8px; }
+
+    .art-photo-card { max-width: 300px; padding: 10px 10px 14px 10px; }
+    .art-photo-inner { height: 320px; }
+
+    .envelope-container { height: 230px; }
+    .wax-seal-silver-3d { width: 68px; height: 68px; }
+    .invite-label-tag span { font-size: 1rem; }
+
+    .honors-grid { grid-template-columns: 1fr; gap: 12px; }
+    .honor-card { padding: 18px 12px; }
+    .honor-name { font-size: 1.35rem; }
+
+    .date-title { font-size: 2.3rem; }
     .quote-text { font-size: 1.4rem; }
     
-    .c-num { font-size: 2.2rem; }
+    .c-num { font-size: 2.4rem; }
     .c-layout { gap: 15px; }
-
-    .hero-photo-container { width: 180px; height: 230px; }
-    .photo-frame-inner { height: 280px; }
 
     .sec-transition { gap: 10px; }
     .transition-text { font-size: 2.2rem; }
@@ -320,11 +388,8 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
     .timeline-container::before { left: 0; }
     .timeline-dot { left: -20px; }
     .timeline-date { min-width: 75px; margin-right: 15px; }
-    .timeline-date .day { font-size: 1.5rem; }
+    .timeline-date .day { font-size: 1.6rem; }
     
     .map-frame { min-height: 250px; }
     .rsvp-card { padding: 40px 20px; }
-    
-    .floral-center-wrapper { width: 180px; height: 240px; }
-    .wax-seal-gold-center { width: 60px; height: 60px; }
 }

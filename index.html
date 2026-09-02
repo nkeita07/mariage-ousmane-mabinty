@@ -8,134 +8,121 @@
 </head>
 <body>
 
-    <!-- ÉCRAN D'INTRODUCTION : RIDEAU / PORTES DU MARIAGE AVEC COMPOSITION FLORALE ET SCEAU -->
-    <div id="intro-screen" class="intro-screen curtain-mode">
-        <!-- Volet Gauche -->
-        <div class="curtain-panel curtain-left"></div>
-        
-        <!-- Volet Droit -->
-        <div class="curtain-panel curtain-right"></div>
+    <canvas id="bg-sparkles"></canvas>
 
-        <!-- Sceau Central Floral & Bouton d'ouverture -->
-        <div class="curtain-center" id="curtain-trigger">
-            <div class="floral-center-wrapper">
-                
-                <!-- COMPOSITION FLORALE TERRACOTTA & POÉTIQUE (SVG) -->
-                <svg class="floral-bouquet-svg" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="goldSealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#FFEFA6" />
-                            <stop offset="35%" stop-color="#E8CA88" />
-                            <stop offset="70%" stop-color="#C99B41" />
-                            <stop offset="100%" stop-color="#7A5615" />
-                        </linearGradient>
-                        <filter id="shadowSoft" x="-20%" y="-20%" width="140%" height="140%">
-                            <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#5C2C16" flood-opacity="0.25"/>
-                        </filter>
-                    </defs>
-
-                    <!-- Feuillages Haut & Tiges -->
-                    <path d="M 120 160 Q 140 80 155 30" fill="none" stroke="#7A8B67" stroke-width="2" />
-                    <path d="M 140 90 Q 165 75 175 55 Q 155 75 140 90" fill="#8B9B74" opacity="0.85"/>
-                    <path d="M 148 70 Q 170 50 180 30 Q 160 55 148 70" fill="#7A8B67" />
-                    <path d="M 130 120 Q 150 100 165 85 Q 145 105 130 120" fill="#9BAA85" />
-                    
-                    <path d="M 120 160 Q 90 90 75 45" fill="none" stroke="#C48B60" stroke-width="1.5" />
-                    <circle cx="85" cy="70" r="4" fill="#D98A5B" opacity="0.8"/>
-                    <circle cx="78" cy="55" r="3" fill="#E29C6A" opacity="0.8"/>
-                    <circle cx="92" cy="82" r="3.5" fill="#D98A5B" opacity="0.8"/>
-
-                    <!-- Feuillages Bas & Tiges -->
-                    <path d="M 120 160 Q 100 240 80 290" fill="none" stroke="#7A8B67" stroke-width="2" />
-                    <path d="M 102 220 Q 80 240 70 260 Q 90 240 102 220" fill="#8B9B74" opacity="0.85"/>
-                    <path d="M 92 245 Q 75 270 65 290 Q 80 270 92 245" fill="#7A8B67" />
-                    
-                    <path d="M 120 160 Q 150 230 165 275" fill="none" stroke="#C48B60" stroke-width="1.5" />
-                    <circle cx="140" cy="220" r="4" fill="#D98A5B" opacity="0.8"/>
-                    <circle cx="152" cy="245" r="3" fill="#E29C6A" opacity="0.8"/>
-                    <circle cx="160" cy="265" r="3.5" fill="#D98A5B" opacity="0.8"/>
-
-                    <!-- Fleurs Terracotta (Rose supérieure) -->
-                    <g transform="translate(145, 105)" filter="url(#shadowSoft)">
-                        <circle cx="0" cy="0" r="28" fill="#D86B43" />
-                        <path d="M -20 -10 Q 0 -26 20 -10 Q 24 12 0 24 Q -24 12 -20 -10" fill="#E07A50" />
-                        <path d="M -14 -5 Q 0 -18 14 -5 Q 18 8 0 16 Q -18 8 -14 -5" fill="#EE8B62" />
-                        <circle cx="0" cy="0" r="8" fill="#B24E2A" />
-                        <circle cx="0" cy="0" r="4" fill="#782E12" />
-                    </g>
-
-                    <!-- Fleur Peche (Gauche) -->
-                    <g transform="translate(75, 150)" filter="url(#shadowSoft)">
-                        <circle cx="0" cy="0" r="30" fill="#F4B28C" opacity="0.95"/>
-                        <circle cx="-5" cy="-5" r="22" fill="#F7C5A8" />
-                        <circle cx="-2" cy="-2" r="14" fill="#FAD8C2" />
-                        <circle cx="0" cy="0" r="6" fill="#D88D6E" />
-                    </g>
-
-                    <!-- Fleur Terracotta Principale (Bas Gauche) -->
-                    <g transform="translate(90, 205)" filter="url(#shadowSoft)">
-                        <circle cx="0" cy="0" r="32" fill="#CA5A36" />
-                        <path d="M -22 -12 Q 0 -28 22 -12 Q 26 14 0 26 Q -26 14 -22 -12" fill="#D96A44" />
-                        <path d="M -15 -6 Q 0 -20 15 -6 Q 18 10 0 18 Q -18 10 -15 -6" fill="#E87C55" />
-                        <circle cx="0" cy="0" r="9" fill="#9E3B1C" />
-                        <circle cx="0" cy="0" r="4" fill="#61200A" />
-                    </g>
-
-                    <!-- Petit Bouton de Rose (Bas Droit) -->
-                    <g transform="translate(150, 180)" filter="url(#shadowSoft)">
-                        <circle cx="0" cy="0" r="18" fill="#D86B43" />
-                        <circle cx="-2" cy="-2" r="12" fill="#EE8B62" />
-                        <circle cx="0" cy="0" r="5" fill="#9E3B1C" />
-                    </g>
-                </svg>
-
-                <!-- LE SCEAU EN CIRE DORÉE MÉTALLIQUE AVEC FEUILLAGE EN GRAVURE -->
-                <div class="wax-seal-gold-center">
-                    <svg class="branch-engraving-svg" viewBox="0 0 40 50" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 20 42 Q 18 25 20 8" fill="none" stroke="#523908" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M 20 34 Q 12 30 8 22 Q 16 26 20 34" fill="#523908" />
-                        <path d="M 20 30 Q 28 26 32 18 Q 24 22 20 30" fill="#523908" />
-                        <path d="M 20 22 Q 13 18 10 10 Q 17 14 20 22" fill="#523908" />
-                        <path d="M 20 18 Q 27 14 30 6 Q 23 10 20 18" fill="#523908" />
-                        <circle cx="20" cy="8" r="2.5" fill="#523908" />
+    <!-- ÉCRAN D'INTRODUCTION -->
+    <div id="intro-screen" class="intro-screen envelope-mode">
+        <div class="envelope-container" id="envelope-trigger">
+            <div class="envelope-body-3d">
+                <div class="envelope-inside"></div>
+                <div class="envelope-card-inner">
+                    <div class="card-border-gold">
+                        <p class="card-pre">Invitation Officielle</p>
+                        <h1 class="card-names">Ousmane <br><span class="amp-card">&</span><br> Mabinty</h1>
+                        <div class="card-mini-line"></div>
+                        <p class="card-date">20 & 21 Novembre 2026</p>
+                    </div>
+                </div>
+                <div class="envelope-pocket"></div>
+                <div class="envelope-flap-3d" id="flap-3d">
+                    <div class="flap-face flap-front"></div>
+                    <div class="flap-face flap-back"></div>
+                </div>
+                <div class="wax-seal-silver-3d" id="seal-3d">
+                    <svg class="wax-seal-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FFFFFF" />
+                                <stop offset="25%" stop-color="#E2E8F0" />
+                                <stop offset="50%" stop-color="#CBD5E1" />
+                                <stop offset="75%" stop-color="#94A3B8" />
+                                <stop offset="100%" stop-color="#64748B" />
+                            </linearGradient>
+                            <filter id="silverEmboss" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="1" dy="1.5" stdDeviation="1" flood-color="#1E293B" flood-opacity="0.3"/>
+                                <feDropShadow dx="-1" dy="-1" stdDeviation="0.8" flood-color="#FFFFFF" flood-opacity="0.8"/>
+                            </filter>
+                        </defs>
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="url(#silverGrad)" stroke-width="1.5" stroke-dasharray="2 3" opacity="0.9"/>
+                        <circle cx="50" cy="50" r="38" fill="none" stroke="#64748B" stroke-width="1" opacity="0.5"/>
+                        <path d="M 32 30 Q 24 45 28 62 Q 32 72 42 78 M 68 30 Q 76 45 72 62 Q 68 72 58 78" fill="none" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
+                        <text x="50" y="57" font-family="'Great Vibes', cursive" font-size="30" fill="#334155" text-anchor="middle" filter="url(#silverEmboss)">O&M</text>
                     </svg>
                 </div>
-
-                <!-- L'ÉTIQUETTE "CLIQUEZ POUR OUVRIR" EN BIAIS -->
-                <div class="seal-ribbon-tag-angled">
-                    <span>Cliquez pour ouvrir</span>
+                <div class="invite-label-tag">
+                    <span>Vous êtes cordialement invités</span>
                 </div>
-
             </div>
+            <p class="click-instruction" id="click-text">Touchez le sceau pour ouvrir</p>
         </div>
     </div>
 
-    <!-- LE CONTENU PRINCIPAL DU SITE -->
+    <!-- MAIN CONTENT -->
     <main id="main-content">
         
-        <!-- SECTION HERO AVEC LA PREMIÈRE PHOTO DES MARIÉS -->
         <section class="sec-hero">
-            <p class="fade-text" style="max-width: 650px; line-height: 1.6; margin-bottom: 25px;">
+            <h1 class="main-names-inline">
+                <span>Ousmane</span> <span class="amp-inline">&</span> <span>Mabinty</span>
+            </h1>
+            
+            <div class="hero-photo-frame-luxe">
+                <div class="frame-outer-gold"></div>
+                <div class="frame-inner-gold">
+                    <img src="ous-mabinty-1.jpg" alt="Ousmane et Mabinty" class="hero-photo">
+                </div>
+                <div class="gold-crest-emblem">✦ ❦ ✦</div>
+            </div>
+
+            <p class="fade-text" style="max-width: 680px; line-height: 1.7; margin-top: 15px;">
                 Par la grâce d'Allah, nos cœurs se sont choisis pour ne faire qu'un. C'est avec amour et une immense joie que nous vous invitons chaleureusement à célébrer notre union.
             </p>
             
-            <div class="hero-photo-container">
-                <img src="ous-mabinty-1.jpg" alt="Ousmane et Mabinty" class="hero-photo">
-                <div class="photo-overlay-blend"></div>
-            </div>
-
-            <h1 class="main-names">Ousmane<br><span class="amp-main">&</span><br>Mabinty</h1>
-            <p class="tagline">Une histoire écrite à deux.</p>
         </section>
 
-        <!-- SECTION DEUXIÈME TEXTE ÉMOTIONNEL -->
+        <!-- SECTION CITATION & NOUVELLE PHOTO DU COUPLE ASSIS -->
         <section class="sec-quote">
+            
+            <!-- CARTE PHOTO EXPOSITION / POLAROÏD CHIC -->
+            <div class="art-photo-card">
+                <div class="art-photo-inner">
+                    <!-- UTILISATION DE VOTRE NOM DE FICHIER EXACT -->
+                    <img src="oumane mabinty 3.JPG" alt="Ousmane et Mabinty complices" class="art-photo">
+                </div>
+            </div>
+
             <div class="flourish">✦ ❦ ✦</div>
-            <p class="quote-text" style="max-width: 750px; font-size: 1.7rem; line-height: 1.5;">
+            <p class="quote-text" style="max-width: 750px; font-size: 1.75rem; line-height: 1.5;">
                 "D'une simple rencontre est né un amour incommensurable, que nous avons décidé de protéger et d'attiser sa flamme chaque jour de notre vie."
             </p>
         </section>
 
+        <!-- COMITÉ D'HONNEUR -->
+        <section class="sec-honors">
+            <p class="sur-title">Accompagnés avec amour</p>
+            <h2 class="section-title">Comité d'Honneur</h2>
+            <div class="card-mini-divider" style="margin: 10px auto 30px;"></div>
+
+            <div class="honors-grid">
+                <div class="honor-card">
+                    <span class="honor-role">Parrain</span>
+                    <h3 class="honor-name">Felix Ouenouno</h3>
+                </div>
+                <div class="honor-card">
+                    <span class="honor-role">Marraine</span>
+                    <h3 class="honor-name">Aminata Youssouf Keita</h3>
+                </div>
+                <div class="honor-card">
+                    <span class="honor-role">Témoin</span>
+                    <h3 class="honor-name">James Lucien Macauley</h3>
+                </div>
+                <div class="honor-card">
+                    <span class="honor-role">Demba</span>
+                    <h3 class="honor-name">Bouton Sylla</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- DATES & Reste du site -->
         <section class="sec-date">
             <p class="sur-title">Notez ces dates</p>
             <h2 class="date-title">20 & 21 novembre 2026</h2>
@@ -144,17 +131,13 @@
 
         <section class="sec-countdown">
             <p class="sur-title">L'attente touche à sa fin.</p>
-            <div id="countdown" class="c-layout">
-                <!-- Rempli par le JS -->
-            </div>
+            <div id="countdown" class="c-layout"></div>
             <p class="sub-title">Chaque seconde nous rapproche de vous.</p>
         </section>
 
-        <!-- SÉPARATEUR ÉLÉGANT AVEC BAGUES SANS FOND -->
         <section class="sec-transition">
             <div class="line-separator"></div>
             <p class="transition-text">Pour toujours.</p>
-            
             <div class="rings-wrapper">
                 <svg class="wedding-rings-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -179,21 +162,9 @@
                     </g>
                 </svg>
             </div>
-            
             <div class="line-separator"></div>
         </section>
 
-        <!-- SECTION SECOND PHOTO DES MARIÉS -->
-        <section class="sec-couple-photo">
-            <div class="framed-photo-card">
-                <div class="photo-frame-inner">
-                    <img src="ous-mabinty-2.jpg" alt="Ousmane et Mabinty complices" class="framed-photo">
-                </div>
-                <p class="photo-caption">"D'une simple rencontre est né un amour incommensurable, que nous avons décidé de protéger et d'attiser sa flamme chaque jour de notre vie."</p>
-            </div>
-        </section>
-
-        <!-- PROGRAMME ET TIMELINE -->
         <section class="sec-program">
             <p class="sur-title">Programme</p>
             <h2 class="section-title">Le grand jour approche...</h2>
@@ -234,7 +205,6 @@
             </div>
         </section>
 
-        <!-- FORMULAIRE RSVP -->
         <section id="rsvp" class="sec-rsvp-wrapper">
             <div class="rsvp-card">
                 <div class="flourish" style="font-size: 1.5rem; margin-bottom: 5px;">✉</div>
@@ -271,7 +241,6 @@
             </div>
         </section>
 
-        <!-- LIVRE D'OR -->
         <section class="sec-guestbook">
             <div class="flourish">✦ ❦ ✦</div>
             <h2 class="section-title">Vos mots doux</h2>

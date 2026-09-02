@@ -1,25 +1,103 @@
-// --- GESTION DE L'OUVERTURE DU RIDEAU ---
+// --- ANIMATION ARRIÈRE-PLAN : PLUIE D'ÉTINCELLES DORÉES ---
+const canvas = document.getElementById('bg-sparkles');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const particleCount = 45;
+
+    class Particle {
+        constructor() { this.reset(); }
+
+        reset() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * -height;
+            this.size = Math.random() * 2.5 + 1;
+            this.speedY = Math.random() * 0.8 + 0.3;
+            this.speedX = Math.sin(Math.random() * Math.PI) * 0.4;
+            this.opacity = Math.random() * 0.6 + 0.2;
+        }
+
+        update() {
+            this.y += this.speedY;
+            this.x += Math.sin(this.y * 0.01) * 0.3;
+            if (this.y > height) {
+                this.reset();
+                this.y = 0;
+            }
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+            ctx.shadowBlur = 6;
+            ctx.shadowColor = 'rgba(232, 202, 136, 0.8)';
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+        const p = new Particle();
+        p.y = Math.random() * height;
+        particles.push(p);
+    }
+
+    function animateSparkles() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateSparkles);
+    }
+
+    animateSparkles();
+}
+
+// --- GESTION DE L'OUVERTURE DE L'ENVELOPPE DYNAMIQUE ---
+const envelopeTrigger = document.getElementById('envelope-trigger');
 const introScreen = document.getElementById('intro-screen');
-const curtainTrigger = document.getElementById('curtain-trigger');
-const mainContent = document.getElementById('main-content');
+const seal3d = document.getElementById('seal-3d');
+const flap3d = document.getElementById('flap-3d');
+const cardInner = document.querySelector('.envelope-card-inner');
+const clickText = document.getElementById('click-text');
 let isOpened = false;
 
-// Bloque le défilement au chargement
 document.body.style.overflow = 'hidden';
 
-if (curtainTrigger) {
-    curtainTrigger.addEventListener('click', function() {
+if (envelopeTrigger) {
+    envelopeTrigger.addEventListener('click', function() {
         if (!isOpened) {
             isOpened = true;
             
-            // 1. Déclenche l'écartement des volets du rideau
-            introScreen.classList.add('open');
+            // 1. Le sceau s'ouvre / éclate
+            seal3d.classList.add('seal-popped');
+            if (clickText) clickText.classList.add('text-hidden');
 
-            // 2. Après l'animation, débloque le scroll et supprime l'écran d'intro
+            // 2. Le rabat bascule en 3D
             setTimeout(() => {
+                flap3d.classList.add('flap-open');
+            }, 300);
+
+            // 3. La carte sort vers le haut
+            setTimeout(() => {
+                cardInner.classList.add('card-out');
+            }, 900);
+
+            // 4. Fondu final vers le site
+            setTimeout(() => {
+                introScreen.style.opacity = '0';
+                introScreen.style.transform = 'scale(1.05)';
                 document.body.style.overflow = 'auto';
-                introScreen.style.display = 'none';
-            }, 1400); 
+                setTimeout(() => {
+                    introScreen.style.display = 'none';
+                }, 900);
+            }, 2300);
         }
     });
 }
