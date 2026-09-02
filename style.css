@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 :root {
     --bg-cream: #FFFFFF;
-    --text-burgundy: #622229;
-    --text-taupe: #78685E;
+    --text-burgundy: #622229;  /* Bordeaux noble et lisible */
+    --text-taupe: #6E5D54;     /* Taupe lisible et contrasté */
     --gold-light: #E8CA88;
     --gold-dark: #C99B41;
     --envelope-color: #F8F4EF;
 }
 
+/* ANTI-DÉBORDEMENT GLOBAL */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { width: 100%; max-width: 100vw; overflow-x: hidden; scroll-behavior: smooth; }
 
@@ -18,6 +19,7 @@ body {
     color: var(--text-burgundy);
     position: relative;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 #bg-sparkles {
@@ -30,7 +32,8 @@ body {
 
 main { position: relative; z-index: 2; }
 
-h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time { 
+/* UNIFORMISATION TYPOGRAPHIQUE DES TITRES */
+h1, h2, h3, h4, .date-title, .main-names, .time { 
     font-family: 'Cormorant Garamond', serif; 
     font-weight: 600; 
     text-align: center; 
@@ -39,7 +42,59 @@ h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time {
 
 .hidden { display: none !important; }
 
-/* HERO */
+/* UNIFORMISATION DES SUR-TITRES ET LABELS */
+.sur-title { 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem; 
+    letter-spacing: 4px; 
+    color: var(--text-taupe); 
+    text-transform: uppercase; 
+    margin-bottom: 10px; 
+    text-align: center; 
+    font-weight: 600; 
+}
+
+.sub-title { 
+    font-size: 1.1rem; 
+    color: var(--text-taupe); 
+    text-align: center; 
+    font-style: italic; 
+    font-family: 'Cormorant Garamond', serif; 
+    font-weight: 500;
+}
+
+.section-title { 
+    font-size: 2.5rem; 
+    margin-bottom: 10px; 
+    font-weight: 600;
+}
+
+/* UNIFORMISATION DES TEXTES DE CITATIONS ET PARAGRAPHES (CONTRASTE RENFORCÉ) */
+.fade-text, .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--text-burgundy);
+    text-align: center;
+    font-weight: 500;
+}
+
+.fade-text {
+    font-size: 1.35rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    padding: 0 15px;
+}
+
+.quote-text {
+    font-size: 1.85rem;
+    line-height: 1.5;
+    max-width: 750px;
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   SECTION HERO : PRÉNOMS & CADRE LUXE
+   ========================================= */
 .sec-hero { 
     padding-top: 8vh; 
     display: flex;
@@ -49,7 +104,7 @@ h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time {
 
 .main-names-inline { 
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3.2rem; 
+    font-size: 3.4rem; 
     font-weight: 600;
     color: var(--text-burgundy);
     display: flex;
@@ -63,7 +118,7 @@ h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time {
 
 .amp-inline { 
     font-family: 'Great Vibes', cursive; 
-    font-size: 3rem; 
+    font-size: 3.2rem; 
     color: var(--gold-dark); 
     font-weight: 400;
     margin: 0 5px;
@@ -81,7 +136,8 @@ h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time {
 
 .frame-outer-gold {
     position: absolute;
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
     border: 1px solid var(--gold-light);
     border-radius: 135px 135px 10px 10px;
     box-shadow: 0 20px 45px rgba(98, 34, 41, 0.08);
@@ -97,7 +153,8 @@ h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time {
 }
 
 .hero-photo { 
-    width: 100%; height: 100%; 
+    width: 100%; 
+    height: 100%; 
     object-fit: cover; 
     object-position: center top; 
 }
@@ -114,24 +171,17 @@ h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time {
     letter-spacing: 4px;
 }
 
-.fade-text { 
-    font-size: 1.2rem; 
-    color: var(--text-taupe); 
-    text-align: center; 
-    font-family: 'Cormorant Garamond', serif; 
-    font-style: italic; 
-    margin-bottom: 12px; 
-    padding: 0 15px;
-}
-
 .tagline { 
-    font-size: 1.2rem; 
+    font-size: 1.25rem; 
     font-family: 'Cormorant Garamond', serif; 
     color: var(--text-burgundy); 
     letter-spacing: 1px;
+    font-weight: 600;
 }
 
-/* CARTE PHOTO DU COUPLE ASSIS */
+/* =========================================
+   SECTION QUOTE & CARTE PHOTO
+   ========================================= */
 .sec-quote {
     padding: 6vh 20px 8vh;
     display: flex;
@@ -151,9 +201,7 @@ h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time {
     transition: transform 0.4s ease;
 }
 
-.art-photo-card:hover {
-    transform: translateY(-4px);
-}
+.art-photo-card:hover { transform: translateY(-4px); }
 
 .art-photo-inner {
     width: 100%;
@@ -169,10 +217,11 @@ h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time {
     object-position: center 20%;
 }
 
-.flourish { color: var(--gold-dark); font-size: 1.1rem; margin-bottom: 15px; letter-spacing: 5px; opacity: 0.8; }
-.quote-text { font-style: italic; line-height: 1.4; max-width: 700px; margin-bottom: 15px; font-weight: 500; text-align: center; }
+.flourish { color: var(--gold-dark); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 5px; opacity: 0.95; }
 
-/* ÉCRAN INTRO ENVELOPPE */
+/* =========================================
+   ÉCRAN D'OUVERTURE : ENVELOPPE 3D
+   ========================================= */
 .intro-screen.envelope-mode {
     position: fixed;
     top: 0; left: 0;
@@ -213,11 +262,11 @@ h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time {
 }
 
 .card-border-gold { width: 90%; height: 86%; border: 1px solid var(--gold-light); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; }
-.card-pre { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-taupe); margin-bottom: 8px; }
-.card-names { font-size: 2.2rem; color: var(--text-burgundy); line-height: 1; margin-bottom: 6px; }
-.card-names .amp-card { font-family: 'Great Vibes', cursive; color: var(--gold-dark); font-size: 2.4rem; }
+.card-pre { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-taupe); margin-bottom: 8px; font-weight: 600; }
+.card-names { font-size: 2.2rem; color: var(--text-burgundy); line-height: 1; margin-bottom: 6px; font-weight: 600; }
+.card-names .amp-card { font-family: 'Great Vibes', cursive; color: var(--gold-dark); font-size: 2.4rem; font-weight: 400; }
 .card-mini-line { width: 35px; height: 1px; background-color: var(--gold-light); margin: 8px 0; }
-.card-date { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; letter-spacing: 2px; color: var(--text-taupe); text-transform: uppercase; }
+.card-date { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; letter-spacing: 2px; color: var(--text-taupe); text-transform: uppercase; font-weight: 600; }
 
 .envelope-flap-3d {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -256,7 +305,7 @@ h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time {
 }
 
 .invite-label-tag span { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; color: var(--text-burgundy); font-weight: 600; }
-.click-instruction { text-align: center; color: var(--text-taupe); margin-top: 60px; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; animation: pulseClassic 2s infinite; transition: opacity 0.3s; }
+.click-instruction { text-align: center; color: var(--text-taupe); margin-top: 60px; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; animation: pulseClassic 2s infinite; transition: opacity 0.3s; }
 
 .flap-open { transform: rotateX(180deg) !important; }
 .card-out { transform: translateY(-150px) !important; z-index: 5 !important; box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important; }
@@ -265,11 +314,10 @@ h1, h2, h3, h4, .quote-text, .date-title, .main-names, .time {
 
 @keyframes pulseClassic { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
-/* COMITÉ D'HONNEUR & SECTIONS */
+/* =========================================
+   COMITÉ D'HONNEUR & SECTIONS
+   ========================================= */
 section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
-.sur-title { font-size: 0.75rem; letter-spacing: 4px; color: var(--text-taupe); text-transform: uppercase; margin-bottom: 10px; text-align: center; font-weight: 500; }
-.sub-title { font-size: 1rem; color: var(--text-taupe); text-align: center; font-style: italic; font-family: 'Cormorant Garamond', serif; }
-.section-title { font-size: 2.4rem; margin-bottom: 10px; }
 
 .sec-honors { width: 100%; padding: 6vh 20px; }
 .card-mini-divider { width: 50px; height: 1px; background-color: var(--gold-light); margin: 10px auto 30px; }
@@ -285,18 +333,33 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
     box-shadow: 0 10px 25px rgba(114, 45, 53, 0.04);
 }
 
-.honor-role { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-taupe); display: block; margin-bottom: 6px; }
-.honor-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-burgundy); font-weight: 600; }
+.honor-role { 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 0.7rem; 
+    text-transform: uppercase; 
+    letter-spacing: 3px; 
+    color: var(--text-taupe); 
+    display: block; 
+    margin-bottom: 6px; 
+    font-weight: 600; 
+}
 
-.date-title { font-size: 3.4rem; margin-bottom: 10px; }
+.honor-name { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 1.55rem; 
+    color: var(--text-burgundy); 
+    font-weight: 600; 
+}
+
+.date-title { font-size: 3.4rem; margin-bottom: 10px; font-weight: 600; }
 .c-layout { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin: 20px 0; }
 .c-item { display: flex; flex-direction: column; align-items: center; min-width: 60px; }
 .c-num { font-size: 3.2rem; font-family: 'Cormorant Garamond', serif; color: var(--text-burgundy); line-height: 1; font-weight: 600; }
-.c-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); margin-top: 5px; }
+.c-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); margin-top: 5px; font-weight: 600; }
 
 .sec-transition { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 15px; padding: 4vh 20px; margin: 2vh auto; width: 100%; max-width: 650px; }
 .line-separator { flex: 1; height: 1px; background-color: var(--gold-dark); opacity: 0.3; }
-.transition-text { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: var(--gold-dark); line-height: 1; white-space: nowrap; }
+.transition-text { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: var(--gold-dark); line-height: 1; white-space: nowrap; font-weight: 400; }
 .rings-wrapper { display: flex; align-items: center; justify-content: flex-start; }
 .wedding-rings-svg { height: 55px; width: auto; margin-left: 5px; animation: floatRings 4s ease-in-out infinite; }
 @keyframes floatRings { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
@@ -313,11 +376,11 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
 
 .timeline-date { display: flex; flex-direction: column; min-width: 100px; margin-right: 20px; text-align: left; }
 .timeline-date .day { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--text-burgundy); line-height: 1; margin-bottom: 5px; font-weight: 600; }
-.timeline-date .time { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-taupe); letter-spacing: 1px; font-weight: 500; }
+.timeline-date .time { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-taupe); letter-spacing: 1px; font-weight: 600; }
 
 .timeline-desc { padding-top: 5px; text-align: left; }
 .timeline-desc h4 { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text-burgundy); margin-bottom: 8px; text-align: left; }
-.timeline-desc p { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--text-taupe); font-style: italic; text-align: left; }
+.timeline-desc p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-taupe); font-style: italic; text-align: left; font-weight: 500; }
 
 .map-container { display: flex; align-items: center; justify-content: center; }
 .map-frame { width: 100%; border-radius: 4px; overflow: hidden; min-height: 300px; height: 100%; background: #FFF; border: 1px solid var(--gold-light); padding: 8px; box-shadow: 0 15px 35px rgba(114, 45, 53, 0.08); }
@@ -329,16 +392,16 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
 .rsvp-card { background: #FFF; border: 1px solid var(--gold-light); padding: 50px 40px; border-radius: 2px; width: 100%; max-width: 600px; margin: 0 auto; box-shadow: 0 15px 35px rgba(114, 45, 53, 0.05); text-align: center; }
 .presence-counter { margin: 10px auto 30px; padding-bottom: 25px; border-bottom: 1px dashed #DFD5CD; max-width: 100%; }
 .presence-counter #guest-count { font-size: 3.8rem; font-family: 'Cormorant Garamond', serif; color: var(--gold-dark); line-height: 1; font-weight: 600; }
-.presence-counter p { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); margin-top: 5px; font-weight: 500; }
+.presence-counter p { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); margin-top: 5px; font-weight: 600; }
 
 .rsvp-form { margin-top: 20px; width: 100%; }
 .form-group-elegant { position: relative; margin-bottom: 35px; text-align: left; }
-.form-group-elegant input, .form-group-elegant textarea, .form-group-elegant select { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid #DFD5CD; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--text-burgundy); border-radius: 0; transition: border-color 0.3s; resize: none; }
+.form-group-elegant input, .form-group-elegant textarea, .form-group-elegant select { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid #DFD5CD; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--text-burgundy); border-radius: 0; transition: border-color 0.3s; resize: none; font-weight: 500; }
 .form-group-elegant input:focus, .form-group-elegant textarea:focus, .form-group-elegant select:focus { outline: none; border-bottom-color: var(--gold-dark); }
-.form-group-elegant label { position: absolute; top: 12px; left: 0; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--text-taupe); pointer-events: none; transition: 0.3s ease all; text-transform: uppercase; letter-spacing: 1px; }
-.form-group-elegant input:focus ~ label, .form-group-elegant input:not(:placeholder-shown) ~ label, .form-group-elegant textarea:focus ~ label, .form-group-elegant textarea:not(:placeholder-shown) ~ label { top: -15px; font-size: 0.65rem; color: var(--gold-dark); }
+.form-group-elegant label { position: absolute; top: 12px; left: 0; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--text-taupe); pointer-events: none; transition: 0.3s ease all; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+.form-group-elegant input:focus ~ label, .form-group-elegant input:not(:placeholder-shown) ~ label, .form-group-elegant textarea:focus ~ label, .form-group-elegant textarea:not(:placeholder-shown) ~ label { top: -15px; font-size: 0.65rem; color: var(--gold-dark); font-weight: 600; }
 
-.select-group select { appearance: none; -webkit-appearance: none; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-taupe); }
+.select-group select { appearance: none; -webkit-appearance: none; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-taupe); font-weight: 500; }
 .select-group select:focus, .select-group select:valid { color: var(--text-burgundy); border-bottom-color: var(--gold-dark); }
 .select-group::after { content: '▼'; font-size: 0.6rem; color: var(--gold-dark); position: absolute; right: 0; top: 15px; pointer-events: none; }
 
@@ -351,8 +414,8 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
 .carousel-container { width: 100%; overflow: hidden; margin-top: 30px; }
 .carousel-track { display: flex; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); width: 100%; }
 .carousel-msg { min-width: 100%; padding: 20px; text-align: center; }
-.msg-text { font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; font-style: italic; color: var(--text-burgundy); margin-bottom: 15px; }
-.msg-author { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); font-weight: 500; }
+.msg-text { font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; font-style: italic; color: var(--text-burgundy); margin-bottom: 15px; font-weight: 500; }
+.msg-author { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); font-weight: 600; }
 
 /* MEDIA QUERIES (MOBILE) */
 @media (max-width: 768px) {
@@ -366,6 +429,9 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
     .art-photo-card { max-width: 300px; padding: 10px 10px 14px 10px; }
     .art-photo-inner { height: 320px; }
 
+    .fade-text { font-size: 1.15rem; }
+    .quote-text { font-size: 1.45rem; }
+
     .envelope-container { height: 230px; }
     .wax-seal-silver-3d { width: 68px; height: 68px; }
     .invite-label-tag span { font-size: 1rem; }
@@ -375,7 +441,6 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
     .honor-name { font-size: 1.35rem; }
 
     .date-title { font-size: 2.3rem; }
-    .quote-text { font-size: 1.4rem; }
     
     .c-num { font-size: 2.4rem; }
     .c-layout { gap: 15px; }
