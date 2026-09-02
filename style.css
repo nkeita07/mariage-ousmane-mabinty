@@ -2,8 +2,8 @@
 
 :root {
     --bg-cream: #FFFFFF;
-    --text-burgundy: #622229;  /* Bordeaux noble et lisible */
-    --text-taupe: #6E5D54;     /* Taupe lisible et contrasté */
+    --text-burgundy: #622229;  /* Bordeaux noble et chaleureux */
+    --text-taupe: #6E5D54;     /* Taupe lisible */
     --gold-light: #E8CA88;
     --gold-dark: #C99B41;
     --envelope-color: #F8F4EF;
@@ -69,27 +69,37 @@ h1, h2, h3, h4, .date-title, .main-names, .time {
     font-weight: 600;
 }
 
-/* UNIFORMISATION DES TEXTES DE CITATIONS ET PARAGRAPHES (CONTRASTE RENFORCÉ) */
+/* HARMONISATION EXACTE DE LA POLICE POÉTIQUE (TEXTE DU HAUT & CITATION) */
 .fade-text, .quote-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--text-burgundy);
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: italic !important;
+    color: var(--text-burgundy) !important;
     text-align: center;
-    font-weight: 500;
+    font-weight: 600 !important; /* Poids renforcé pour une couleur bordeaux bien visible */
+    letter-spacing: 0.3px;
 }
 
 .fade-text {
-    font-size: 1.35rem;
+    font-size: 1.5rem !important; /* Même taille et rendu que l'image de référence */
     line-height: 1.6;
     margin-bottom: 15px;
     padding: 0 15px;
 }
 
 .quote-text {
-    font-size: 1.85rem;
+    font-size: 1.75rem !important;
     line-height: 1.5;
     max-width: 750px;
     margin-bottom: 15px;
+}
+
+.tagline { 
+    font-size: 1.3rem; 
+    font-family: 'Cormorant Garamond', serif; 
+    color: var(--text-burgundy); 
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-align: center;
 }
 
 /* =========================================
@@ -153,8 +163,7 @@ h1, h2, h3, h4, .date-title, .main-names, .time {
 }
 
 .hero-photo { 
-    width: 100%; 
-    height: 100%; 
+    width: 100%; height: 100%; 
     object-fit: cover; 
     object-position: center top; 
 }
@@ -171,16 +180,8 @@ h1, h2, h3, h4, .date-title, .main-names, .time {
     letter-spacing: 4px;
 }
 
-.tagline { 
-    font-size: 1.25rem; 
-    font-family: 'Cormorant Garamond', serif; 
-    color: var(--text-burgundy); 
-    letter-spacing: 1px;
-    font-weight: 600;
-}
-
 /* =========================================
-   SECTION QUOTE & CARTE PHOTO
+   SECTION QUOTE & PHOTO 2 (COUPLE ASSIS)
    ========================================= */
 .sec-quote {
     padding: 6vh 20px 8vh;
@@ -195,7 +196,7 @@ h1, h2, h3, h4, .date-title, .main-names, .time {
     padding: 12px 12px 18px 12px;
     border-radius: 2px;
     box-shadow: 0 15px 35px rgba(98, 34, 41, 0.08);
-    max-width: 380px;
+    max-width: 340px;
     width: 100%;
     margin-bottom: 30px;
     transition: transform 0.4s ease;
@@ -205,7 +206,7 @@ h1, h2, h3, h4, .date-title, .main-names, .time {
 
 .art-photo-inner {
     width: 100%;
-    height: 420px;
+    height: 360px;
     overflow: hidden;
     border-radius: 2px;
 }
@@ -214,14 +215,58 @@ h1, h2, h3, h4, .date-title, .main-names, .time {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 20%;
+    object-position: center top;
 }
 
 .flourish { color: var(--gold-dark); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 5px; opacity: 0.95; }
 
-/* =========================================
-   ÉCRAN D'OUVERTURE : ENVELOPPE 3D
-   ========================================= */
+/* SECTION PHOTO 3 (TROISIÈME PHOTO EN BAS) */
+.sec-couple-photo { 
+    width: 100%; 
+    padding: 4vh 20px 6vh; 
+    display: flex; 
+    justify-content: center; 
+}
+
+.framed-photo-card {
+    background: #FFF;
+    border: 1px solid var(--gold-light);
+    padding: 12px 12px 20px 12px;
+    max-width: 320px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(98, 34, 41, 0.07);
+    text-align: center; 
+    border-radius: 2px;
+    transition: transform 0.4s ease;
+}
+
+.framed-photo-card:hover { transform: translateY(-4px); }
+
+.photo-frame-inner { 
+    width: 100%; 
+    height: 320px; 
+    overflow: hidden; 
+    border-radius: 2px; 
+    margin-bottom: 12px; 
+}
+
+.framed-photo { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    object-position: center top; 
+    transition: transform 0.5s ease; 
+}
+
+.photo-caption { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-style: italic; 
+    font-size: 1.2rem; 
+    color: var(--text-burgundy); 
+    font-weight: 600;
+}
+
+/* INTRO ENVELOPPE */
 .intro-screen.envelope-mode {
     position: fixed;
     top: 0; left: 0;
@@ -314,9 +359,7 @@ h1, h2, h3, h4, .date-title, .main-names, .time {
 
 @keyframes pulseClassic { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
-/* =========================================
-   COMITÉ D'HONNEUR & SECTIONS
-   ========================================= */
+/* COMITÉ D'HONNEUR & SECTIONS */
 section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
 
 .sec-honors { width: 100%; padding: 6vh 20px; }
@@ -333,23 +376,8 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
     box-shadow: 0 10px 25px rgba(114, 45, 53, 0.04);
 }
 
-.honor-role { 
-    font-family: 'Montserrat', sans-serif; 
-    font-size: 0.7rem; 
-    text-transform: uppercase; 
-    letter-spacing: 3px; 
-    color: var(--text-taupe); 
-    display: block; 
-    margin-bottom: 6px; 
-    font-weight: 600; 
-}
-
-.honor-name { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-size: 1.55rem; 
-    color: var(--text-burgundy); 
-    font-weight: 600; 
-}
+.honor-role { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-taupe); display: block; margin-bottom: 6px; font-weight: 600; }
+.honor-name { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; color: var(--text-burgundy); font-weight: 600; }
 
 .date-title { font-size: 3.4rem; margin-bottom: 10px; font-weight: 600; }
 .c-layout { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin: 20px 0; }
@@ -426,11 +454,14 @@ section { padding: 8vh 20px; width: 100%; max-width: 900px; margin: 0 auto; disp
     .frame-outer-gold { border-radius: 115px 115px 10px 10px; }
     .frame-inner-gold { border-radius: 107px 107px 8px 8px; }
 
-    .art-photo-card { max-width: 300px; padding: 10px 10px 14px 10px; }
-    .art-photo-inner { height: 320px; }
+    .art-photo-card { max-width: 290px; padding: 10px 10px 14px 10px; }
+    .art-photo-inner { height: 310px; }
 
-    .fade-text { font-size: 1.15rem; }
-    .quote-text { font-size: 1.45rem; }
+    .framed-photo-card { max-width: 280px; padding: 10px 10px 14px 10px; }
+    .photo-frame-inner { height: 260px; }
+
+    .fade-text { font-size: 1.25rem !important; }
+    .quote-text { font-size: 1.45rem !important; }
 
     .envelope-container { height: 230px; }
     .wax-seal-silver-3d { width: 68px; height: 68px; }
