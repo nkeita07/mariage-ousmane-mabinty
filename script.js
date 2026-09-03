@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.speedX = Math.random() * 0.4 - 0.2;
                 this.opacity = Math.random() * 0.6 + 0.3;
                 this.isHeart = Math.random() < 0.4;
-                const colors = ['#C99B41', '#E8CA88', '#622229', '#D4AF37'];
+                const colors = ['#C99B41', '#E8CA88', '#1A1A1A', '#D4AF37'];
                 this.color = colors[Math.floor(Math.random() * colors.length)];
             }
 
@@ -78,33 +78,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       2. OUVERTURE DE L'ENVELOPPE D'INVITATION
+       2. OUVERTURE DE LA PORTE / RIDEAU
        ========================================= */
-    const envelopeTrigger = document.getElementById("envelope-trigger");
+    const curtainTrigger = document.getElementById("curtain-trigger");
     const introScreen = document.getElementById("intro-screen");
-    const flap = document.getElementById("flap-3d");
-    const seal = document.getElementById("seal-3d");
-    const card = document.querySelector(".envelope-card-inner");
-    const clickText = document.getElementById("click-text");
 
-    if (envelopeTrigger && introScreen) {
-        let isOpening = false;
+    if (curtainTrigger && introScreen) {
+        let isOpened = false;
+        document.body.style.overflow = "hidden";
 
-        envelopeTrigger.addEventListener("click", () => {
-            if (isOpening) return;
-            isOpening = true;
+        curtainTrigger.addEventListener("click", () => {
+            if (isOpened) return;
+            isOpened = true;
 
-            if (clickText) clickText.classList.add("text-hidden");
-            if (seal) seal.classList.add("seal-popped");
-
-            setTimeout(() => { if (flap) flap.classList.add("flap-open"); }, 300);
-            setTimeout(() => { if (card) card.classList.add("card-out"); }, 800);
+            introScreen.classList.add("open");
 
             setTimeout(() => {
-                introScreen.style.opacity = "0";
-                introScreen.style.transform = "scale(1.05)";
-                setTimeout(() => { introScreen.classList.add("hidden"); }, 1000);
-            }, 2200);
+                document.body.style.overflow = "auto";
+                introScreen.style.pointerEvents = "none";
+            }, 1200);
+
+            setTimeout(() => {
+                introScreen.style.display = "none";
+            }, 1800);
         });
     }
 
@@ -120,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const difference = weddingDate - now;
 
             if (difference < 0) {
-                countdownContainer.innerHTML = "<p style='font-size: 1.5rem; color: var(--text-burgundy); font-family: \"Cormorant Garamond\", serif;'>C'est le grand jour ! ❤️</p>";
+                countdownContainer.innerHTML = "<p style='font-size: 1.5rem; color: var(--text-black); font-family: \"Cormorant Garamond\", serif;'>C'est le grand jour ! ❤️</p>";
                 return;
             }
 
@@ -142,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       4. COMPTEUR GOOGLE SHEETS & LIVRE D'OR
+       4. GOOGLE SHEETS RSVP & LIVRE D'OR
        ========================================= */
     const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbz7aI8H_3zvgAr9E5cxwUFjit91s2xFgXGNHpMy0qb9yAZF9jh8kMERJbWRCamcpauw7w/exec';
     const guestCountElem = document.getElementById("guest-count");
@@ -170,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch(googleScriptUrl)
             .then(res => res.json())
             .then(data => {
-                // Récupère le nombre total de OUI quel que soit le nom de la variable envoyée par Apps Script
                 let count = 0;
                 if (data.totalOui !== undefined) count = data.totalOui;
                 else if (data.totalGuests !== undefined) count = data.totalGuests;
@@ -181,7 +176,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     animateValue("guest-count", 0, count, 1200);
                 }
 
-                // Affichage du livre d'or
                 if (carouselTrack && data.messages && data.messages.length > 0) {
                     carouselTrack.innerHTML = '';
                     data.messages.forEach(item => {
@@ -198,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(err => {
                 console.error("Erreur récupération Google Sheets :", err);
-                if (guestCountElem) guestCountElem.textContent = "11"; // Valeur par défaut d'après ton écran
+                if (guestCountElem) guestCountElem.textContent = "11";
             });
     }
 
@@ -210,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setInterval(() => {
             currentIndex++;
             if (currentIndex >= totalSlides) { currentIndex = 0; }
-            carouselTrack.style.transform = `translateX(${currentIndex * -100}%)`;
+            if (carouselTrack) carouselTrack.style.transform = `translateX(${currentIndex * -100}%)`;
         }, 4500);
     }
 
@@ -231,9 +225,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: new FormData(rsvpForm)
             })
             .then(res => {
-                rsvpForm.style.display = 'none';
-                if (formMessage) formMessage.classList.remove("hidden");
-                fetchGuestData(); // Met à jour le compteur immédiatement
+                rsvpForm.classList.add("hidden");
+                if (formMessage) {
+                    formMessage.classList.remove("hidden");
+                }
+                fetchGuestData();
             })
             .catch(err => {
                 console.error("Erreur envoi RSVP :", err);
