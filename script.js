@@ -86,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (curtainTrigger && introScreen) {
         let isOpened = false;
         
-        // Bloque le scroll et prépare l'effet de zoom du contenu principal
         document.body.style.overflow = "hidden";
         document.body.classList.add("intro-active");
 
@@ -94,18 +93,15 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isOpened) return;
             isOpened = true;
 
-            // Déclenche l'animation d'ouverture 3D et du contenu
             introScreen.classList.add("open");
             document.body.classList.remove("intro-active");
             document.body.classList.add("intro-opened");
 
-            // Débloque le défilement fluide
             setTimeout(() => {
                 document.body.style.overflow = "auto";
                 introScreen.style.pointerEvents = "none";
             }, 1400);
 
-            // Masque complètement l'écran d'intro à la fin de la transition
             setTimeout(() => {
                 introScreen.style.display = "none";
             }, 2000);

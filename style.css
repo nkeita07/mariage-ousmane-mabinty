@@ -35,12 +35,21 @@ body {
     display: none !important; 
 }
 
-/* UNIFORMISATION EN BORDEAUX D'ORIGINE DES TITRES & TEXTES */
-h1, h2, h3, h4, .date-title, .main-names, .time { 
+/* UNIFORMISATION STRICTE DES TITRES EN CORMORANT GARAMOND */
+h1, h2, h3, h4, .date-title, .main-names, .time, .section-title { 
     font-family: 'Cormorant Garamond', serif; 
     font-weight: 600; 
     text-align: center; 
     color: var(--text-burgundy) !important;
+}
+
+/* HARMONISATION UNIFORME DE TOUS LES GRANDS TITRES DE SECTION */
+.section-title { 
+    font-size: 2.8rem !important; 
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 5px; 
+    font-weight: 600;
 }
 
 section { 
@@ -72,15 +81,6 @@ section {
     font-style: italic; 
     font-family: 'Cormorant Garamond', serif; 
     font-weight: 500;
-}
-
-.section-title { 
-    font-size: 2.6rem; 
-    margin-bottom: 10px; 
-    font-weight: 600;
-    font-family: 'Cormorant Garamond', serif;
-    color: var(--text-burgundy) !important;
-    text-align: center;
 }
 
 .fade-text, .quote-text {
@@ -176,10 +176,10 @@ section {
 }
 
 .mini-gold-line {
-    width: 40px;
+    width: 45px;
     height: 1px;
     background-color: var(--gold-light);
-    margin: 5px auto 20px;
+    margin: 6px auto 22px;
 }
 
 /* DISPOSITION VERTICALE DES PRÉNOMS */
@@ -453,17 +453,6 @@ body.intro-opened main {
     padding-bottom: 3vh;
 }
 
-.sec-date .date-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.4rem;
-    font-weight: 700;
-    color: var(--text-burgundy) !important;
-    line-height: 1.2;
-    margin-bottom: 12px;
-    text-align: center;
-    width: 100%;
-}
-
 .sec-countdown {
     padding-top: 2vh;
     padding-bottom: 6vh;
@@ -584,7 +573,6 @@ body.intro-opened main {
 
 /* COMITÉ D'HONNEUR */
 .sec-honors { width: 100%; padding: 6vh 20px; }
-.card-mini-divider { width: 50px; height: 1px; background-color: var(--gold-light); margin: 10px auto 30px; }
 
 .honors-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
@@ -677,6 +665,8 @@ body.intro-opened main {
     .amp-classic { font-size: 2.2rem; }
     .card-corner { width: 50px; height: 50px; }
 
+    .section-title { font-size: 2.1rem !important; letter-spacing: 2px; }
+
     .hero-photo-frame-luxe { 
         width: 260px; 
         height: 340px; 
@@ -693,7 +683,6 @@ body.intro-opened main {
     .fade-text { font-size: 1.25rem !important; }
     .quote-text { font-size: 1.45rem !important; }
 
-    .sec-date .date-title { font-size: 2.3rem; }
     .c-layout { gap: 15px; }
     .c-num { font-size: 2.6rem; }
     .c-item { min-width: 50px; }
