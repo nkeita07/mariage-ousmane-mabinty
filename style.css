@@ -2,8 +2,8 @@
 
 :root {
     --bg-cream: #FFFFFF;
-    --text-black: #1A1A1A;       /* Noir intense chic (Haute Couture) */
-    --text-taupe: #555555;       /* Gris-taupe très lisible */
+    --text-burgundy: #622229;   /* Bordeaux Prune d'origine */
+    --text-taupe: #6E5D54;      /* Taupe doux d'origine */
     --gold-light: #E8CA88;
     --gold-dark: #C99B41;
 }
@@ -15,7 +15,7 @@ html, body { width: 100%; max-width: 100vw; overflow-x: hidden; scroll-behavior:
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #FFFFFF;
-    color: var(--text-black);
+    color: var(--text-burgundy);
     position: relative;
     -webkit-font-smoothing: antialiased;
 }
@@ -28,19 +28,17 @@ body {
     z-index: 1; opacity: 0.95;
 }
 
-main { position: relative; z-index: 2; }
-
 /* MASQUAGE STRICT DES ÉLÉMENTS INACTIFS */
 .hidden { 
     display: none !important; 
 }
 
-/* UNIFORMISATION EN NOIR ÉBÈNE DES TITRES & TEXTES */
+/* UNIFORMISATION EN BORDEAUX D'ORIGINE DES TITRES & TEXTES */
 h1, h2, h3, h4, .date-title, .main-names, .time { 
     font-family: 'Cormorant Garamond', serif; 
     font-weight: 600; 
     text-align: center; 
-    color: var(--text-black) !important;
+    color: var(--text-burgundy) !important;
 }
 
 section { 
@@ -79,14 +77,14 @@ section {
     margin-bottom: 10px; 
     font-weight: 600;
     font-family: 'Cormorant Garamond', serif;
-    color: var(--text-black) !important;
+    color: var(--text-burgundy) !important;
     text-align: center;
 }
 
 .fade-text, .quote-text {
     font-family: 'Cormorant Garamond', serif !important;
     font-style: italic !important;
-    color: var(--text-black) !important;
+    color: var(--text-burgundy) !important;
     text-align: center;
     font-weight: 600 !important;
 }
@@ -106,85 +104,184 @@ section {
 }
 
 /* =========================================
-   1. HERO : EN-TÊTE NOIR INTENSE & IMPOSANT
+   STYLE HERO : FAIRE-PART LUXE CLASSIQUE
    ========================================= */
-.sec-hero { padding-top: 10vh; }
+.hero-invitation-card {
+    position: relative;
+    padding: 8vh 30px 6vh;
+    margin: 4vh auto;
+    background: #FFFFFF;
+    max-width: 780px;
+    box-shadow: 0 15px 45px rgba(98, 34, 41, 0.04);
+}
 
-.hero-badge-container {
+.card-border-outer {
+    position: absolute;
+    top: 12px; left: 12px; right: 12px; bottom: 12px;
+    border: 1px solid var(--gold-light);
+    pointer-events: none;
+}
+
+.card-border-inner {
+    position: absolute;
+    top: 18px; left: 18px; right: 18px; bottom: 18px;
+    border: 1.5px solid var(--gold-dark);
+    pointer-events: none;
+}
+
+.card-corner {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.card-corner.top-l { top: 25px; left: 25px; }
+.card-corner.top-r { top: 25px; right: 25px; }
+
+/* ARABESQUES ET SÉPARATEURS */
+.arabesque-divider {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 20px;
     width: 100%;
-    max-width: 340px;
+    max-width: 280px;
+    margin: 15px 0;
 }
 
-.badge-line {
+.a-line {
     flex: 1;
     height: 1px;
-    background-color: var(--gold-dark);
-    opacity: 0.7;
+    background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+}
+
+.a-emblem {
+    color: var(--gold-dark);
+    font-size: 0.9rem;
+    letter-spacing: 3px;
 }
 
 .hero-badge-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
+    font-size: 0.85rem;
+    letter-spacing: 5px;
     text-transform: uppercase;
-    color: var(--text-black);
+    color: var(--text-burgundy);
     font-weight: 600;
-    white-space: nowrap;
+    margin: 10px 0 5px;
 }
 
-.main-names-inline { 
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4.4rem; 
-    font-weight: 700;
-    color: var(--text-black) !important;
+.mini-gold-line {
+    width: 40px;
+    height: 1px;
+    background-color: var(--gold-light);
+    margin: 5px auto 20px;
+}
+
+/* DISPOSITION VERTICALE DES PRÉNOMS */
+.names-vertical-block {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 18px;
-    margin-bottom: 15px; 
-    text-align: center;
-    white-space: nowrap;
-    letter-spacing: -0.5px;
+    margin: 10px 0;
 }
 
-.amp-inline { 
-    font-family: 'Great Vibes', cursive; 
-    font-size: 3.8rem; 
-    color: var(--gold-dark) !important; 
-    font-weight: 400;
-    margin: 0 5px;
+.first-name, .second-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.8rem;
+    font-weight: 500;
+    letter-spacing: 6px;
+    color: var(--text-burgundy) !important;
+    line-height: 1.1;
+    text-transform: uppercase;
 }
 
-.gold-crest-box {
+.ampersand-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
-    margin: 20px 0 30px;
-    width: 100%;
-    max-width: 280px;
+    margin: 8px 0;
 }
 
-.crest-line { flex: 1; height: 1px; background-color: var(--gold-light); opacity: 0.6; }
-.crest-emblem { color: var(--gold-dark); font-size: 1rem; letter-spacing: 4px; }
+.amp-classic {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2.8rem;
+    color: var(--gold-dark);
+    font-weight: 400;
+}
 
-.tagline { 
-    font-size: 1.35rem; 
-    font-family: 'Cormorant Garamond', serif; 
-    color: var(--text-black); 
-    letter-spacing: 1px;
-    font-weight: 600;
-    margin-top: 15px;
-    margin-bottom: 10px;
+.leaf-branch {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+/* CADRE PHOTO ARCHE ROYALE (HERO) - AGRANDI */
+.hero-photo-frame-luxe {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 25px auto 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-photo-frame-luxe:hover {
+    transform: translateY(-5px);
+}
+
+.frame-outer-gold {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1.5px solid var(--gold-dark);
+    border-radius: 150px 150px 12px 12px;
+    box-shadow: 0 22px 50px rgba(98, 34, 41, 0.08), inset 0 0 15px rgba(201, 155, 65, 0.2);
+}
+
+.frame-inner-gold {
+    width: calc(100% - 18px);
+    height: calc(100% - 18px);
+    border: 2px solid var(--gold-light);
+    border-radius: 141px 141px 8px 8px;
+    overflow: hidden;
+    background: #FFFFFF;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.hero-photo { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    object-position: center top; 
+    transition: transform 0.6s ease;
+}
+
+.hero-photo-frame-luxe:hover .hero-photo {
+    transform: scale(1.03);
+}
+
+.gold-crest-emblem {
+    position: absolute;
+    bottom: -16px;
+    background: #FFFFFF;
+    padding: 3px 18px;
+    border: 1px solid var(--gold-light);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    letter-spacing: 4px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+    z-index: 5;
 }
 
 /* =========================================
-   ÉCRAN D'OUVERTURE : FLEURS DORÉES
+   ÉCRAN D'OUVERTURE THÉÂTRAL 3D & SPECTACULAIRE
    ========================================= */
 .intro-screen.curtain-mode {
     position: fixed;
@@ -196,6 +293,7 @@ section {
     justify-content: center;
     align-items: center;
     background-color: #FAF8F5;
+    perspective: 1200px;
 }
 
 .curtain-panel {
@@ -203,13 +301,33 @@ section {
     top: 0;
     width: 50%; height: 100%;
     background-color: #FCFBF7;
-    transition: transform 1.6s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: transform 1.8s cubic-bezier(0.7, 0, 0.2, 1), box-shadow 1.8s ease;
     z-index: 101;
-    box-shadow: 0 0 30px rgba(0,0,0,0.08);
+    box-shadow: 0 0 40px rgba(0,0,0,0.12);
+    transform-style: preserve-3d;
 }
 
-.curtain-left { left: 0; border-right: 1.5px solid var(--gold-light); }
-.curtain-right { right: 0; border-left: 1.5px solid var(--gold-light); }
+.curtain-left { 
+    left: 0; 
+    border-right: 1.5px solid var(--gold-light); 
+    transform-origin: left center;
+}
+
+.curtain-right { 
+    right: 0; 
+    border-left: 1.5px solid var(--gold-light); 
+    transform-origin: right center;
+}
+
+.intro-screen.open .curtain-left { 
+    transform: rotateY(-105deg) translateX(-10%); 
+    box-shadow: 30px 0 50px rgba(0,0,0,0.25);
+}
+
+.intro-screen.open .curtain-right { 
+    transform: rotateY(105deg) translateX(10%); 
+    box-shadow: -30px 0 50px rgba(0,0,0,0.25);
+}
 
 .corner-ornament {
     position: absolute;
@@ -218,15 +336,13 @@ section {
     pointer-events: none;
     z-index: 102;
     opacity: 0.9;
+    transition: transform 0.5s ease;
 }
 
 .top-left { top: 20px; left: 20px; }
 .bottom-left { bottom: 20px; left: 20px; }
 .top-right { top: 20px; right: 20px; }
 .bottom-right { bottom: 20px; right: 20px; }
-
-.intro-screen.open .curtain-left { transform: translateX(-100%); }
-.intro-screen.open .curtain-right { transform: translateX(100%); }
 
 .curtain-center {
     position: absolute;
@@ -236,53 +352,100 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.6s ease;
 }
 
-.wax-seal-real-3d {
+/* SCEAU DE CIRE ROYAL EN 3D */
+.wax-seal-royal-3d {
     position: relative;
-    width: 100px;
-    height: 100px;
-    background: radial-gradient(circle at 32% 32%, #FFEFA6 0%, #E8CA88 35%, #C99B41 70%, #7A5615 100%);
-    border-radius: 50%;
-    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25), inset 0 3px 6px rgba(255, 255, 255, 0.9);
+    width: 115px;
+    height: 115px;
+    background: radial-gradient(circle at 35% 35%, #FFF3B0 0%, #E8CA88 25%, #C99B41 55%, #8A5A1C 82%, #4A2B0A 100%);
+    border-radius: 48% 52% 49% 51% / 51% 48% 52% 49%;
+    box-shadow: 
+        0 18px 38px rgba(0, 0, 0, 0.28),
+        0 6px 12px rgba(98, 34, 41, 0.35),
+        inset 0 3px 8px rgba(255, 255, 255, 0.85),
+        inset 0 -4px 10px rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.4s ease;
+    animation: sealPulse 2.8s infinite ease-in-out;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.curtain-center:hover .wax-seal-real-3d { transform: scale(1.1); }
-.seal-svg-engraving { width: 100%; height: 100%; }
+@keyframes sealPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28), 0 0 0 0 rgba(201, 155, 65, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 22px 42px rgba(0, 0, 0, 0.35), 0 0 0 15px rgba(201, 155, 65, 0); }
+}
+
+.seal-svg-royal {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.4));
+}
+
+.curtain-center:hover .wax-seal-royal-3d {
+    transform: scale(1.12) rotate(4deg);
+    animation: none;
+    box-shadow: 
+        0 22px 48px rgba(0, 0, 0, 0.35),
+        0 8px 16px rgba(98, 34, 41, 0.45),
+        inset 0 4px 10px rgba(255, 255, 255, 0.95);
+}
 
 .seal-tag-floating {
-    margin-top: 18px;
+    margin-top: 20px;
     background: rgba(255, 255, 255, 0.96);
     border: 1px solid var(--gold-light);
-    padding: 7px 22px;
-    border-radius: 2px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    padding: 8px 24px;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.curtain-center:hover .seal-tag-floating {
+    transform: translateY(3px);
+    background-color: var(--bg-cream);
 }
 
 .seal-tag-floating span {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 1.2rem;
-    color: var(--text-black);
+    font-size: 1.25rem;
+    color: var(--text-burgundy);
     font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .intro-screen.open .curtain-center {
     opacity: 0;
-    transform: scale(0.5);
+    transform: scale(1.8) rotate(-15deg);
     pointer-events: none;
+}
+
+/* APPARITION ÉLÉGANTE DU CONTENU DU SITE */
+main {
+    position: relative;
+    z-index: 2;
+    transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s ease;
+}
+
+body.intro-active main {
+    opacity: 0;
+    transform: scale(0.94);
+}
+
+body.intro-opened main {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* CITATION */
 .sec-quote { padding: 4vh 20px 6vh; }
 .flourish { color: var(--gold-dark); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 5px; opacity: 0.95; }
 
-/* SECTIONS DATES ET COMPTE À REBOURS RECENTRÉES ET PROPRES EN NOIR */
+/* SECTIONS DATES ET COMPTE À REBOURS RECENTRÉES ET PROPRES */
 .sec-date {
     padding-top: 5vh;
     padding-bottom: 3vh;
@@ -292,7 +455,7 @@ section {
     font-family: 'Cormorant Garamond', serif;
     font-size: 3.4rem;
     font-weight: 700;
-    color: var(--text-black) !important;
+    color: var(--text-burgundy) !important;
     line-height: 1.2;
     margin-bottom: 12px;
     text-align: center;
@@ -323,7 +486,7 @@ section {
 .c-num {
     font-family: 'Cormorant Garamond', serif;
     font-size: 3.6rem;
-    color: var(--text-black) !important;
+    color: var(--text-burgundy) !important;
     line-height: 1;
     font-weight: 700;
 }
@@ -363,7 +526,7 @@ section {
     padding: 22px 18px 24px 18px;
     max-width: 340px;
     width: 100%;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 18px 40px rgba(98, 34, 41, 0.07);
     text-align: center; 
     border-radius: 2px;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -371,7 +534,7 @@ section {
 
 .framed-photo-card.floral-framed:hover {
     transform: translateY(-5px);
-    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 22px 48px rgba(98, 34, 41, 0.12);
 }
 
 .photo-corner {
@@ -412,7 +575,7 @@ section {
     font-family: 'Cormorant Garamond', serif; 
     font-style: italic; 
     font-size: 1.25rem; 
-    color: var(--text-black) !important; 
+    color: var(--text-burgundy) !important; 
     font-weight: 600;
     line-height: 1.4;
 }
@@ -429,11 +592,11 @@ section {
 .honor-card {
     background: #FFF; border: 1px solid var(--gold-light);
     padding: 22px 15px; border-radius: 2px; text-align: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 10px 25px rgba(98, 34, 41, 0.04);
 }
 
 .honor-role { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-taupe); display: block; margin-bottom: 6px; font-weight: 600; }
-.honor-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--text-black) !important; font-weight: 600; }
+.honor-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--text-burgundy) !important; font-weight: 600; }
 
 /* PROGRAMME ET TIMELINE */
 .program-grid { display: grid; grid-template-columns: 1fr; gap: 50px; width: 100%; margin-top: 20px; align-items: stretch; }
@@ -446,40 +609,40 @@ section {
 .timeline-dot { position: absolute; left: -25px; top: 10px; width: 10px; height: 10px; background: #FFF; border: 2px solid var(--gold-dark); transform: rotate(45deg); }
 
 .timeline-date { display: flex; flex-direction: column; min-width: 100px; margin-right: 20px; text-align: left; }
-.timeline-date .day { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; color: var(--text-black) !important; line-height: 1; margin-bottom: 5px; font-weight: 600; }
+.timeline-date .day { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; color: var(--text-burgundy) !important; line-height: 1; margin-bottom: 5px; font-weight: 600; }
 .timeline-date .time { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-taupe); letter-spacing: 1px; font-weight: 600; }
 
 .timeline-desc { padding-top: 5px; text-align: left; }
-.timeline-desc h4 { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text-black) !important; margin-bottom: 8px; text-align: left; }
+.timeline-desc h4 { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text-burgundy) !important; margin-bottom: 8px; text-align: left; }
 .timeline-desc p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--text-taupe); font-style: italic; text-align: left; font-weight: 500; }
 
 .map-container { display: flex; align-items: center; justify-content: center; }
-.map-frame { width: 100%; border-radius: 4px; overflow: hidden; min-height: 300px; height: 100%; background: #FFF; border: 1px solid var(--gold-light); padding: 8px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); }
+.map-frame { width: 100%; border-radius: 4px; overflow: hidden; min-height: 300px; height: 100%; background: #FFF; border: 1px solid var(--gold-light); padding: 8px; box-shadow: 0 15px 35px rgba(98, 34, 41, 0.08); }
 .map-frame iframe { width: 100%; height: 100%; border-radius: 2px; filter: grayscale(30%) sepia(10%) contrast(95%); transition: 0.3s; }
 
 /* RSVP FORMULAIRE & MESSAGE DE SUCCÈS */
 .sec-rsvp-wrapper { width: 100%; padding: 8vh 20px; }
-.rsvp-card { background: #FFF; border: 1px solid var(--gold-light); padding: 50px 40px; border-radius: 2px; width: 100%; max-width: 600px; margin: 0 auto; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06); text-align: center; }
+.rsvp-card { background: #FFF; border: 1px solid var(--gold-light); padding: 50px 40px; border-radius: 2px; width: 100%; max-width: 600px; margin: 0 auto; box-shadow: 0 15px 35px rgba(98, 34, 41, 0.05); text-align: center; }
 .presence-counter { margin: 10px auto 30px; padding-bottom: 25px; border-bottom: 1px dashed #DFD5CD; max-width: 100%; }
-.presence-counter #guest-count { font-size: 4rem; font-family: 'Cormorant Garamond', serif; color: var(--text-black) !important; line-height: 1; font-weight: 700; }
+.presence-counter #guest-count { font-size: 4rem; font-family: 'Cormorant Garamond', serif; color: var(--text-burgundy) !important; line-height: 1; font-weight: 700; }
 .presence-counter p { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); margin-top: 5px; font-weight: 600; }
 
 .rsvp-form { margin-top: 20px; width: 100%; }
 .form-group-elegant { position: relative; margin-bottom: 35px; text-align: left; }
-.form-group-elegant input, .form-group-elegant textarea, .form-group-elegant select { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid #DFD5CD; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-black) !important; border-radius: 0; transition: border-color 0.3s; resize: none; font-weight: 600; }
+.form-group-elegant input, .form-group-elegant textarea, .form-group-elegant select { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid #DFD5CD; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-burgundy) !important; border-radius: 0; transition: border-color 0.3s; resize: none; font-weight: 600; }
 .form-group-elegant input:focus, .form-group-elegant textarea:focus, .form-group-elegant select:focus { outline: none; border-bottom-color: var(--gold-dark); }
 .form-group-elegant label { position: absolute; top: 12px; left: 0; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--text-taupe); pointer-events: none; transition: 0.3s ease all; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
 .form-group-elegant input:focus ~ label, .form-group-elegant input:not(:placeholder-shown) ~ label, .form-group-elegant textarea:focus ~ label, .form-group-elegant textarea:not(:placeholder-shown) ~ label { top: -15px; font-size: 0.65rem; color: var(--gold-dark); font-weight: 600; }
 
 .select-group select { appearance: none; -webkit-appearance: none; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-taupe); font-weight: 500; }
-.select-group select:focus, .select-group select:valid { color: var(--text-black) !important; border-bottom-color: var(--gold-dark); }
+.select-group select:focus, .select-group select:valid { color: var(--text-burgundy) !important; border-bottom-color: var(--gold-dark); }
 .select-group::after { content: '▼'; font-size: 0.6rem; color: var(--gold-dark); position: absolute; right: 0; top: 15px; pointer-events: none; }
 
-.btn-rsvp { width: 100%; background: transparent; color: var(--text-black) !important; border: 1.5px solid var(--text-black); padding: 18px; border-radius: 2px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.4s ease; margin-top: 10px; }
-.btn-rsvp:hover { background: var(--text-black); color: #FFF !important; letter-spacing: 4px; }
+.btn-rsvp { width: 100%; background: transparent; color: var(--text-burgundy) !important; border: 1.5px solid var(--text-burgundy); padding: 18px; border-radius: 2px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.4s ease; margin-top: 10px; }
+.btn-rsvp:hover { background: var(--text-burgundy); color: #FFF !important; letter-spacing: 4px; }
 
 .msg-success { 
-    color: var(--text-black) !important; 
+    color: var(--text-burgundy) !important; 
     font-family: 'Cormorant Garamond', serif; 
     font-style: italic; 
     font-size: 1.5rem; 
@@ -493,7 +656,7 @@ section {
 .carousel-container { width: 100%; overflow: hidden; margin-top: 30px; }
 .carousel-track { display: flex; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); width: 100%; }
 .carousel-msg { min-width: 100%; padding: 20px; text-align: center; }
-.msg-text { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-style: italic; color: var(--text-black) !important; margin-bottom: 15px; font-weight: 500; }
+.msg-text { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-style: italic; color: var(--text-burgundy) !important; margin-bottom: 15px; font-weight: 500; }
 .msg-author { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); font-weight: 600; }
 
 /* MEDIA QUERIES (MOBILE) */
@@ -507,13 +670,19 @@ section {
     .top-right { top: 10px; right: 10px; }
     .bottom-right { bottom: 10px; right: 10px; }
 
-    .hero-badge-container { max-width: 280px; }
-    .hero-badge-title { font-size: 0.7rem; letter-spacing: 2px; }
+    .hero-invitation-card { padding: 6vh 15px 4vh; }
+    .first-name, .second-name { font-size: 2.5rem; letter-spacing: 3px; }
+    .amp-classic { font-size: 2.2rem; }
+    .card-corner { width: 50px; height: 50px; }
 
-    .main-names-inline { font-size: 2.7rem; gap: 8px; flex-wrap: wrap; }
-    .amp-inline { font-size: 2.5rem; }
+    .hero-photo-frame-luxe { 
+        width: 260px; 
+        height: 340px; 
+    }
+    .frame-outer-gold { border-radius: 130px 130px 10px 10px; }
+    .frame-inner-gold { border-radius: 121px 121px 6px 6px; }
 
-    .wax-seal-real-3d { width: 85px; height: 85px; }
+    .wax-seal-royal-3d { width: 95px; height: 95px; }
 
     .framed-photo-card.floral-framed { max-width: 290px; padding: 18px 14px 20px 14px; }
     .photo-frame-inner { height: 270px; }

@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.speedX = Math.random() * 0.4 - 0.2;
                 this.opacity = Math.random() * 0.6 + 0.3;
                 this.isHeart = Math.random() < 0.4;
-                const colors = ['#C99B41', '#E8CA88', '#1A1A1A', '#D4AF37'];
+                const colors = ['#C99B41', '#E8CA88', '#622229', '#D4AF37'];
                 this.color = colors[Math.floor(Math.random() * colors.length)];
             }
 
@@ -78,29 +78,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       2. OUVERTURE DE LA PORTE / RIDEAU
+       2. OUVERTURE THÉÂTRALE DU RIDEAU
        ========================================= */
     const curtainTrigger = document.getElementById("curtain-trigger");
     const introScreen = document.getElementById("intro-screen");
 
     if (curtainTrigger && introScreen) {
         let isOpened = false;
+        
+        // Bloque le scroll et prépare l'effet de zoom du contenu principal
         document.body.style.overflow = "hidden";
+        document.body.classList.add("intro-active");
 
         curtainTrigger.addEventListener("click", () => {
             if (isOpened) return;
             isOpened = true;
 
+            // Déclenche l'animation d'ouverture 3D et du contenu
             introScreen.classList.add("open");
+            document.body.classList.remove("intro-active");
+            document.body.classList.add("intro-opened");
 
+            // Débloque le défilement fluide
             setTimeout(() => {
                 document.body.style.overflow = "auto";
                 introScreen.style.pointerEvents = "none";
-            }, 1200);
+            }, 1400);
 
+            // Masque complètement l'écran d'intro à la fin de la transition
             setTimeout(() => {
                 introScreen.style.display = "none";
-            }, 1800);
+            }, 2000);
         });
     }
 
@@ -116,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const difference = weddingDate - now;
 
             if (difference < 0) {
-                countdownContainer.innerHTML = "<p style='font-size: 1.5rem; color: var(--text-black); font-family: \"Cormorant Garamond\", serif;'>C'est le grand jour ! ❤️</p>";
+                countdownContainer.innerHTML = "<p style='font-size: 1.5rem; color: var(--text-burgundy); font-family: \"Cormorant Garamond\", serif;'>C'est le grand jour ! ❤️</p>";
                 return;
             }
 

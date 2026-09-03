@@ -84,12 +84,31 @@
         </div>
 
         <div class="curtain-center" id="curtain-trigger">
-            <div class="wax-seal-real-3d">
-                <svg class="seal-svg-engraving" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" fill="none" stroke="#5C3D11" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.7"/>
-                    <circle cx="50" cy="50" r="37" fill="none" stroke="#7A5318" stroke-width="1.2" />
-                    <path d="M 28 35 C 20 48 24 65 38 78 M 72 35 C 80 48 76 65 62 78" fill="none" stroke="#4A2B0A" stroke-width="1.8" stroke-linecap="round"/>
-                    <text x="50" y="58" font-family="'Great Vibes', cursive" font-size="32" fill="#1A1A1A" text-anchor="middle">O&M</text>
+            <!-- NOUTEAU SCEAU DE CIRE ROYAL 3D -->
+            <div class="wax-seal-royal-3d">
+                <svg class="seal-svg-royal" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#D4AF37" stroke-width="1" opacity="0.4" stroke-dasharray="3 3"/>
+                    <circle cx="60" cy="60" r="44" fill="none" stroke="#8A5A1C" stroke-width="1.5"/>
+                    <circle cx="60" cy="60" r="41" fill="none" stroke="#E8CA88" stroke-width="1"/>
+
+                    <!-- Couronne de Laurier gravée -->
+                    <g fill="none" stroke="#5C3D11" stroke-width="1.2" opacity="0.85">
+                        <path d="M 30 65 C 26 50 35 35 48 30" />
+                        <path d="M 31 58 Q 23 55 27 50" fill="#7A5318" />
+                        <path d="M 33 48 Q 25 43 31 38" fill="#7A5318" />
+                        <path d="M 40 38 Q 33 32 40 28" fill="#7A5318" />
+                        
+                        <path d="M 90 65 C 94 50 85 35 72 30" />
+                        <path d="M 89 58 Q 97 55 93 50" fill="#7A5318" />
+                        <path d="M 87 48 Q 95 43 89 38" fill="#7A5318" />
+                        <path d="M 80 38 Q 87 32 80 28" fill="#7A5318" />
+                    </g>
+
+                    <!-- Cœur gravé au sommet -->
+                    <path d="M 60 28 C 58 25 54 25 54 28 C 54 31 60 35 60 35 C 60 35 66 31 66 28 C 66 25 62 25 60 28 Z" fill="#622229" stroke="#D4AF37" stroke-width="0.8"/>
+
+                    <!-- Monogramme O&M gravé -->
+                    <text x="60" y="68" font-family="'Great Vibes', cursive" font-size="36" fill="#3D2406" text-anchor="middle" font-weight="bold" style="filter: drop-shadow(1px 1px 1px rgba(255,239,166,0.6));">O&M</text>
                 </svg>
             </div>
             <div class="seal-tag-floating">
@@ -101,40 +120,74 @@
     <!-- MAIN CONTENT -->
     <main id="main-content">
         
-        <!-- 1. HERO -->
-        <section class="sec-hero">
-            <div class="hero-badge-container">
-                <div class="badge-line"></div>
-                <p class="hero-badge-title">Célébration du Mariage de</p>
-                <div class="badge-line"></div>
+        <!-- 1. HERO INSPIRÉ DU FAIRE-PART CLASSIQUE -->
+        <section class="sec-hero hero-invitation-card">
+            <!-- Cadre double encadré autour de la section -->
+            <div class="card-border-outer"></div>
+            <div class="card-border-inner"></div>
+
+            <!-- Fleurs aux 4 coins -->
+            <svg class="card-corner top-l" viewBox="0 0 100 100">
+                <g fill="none" stroke="#C99B41" stroke-width="1.2">
+                    <path d="M 10 10 Q 30 25 70 15 M 10 10 Q 25 30 15 70" />
+                    <path d="M 25 25 Q 45 15 50 30 M 25 25 Q 15 45 30 50" />
+                </g>
+                <circle cx="25" cy="25" r="3" fill="#E8CA88" />
+            </svg>
+            <svg class="card-corner top-r" viewBox="0 0 100 100">
+                <g fill="none" stroke="#C99B41" stroke-width="1.2">
+                    <path d="M 90 10 Q 70 25 30 15 M 90 10 Q 75 30 85 70" />
+                    <path d="M 75 25 Q 55 15 50 30 M 75 25 Q 85 45 70 50" />
+                </g>
+                <circle cx="75" cy="25" r="3" fill="#E8CA88" />
+            </svg>
+
+            <!-- Arabesque supérieure -->
+            <div class="arabesque-divider top-arabesque">
+                <span class="a-line"></span>
+                <span class="a-emblem">❦ ✦ ❦</span>
+                <span class="a-line"></span>
             </div>
 
-            <h1 class="main-names-inline">
-                <span class="name-part">Ousmane</span>
-                <span class="amp-inline">&</span>
-                <span class="name-part">Mabinty</span>
-            </h1>
+            <p class="hero-badge-title">Célébration du Mariage</p>
 
-            <div class="gold-crest-box">
-                <div class="crest-line"></div>
-                <span class="crest-emblem">✦ ❦ ✦</span>
-                <div class="crest-line"></div>
+            <div class="mini-gold-line"></div>
+
+            <!-- Prénoms structurés à la verticale -->
+            <div class="names-vertical-block">
+                <h1 class="first-name">OUSMANE</h1>
+                <div class="ampersand-wrapper">
+                    <span class="leaf-branch left">🌿</span>
+                    <span class="amp-classic">&</span>
+                    <span class="leaf-branch right">🌿</span>
+                </div>
+                <h1 class="second-name">MABINTY</h1>
             </div>
 
-            <p class="fade-text" style="max-width: 680px; line-height: 1.7; margin-top: 15px;">
+            <!-- Arabesque inférieure -->
+            <div class="arabesque-divider bottom-arabesque">
+                <span class="a-line"></span>
+                <span class="a-emblem">❦ ✦ ❦</span>
+                <span class="a-line"></span>
+            </div>
+
+            <!-- Cadre Arche avec la photo du couple -->
+            <div class="hero-photo-frame-luxe">
+                <div class="frame-outer-gold"></div>
+                <div class="frame-inner-gold">
+                    <img src="ous-mabinty-1.jpg" alt="Ousmane et Mabinty" class="hero-photo">
+                </div>
+                <div class="gold-crest-emblem">✦ ❦ ✦</div>
+            </div>
+
+            <!-- Message d'invitation -->
+            <p class="fade-text" style="max-width: 680px; line-height: 1.7; margin-top: 25px;">
                 Par la grâce d'Allah, nos cœurs se sont choisis pour ne faire qu'un. C'est avec amour et une immense joie que nous vous invitons chaleureusement à célébrer notre union.
             </p>
-            
-            <p class="tagline">Une histoire écrite à deux.</p>
         </section>
 
         <!-- 2. CITATION -->
-        <section class="sec-quote">
-            <p class="quote-text" style="max-width: 750px; font-size: 1.85rem; line-height: 1.5;">
-                "D'une simple rencontre est né un amour incommensurable, que nous avons décidé de protéger et d'attiser sa flamme chaque jour de notre vie."
-            </p>
-        </section>
-
+        
         <!-- 3. DATES & COMPTE À REBOURS -->
         <section class="sec-date">
             <p class="sur-title">Notez ces dates</p>
@@ -254,7 +307,8 @@
                 <div class="photo-frame-inner">
                     <img src="ous-mabinty-2.jpg" alt="Ousmane et Mabinty complices" class="framed-photo">
                 </div>
-                <p class="photo-caption">"Ensemble, chaque moment devient un souvenir précieux."</p>
+                <p class="photo-caption">"D'une simple rencontre est né un amour incommensurable, que nous avons décidé de protéger et d'attiser sa flamme chaque jour de notre vie."
+</p>
             </div>
         </section>
 
@@ -279,7 +333,7 @@
                 </div>
                 <div class="honor-card">
                     <span class="honor-role">Demba</span>
-                    <h3 class="honor-name">Bouton Sylla</h3>
+                    <h3 class="honor-name">Bountou Sylla</h3>
                 </div>
             </div>
         </section>
@@ -293,7 +347,7 @@
                 
                 <div class="presence-counter">
                     <span id="guest-count">0</span>
-                    <p>Personnes ont déjà répondu présent</p>
+                    <p>Personnes ont déjà répondus présent</p>
                 </div>
                 
                 <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbz7aI8H_3zvgAr9E5cxwUFjit91s2xFgXGNHpMy0qb9yAZF9jh8kMERJbWRCamcpauw7w/exec" method="POST" class="rsvp-form">
