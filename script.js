@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       2. OUVERTURE DIRECTE DU RIDEAU
+       2. OUVERTURE DIRECTE ET NETTE DU RIDEAU
        ========================================= */
     const curtainTrigger = document.getElementById("curtain-trigger");
     const introScreen = document.getElementById("intro-screen");
