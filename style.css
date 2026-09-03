@@ -20,12 +20,14 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* CANVAS NEIGE DE CŒURS AU PREMIER PLAN (DEVANT LA PHOTO ET LA CARTE) */
 #bg-sparkles {
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
-    pointer-events: none;
-    z-index: 1; opacity: 0.95;
+    pointer-events: none; /* Permet les clics à travers les cœurs */
+    z-index: 99;           /* Passe au-dessus du cadre photo et de la carte */
+    opacity: 0.95;
 }
 
 /* MASQUAGE STRICT DES ÉLÉMENTS INACTIFS */
