@@ -20,13 +20,13 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* CANVAS NEIGE DE CŒURS AU PREMIER PLAN (DEVANT LA PHOTO ET LA CARTE) */
+/* CANVAS NEIGE DE CŒURS AU PREMIER PLAN */
 #bg-sparkles {
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
-    pointer-events: none; /* Permet les clics à travers les cœurs */
-    z-index: 99;           /* Passe au-dessus du cadre photo et de la carte */
+    pointer-events: none;
+    z-index: 99;
     opacity: 0.95;
 }
 
@@ -35,7 +35,7 @@ body {
     display: none !important; 
 }
 
-/* UNIFORMISATION STRICTE DES TITRES EN CORMORANT GARAMOND */
+/* UNIFORMISATION STRICTE DES TITRES */
 h1, h2, h3, h4, .date-title, .main-names, .time, .section-title { 
     font-family: 'Cormorant Garamond', serif; 
     font-weight: 600; 
@@ -283,7 +283,41 @@ section {
 }
 
 /* =========================================
-   ÉCRAN D'OUVERTURE THÉÂTRAL 3D & SPECTACULAIRE
+   AFFICHAGE HARMONISÉ DE LA DATE
+   ========================================= */
+.date-display-enhanced {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-variant-numeric: lining-nums !important;
+    -moz-font-feature-settings: "lnum";
+    -webkit-font-feature-settings: "lnum";
+    font-feature-settings: "lnum";
+}
+
+.date-days, .date-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem !important;
+    font-weight: 600;
+    color: var(--text-burgundy) !important;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.date-month {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem !important;
+    font-weight: 600;
+    color: var(--text-burgundy) !important;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+/* =========================================
+   ÉCRAN D'OUVERTURE THÉÂTRAL (SANS VIDE BLANC)
    ========================================= */
 .intro-screen.curtain-mode {
     position: fixed;
@@ -294,7 +328,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #FAF8F5;
+    background-color: #FFFFFF;
     perspective: 1200px;
 }
 
@@ -303,7 +337,7 @@ section {
     top: 0;
     width: 50%; height: 100%;
     background-color: #FCFBF7;
-    transition: transform 1.8s cubic-bezier(0.7, 0, 0.2, 1), box-shadow 1.8s ease;
+    transition: transform 1.6s cubic-bezier(0.7, 0, 0.2, 1), box-shadow 1.6s ease;
     z-index: 101;
     box-shadow: 0 0 40px rgba(0,0,0,0.12);
     transform-style: preserve-3d;
@@ -322,13 +356,13 @@ section {
 }
 
 .intro-screen.open .curtain-left { 
-    transform: rotateY(-105deg) translateX(-10%); 
-    box-shadow: 30px 0 50px rgba(0,0,0,0.25);
+    transform: rotateY(-100deg) translateX(-100%); 
+    box-shadow: 30px 0 50px rgba(0,0,0,0.2);
 }
 
 .intro-screen.open .curtain-right { 
-    transform: rotateY(105deg) translateX(10%); 
-    box-shadow: -30px 0 50px rgba(0,0,0,0.25);
+    transform: rotateY(100deg) translateX(100%); 
+    box-shadow: -30px 0 50px rgba(0,0,0,0.2);
 }
 
 .corner-ornament {
@@ -354,7 +388,7 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.6s ease;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.4s ease;
 }
 
 /* SCEAU DE CIRE ROYAL EN 3D */
@@ -422,32 +456,22 @@ section {
 
 .intro-screen.open .curtain-center {
     opacity: 0;
-    transform: scale(1.8) rotate(-15deg);
+    transform: scale(1.5) rotate(-15deg);
     pointer-events: none;
 }
 
-/* APPARITION ÉLÉGANTE DU CONTENU DU SITE */
+/* CONTENU PRINCIPAL DIRECTEMENT VISIBLE */
 main {
     position: relative;
     z-index: 2;
-    transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s ease;
-}
-
-body.intro-active main {
-    opacity: 0;
-    transform: scale(0.94);
-}
-
-body.intro-opened main {
     opacity: 1;
-    transform: scale(1);
 }
 
 /* CITATION */
 .sec-quote { padding: 4vh 20px 6vh; }
 .flourish { color: var(--gold-dark); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 5px; opacity: 0.95; }
 
-/* SECTIONS DATES ET COMPTE À REBOURS RECENTRÉES ET PROPRES */
+/* SECTIONS DATES ET COMPTE À REBOURS */
 .sec-date {
     padding-top: 5vh;
     padding-bottom: 3vh;
@@ -480,6 +504,7 @@ body.intro-opened main {
     color: var(--text-burgundy) !important;
     line-height: 1;
     font-weight: 700;
+    font-variant-numeric: lining-nums !important;
 }
 
 .c-label {
@@ -536,15 +561,8 @@ body.intro-opened main {
     z-index: 10;
 }
 
-.photo-corner.top-l {
-    top: 2px;
-    left: 2px;
-}
-
-.photo-corner.bottom-r {
-    bottom: 2px;
-    right: 2px;
-}
+.photo-corner.top-l { top: 2px; left: 2px; }
+.photo-corner.bottom-r { bottom: 2px; right: 2px; }
 
 .photo-frame-inner { 
     width: 100%; 
@@ -614,7 +632,7 @@ body.intro-opened main {
 .sec-rsvp-wrapper { width: 100%; padding: 8vh 20px; }
 .rsvp-card { background: #FFF; border: 1px solid var(--gold-light); padding: 50px 40px; border-radius: 2px; width: 100%; max-width: 600px; margin: 0 auto; box-shadow: 0 15px 35px rgba(98, 34, 41, 0.05); text-align: center; }
 .presence-counter { margin: 10px auto 30px; padding-bottom: 25px; border-bottom: 1px dashed #DFD5CD; max-width: 100%; }
-.presence-counter #guest-count { font-size: 4rem; font-family: 'Cormorant Garamond', serif; color: var(--text-burgundy) !important; line-height: 1; font-weight: 700; }
+.presence-counter #guest-count { font-size: 4rem; font-family: 'Cormorant Garamond', serif; color: var(--text-burgundy) !important; line-height: 1; font-weight: 700; font-variant-numeric: lining-nums !important; }
 .presence-counter p { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); margin-top: 5px; font-weight: 600; }
 
 .rsvp-form { margin-top: 20px; width: 100%; }
@@ -682,6 +700,12 @@ body.intro-opened main {
 
     .fade-text { font-size: 1.25rem !important; }
     .quote-text { font-size: 1.45rem !important; }
+
+    .date-display-enhanced { gap: 8px; }
+    .date-days, .date-month, .date-year {
+        font-size: 2.1rem !important;
+        letter-spacing: 1.5px;
+    }
 
     .c-layout { gap: 15px; }
     .c-num { font-size: 2.6rem; }

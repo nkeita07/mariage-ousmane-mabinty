@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       2. OUVERTURE THÉÂTRALE DU RIDEAU
+       2. OUVERTURE DIRECTE DU RIDEAU
        ========================================= */
     const curtainTrigger = document.getElementById("curtain-trigger");
     const introScreen = document.getElementById("intro-screen");
@@ -87,15 +87,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let isOpened = false;
         
         document.body.style.overflow = "hidden";
-        document.body.classList.add("intro-active");
 
         curtainTrigger.addEventListener("click", () => {
             if (isOpened) return;
             isOpened = true;
 
             introScreen.classList.add("open");
-            document.body.classList.remove("intro-active");
-            document.body.classList.add("intro-opened");
 
             setTimeout(() => {
                 document.body.style.overflow = "auto";
@@ -104,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(() => {
                 introScreen.style.display = "none";
-            }, 2000);
+            }, 1800);
         });
     }
 
