@@ -8,372 +8,206 @@
 </head>
 <body>
 
-    <!-- CANVAS POUR LA PLUIE D'ÉTINCELLES ET CŒURS -->
     <canvas id="bg-sparkles"></canvas>
 
-    <!-- ÉCRAN D'OUVERTURE : DOUBLE PORTE BLANCHE AVEC MOTIFS FLORAUX DORÉS -->
-    <div id="intro-screen" class="intro-screen curtain-mode">
-        
-        <!-- Volet Gauche avec Fleurs dans les Coins -->
-        <div class="curtain-panel curtain-left">
-            <!-- Coin Fleur Haut Gauche -->
-            <svg class="corner-ornament top-left" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                <g fill="none" stroke="#C99B41" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 10 10 Q 30 30 80 15 M 10 10 Q 30 30 15 80" />
-                    <path d="M 25 25 Q 45 15 55 20 M 25 25 Q 15 45 20 55" />
-                    <path d="M 40 32 Q 65 30 70 40 M 32 40 Q 30 65 40 70" />
-                    <path d="M 55 20 Q 60 10 68 18 Q 60 25 55 20 Z" fill="#E8CA88" opacity="0.6"/>
-                    <path d="M 20 55 Q 10 60 18 68 Q 25 60 20 55 Z" fill="#E8CA88" opacity="0.6"/>
-                    <path d="M 70 40 Q 80 35 82 45 Q 72 50 70 40 Z" fill="#D4AF37" opacity="0.8"/>
-                    <path d="M 40 70 Q 35 80 45 82 Q 50 72 40 70 Z" fill="#D4AF37" opacity="0.8"/>
-                </g>
-                <circle cx="25" cy="25" r="4" fill="#C99B41" />
-                <circle cx="25" cy="18" r="3" fill="#E8CA88" opacity="0.7"/>
-                <circle cx="25" cy="32" r="3" fill="#E8CA88" opacity="0.7"/>
-                <circle cx="18" cy="25" r="3" fill="#E8CA88" opacity="0.7"/>
-                <circle cx="32" cy="25" r="3" fill="#E8CA88" opacity="0.7"/>
+    <!-- 1. ÉCRAN D'OUVERTURE : ENVELOPPE DORÉE SUR FOND BLANC -->
+    <div id="intro-screen" class="intro-screen">
+        <p class="envelope-surtitle">UNE INVITATION VOUS ATTEND</p>
+
+        <div class="envelope-wrapper" id="curtain-trigger">
+            <svg class="envelope-svg" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+                <!-- Corps de l'enveloppe -->
+                <path d="M 20 240 L 20 80 L 200 180 L 380 80 L 380 240 Z" fill="#FAF8F5" stroke="#C99B41" stroke-width="1.5"/>
+                <!-- Rabat supérieur -->
+                <path d="M 20 80 L 200 10 L 380 80 L 200 120 Z" fill="#FFFFFF" stroke="#C99B41" stroke-width="1.5"/>
             </svg>
 
-            <!-- Coin Fleur Bas Gauche -->
-            <svg class="corner-ornament bottom-left" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                <g fill="none" stroke="#C99B41" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 10 110 Q 30 90 80 105 M 10 110 Q 30 90 15 40" />
-                    <path d="M 25 95 Q 45 105 55 100 M 25 95 Q 15 75 20 65" />
-                    <path d="M 55 100 Q 60 110 68 102 Q 60 95 55 100 Z" fill="#E8CA88" opacity="0.6"/>
-                    <path d="M 20 65 Q 10 60 18 52 Q 25 60 20 65 Z" fill="#E8CA88" opacity="0.6"/>
-                </g>
-                <circle cx="25" cy="95" r="4" fill="#C99B41" />
-                <circle cx="25" cy="88" r="3" fill="#E8CA88" opacity="0.7"/>
-                <circle cx="25" cy="102" r="3" fill="#E8CA88" opacity="0.7"/>
-                <circle cx="18" cy="95" r="3" fill="#E8CA88" opacity="0.7"/>
-                <circle cx="32" cy="95" r="3" fill="#E8CA88" opacity="0.7"/>
-            </svg>
-        </div>
-        
-        <!-- Volet Droit avec Fleurs dans les Coins -->
-        <div class="curtain-panel curtain-right">
-            <!-- Coin Fleur Haut Droit -->
-            <svg class="corner-ornament top-right" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                <g fill="none" stroke="#C99B41" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 110 10 Q 90 30 40 15 M 110 10 Q 90 30 105 80" />
-                    <path d="M 95 25 Q 75 15 65 20 M 95 25 Q 105 45 100 55" />
-                    <path d="M 65 20 Q 60 10 52 18 Q 60 25 65 20 Z" fill="#E8CA88" opacity="0.6"/>
-                    <path d="M 100 55 Q 110 60 102 68 Q 95 60 100 55 Z" fill="#E8CA88" opacity="0.6"/>
-                </g>
-                <circle cx="95" cy="25" r="4" fill="#C99B41" />
-                <circle cx="95" cy="18" r="3" fill="#E8CA88" opacity="0.7"/>
-                <circle cx="95" cy="32" r="3" fill="#E8CA88" opacity="0.7"/>
-                <circle cx="88" cy="25" r="3" fill="#E8CA88" opacity="0.7"/>
-                <circle cx="102" cy="25" r="3" fill="#E8CA88" opacity="0.7"/>
-            </svg>
-
-            <!-- Coin Fleur Bas Droit -->
-            <svg class="corner-ornament bottom-right" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                <g fill="none" stroke="#C99B41" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 110 110 Q 90 90 40 105 M 110 110 Q 90 90 105 40" />
-                    <path d="M 95 95 Q 75 105 65 100 M 95 95 Q 105 75 100 65" />
-                    <path d="M 65 100 Q 60 110 52 102 Q 60 95 55 100 Z" fill="#E8CA88" opacity="0.6"/>
-                    <path d="M 100 65 Q 110 60 102 52 Q 95 60 100 65 Z" fill="#E8CA88" opacity="0.6"/>
-                </g>
-                <circle cx="95" cy="95" r="4" fill="#C99B41" />
-                <circle cx="95" cy="88" r="3" fill="#E8CA88" opacity="0.7"/>
-                <circle cx="95" cy="102" r="3" fill="#E8CA88" opacity="0.7"/>
-                <circle cx="88" cy="95" r="3" fill="#E8CA88" opacity="0.7"/>
-                <circle cx="102" cy="95" r="3" fill="#E8CA88" opacity="0.7"/>
-            </svg>
-        </div>
-
-        <div class="curtain-center" id="curtain-trigger">
-            <!-- SCEAU DE CIRE ROYAL 3D -->
-            <div class="wax-seal-royal-3d">
-                <svg class="seal-svg-royal" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="60" cy="60" r="50" fill="none" stroke="#D4AF37" stroke-width="1" opacity="0.4" stroke-dasharray="3 3"/>
-                    <circle cx="60" cy="60" r="44" fill="none" stroke="#8A5A1C" stroke-width="1.5"/>
-                    <circle cx="60" cy="60" r="41" fill="none" stroke="#E8CA88" stroke-width="1"/>
-
-                    <!-- Couronne de Laurier gravée -->
-                    <g fill="none" stroke="#5C3D11" stroke-width="1.2" opacity="0.85">
-                        <path d="M 30 65 C 26 50 35 35 48 30" />
-                        <path d="M 31 58 Q 23 55 27 50" fill="#7A5318" />
-                        <path d="M 33 48 Q 25 43 31 38" fill="#7A5318" />
-                        <path d="M 40 38 Q 33 32 40 28" fill="#7A5318" />
-                        
-                        <path d="M 90 65 C 94 50 85 35 72 30" />
-                        <path d="M 89 58 Q 97 55 93 50" fill="#7A5318" />
-                        <path d="M 87 48 Q 95 43 89 38" fill="#7A5318" />
-                        <path d="M 80 38 Q 87 32 80 28" fill="#7A5318" />
-                    </g>
-
-                    <!-- Cœur gravé au sommet -->
-                    <path d="M 60 28 C 58 25 54 25 54 28 C 54 31 60 35 60 35 C 60 35 66 31 66 28 C 66 25 62 25 60 28 Z" fill="#622229" stroke="#D4AF37" stroke-width="0.8"/>
-
-                    <!-- Monogramme O&M gravé -->
-                    <text x="60" y="68" font-family="'Great Vibes', cursive" font-size="36" fill="#3D2406" text-anchor="middle" font-weight="bold" style="filter: drop-shadow(1px 1px 1px rgba(255,239,166,0.6));">O&M</text>
-                </svg>
-            </div>
-            <div class="seal-tag-floating">
-                <span>Cliquez pour ouvrir</span>
+            <!-- Carte sortant de l'enveloppe -->
+            <div class="envelope-card-inner">
+                <p class="card-mini-head">VOUS ÊTES CORDIALEMENT INVITÉ(E) AU MARIAGE DE</p>
+                <h2 class="card-names">Ousmane & Mabinty</h2>
+                <p class="card-date-loc">20 & 21 · 11 · 2026 — KAMSAR</p>
             </div>
         </div>
+
+        <p class="envelope-action">CLIQUEZ POUR OUVRIR</p>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- BARRE DE NAVIGATION FIXE -->
+    <header class="navbar">
+        <div class="nav-brand">Ousmane & Mabinty</div>
+        <nav class="nav-links">
+            <a href="#entourage">ENTOURAGE</a>
+            <a href="#programme">PROGRAMME</a>
+            <a href="#lieu">LIEUX</a>
+            <a href="#rsvp">RSVP</a>
+        </nav>
+    </header>
+
     <main id="main-content">
         
-        <!-- 1. HERO INSPIRÉ DU FAIRE-PART CLASSIQUE -->
-        <section class="sec-hero hero-invitation-card">
-            <div class="card-border-outer"></div>
-            <div class="card-border-inner"></div>
-
-            <svg class="card-corner top-l" viewBox="0 0 100 100">
-                <g fill="none" stroke="#C99B41" stroke-width="1.2">
-                    <path d="M 10 10 Q 30 25 70 15 M 10 10 Q 25 30 15 70" />
-                    <path d="M 25 25 Q 45 15 50 30 M 25 25 Q 15 45 30 50" />
-                </g>
-                <circle cx="25" cy="25" r="3" fill="#E8CA88" />
-            </svg>
-            <svg class="card-corner top-r" viewBox="0 0 100 100">
-                <g fill="none" stroke="#C99B41" stroke-width="1.2">
-                    <path d="M 90 10 Q 70 25 30 15 M 90 10 Q 75 30 85 70" />
-                    <path d="M 75 25 Q 55 15 50 30 M 75 25 Q 85 45 70 50" />
-                </g>
-                <circle cx="75" cy="25" r="3" fill="#E8CA88" />
-            </svg>
-
-            <div class="arabesque-divider top-arabesque">
-                <span class="a-line"></span>
-                <span class="a-emblem">❦ ✦ ❦</span>
-                <span class="a-line"></span>
+        <!-- 2. HERO : ANNONCE PRINCIPALE SANS PHOTO -->
+        <section class="sec-hero">
+            <p class="hero-subhead">NOUS AVONS L'IMMENSE BONHEUR DE VOUS INVITER À CÉLÉBRER NOTRE UNION</p>
+            
+            <div class="hero-names-block">
+                <h1 class="hero-name">Ousmane</h1>
+                <span class="hero-amp">&</span>
+                <h1 class="hero-name">Mabinty</h1>
             </div>
 
-            <p class="hero-badge-title">Célébration du Mariage</p>
+            <p class="hero-dates-line">VENDREDI 20 NOVEMBRE & SAMEDI 21 NOVEMBRE 2026</p>
+            <p class="hero-location-line">Kamsar — Guinée</p>
+            <div class="gold-divider-center"></div>
 
-            <div class="mini-gold-line"></div>
-
-            <div class="names-vertical-block">
-                <h1 class="first-name">OUSMANE</h1>
-                <div class="ampersand-wrapper">
-                    <span class="leaf-branch left">🌿</span>
-                    <span class="amp-classic">&</span>
-                    <span class="leaf-branch right">🌿</span>
-                </div>
-                <h1 class="second-name">MABINTY</h1>
-            </div>
-
-            <div class="arabesque-divider bottom-arabesque">
-                <span class="a-line"></span>
-                <span class="a-emblem">❦ ✦ ❦</span>
-                <span class="a-line"></span>
-            </div>
-
-            <div class="hero-photo-frame-luxe">
-                <div class="frame-outer-gold"></div>
-                <div class="frame-inner-gold">
-                    <img src="ous-mabinty-1.jpg" alt="Ousmane et Mabinty" class="hero-photo">
-                </div>
-                <div class="gold-crest-emblem">✦ ❦ ✦</div>
-            </div>
-
-            <p class="fade-text" style="max-width: 680px; line-height: 1.7; margin-top: 25px;">
+            <p class="fade-text">
                 Par la grâce d'Allah, nos cœurs se sont choisis pour ne faire qu'un. C'est avec amour et une immense joie que nous vous invitons chaleureusement à célébrer notre union.
             </p>
         </section>
 
-        <!-- 2. DATES REFORMATEES AVEC CHIFFRES ALIGNÉS SUR LA MÊME HAUTEUR -->
-        <section class="sec-date">
-            <h2 class="section-title date-display-enhanced">
-                <span class="date-days">20 & 21</span>
-                <span class="date-month">NOVEMBRE</span>
-                <span class="date-year">2026</span>
-            </h2>
-            <div class="mini-gold-line"></div>
-            <p class="sub-title">Des jours que nous attendons avec impatience.</p>
+        <!-- 3. CITATION -->
+        <section class="sec-quote">
+            <p class="quote-text">
+                "D'une simple rencontre est né un amour incommensurable, que nous avons décidé de protéger et d'attiser sa flamme chaque jour de notre vie."
+            </p>
         </section>
 
-        <!-- COMPTE À REBOURS -->
+        <!-- 4. COMPTE À REBOURS -->
         <section class="sec-countdown">
-            <p class="sur-title">L'attente touche à sa fin</p>
+            <p class="sur-title">L'ATTENTE TOUCHE À SA FIN</p>
             <div id="countdown" class="c-layout"></div>
             <p class="sub-title">Chaque seconde nous rapproche de vous.</p>
         </section>
 
-        <!-- 3. PROGRAMME DÉSIGNÉ EN GRAND TITRE PRINCIPAL -->
-        <section class="sec-program">
-            <h2 class="section-title">PROGRAMME</h2>
-            <div class="mini-gold-line"></div>
-            <p class="sub-title" style="margin-bottom: 40px;">Nous serions honorés de le partager avec vous.</p>
+        <!-- 5. ENTOURAGE / COMITÉ D'HONNEUR (DEUX COLONNES) -->
+        <section id="entourage" class="sec-entourage">
+            <p class="sur-title">NOTRE ENTOURAGE</p>
+            <h2 class="section-title">Ceux qui nous <span>entourent</span></h2>
+            <p class="sub-title">Ils ont accepté d'être à nos côtés pour ce jour unique.</p>
+            <div class="gold-divider-left"></div>
+
+            <div class="entourage-columns">
+                <!-- Colonne Marié -->
+                <div class="entourage-col">
+                    <p class="col-head">LE MARIÉ & SES PROCHES</p>
+                    <div class="person-block">
+                        <span class="person-role">MARIÉ</span>
+                        <h3 class="person-name">Ousmane <strong>KEITA</strong></h3>
+                    </div>
+                    <div class="person-block">
+                        <span class="person-role">PARRAIN</span>
+                        <h3 class="person-name">Felix <strong>OUENOUNO</strong></h3>
+                    </div>
+                    <div class="person-block">
+                        <span class="person-role">TÉMOIN</span>
+                        <h3 class="person-name">James Lucien <strong>MACAULEY</strong></h3>
+                    </div>
+                </div>
+
+                <div class="col-separator"></div>
+
+                <!-- Colonne Mariée -->
+                <div class="entourage-col">
+                    <p class="col-head">LA MARIÉE & SES PROCHES</p>
+                    <div class="person-block">
+                        <span class="person-role">MARIÉE</span>
+                        <h3 class="person-name">Mabinty <strong>SYLLA</strong></h3>
+                    </div>
+                    <div class="person-block">
+                        <span class="person-role">MARRAINE</span>
+                        <h3 class="person-name">Aminata Youssouf <strong>KEITA</strong></h3>
+                    </div>
+                    <div class="person-block">
+                        <span class="person-role">DEMBA</span>
+                        <h3 class="person-name">Bountou <strong>SYLLA</strong></h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PROGRAMME -->
+        <section id="programme" class="sec-program">
+            <p class="sur-title">LE PROGRAMME</p>
+            <h2 class="section-title">Deux jours <span>de célébration</span></h2>
+            <p class="sub-title">Chaque moment a été pensé avec amour pour vous accueillir dans la joie.</p>
+            <div class="gold-divider-left"></div>
+
+            <div class="program-layout">
+                <div class="timeline-v">
+                    <div class="timeline-row">
+                        <div class="time-col">09h00</div>
+                        <div class="desc-col">
+                            <h3 class="event-title">Mariage Religieux & Civil</h3>
+                            <p class="event-desc">Célébration de l'union devant Dieu et la République.</p>
+                            <p class="event-loc">📍 Chez la mariée au bâtiment M12 — Kamsar Cité</p>
+                            <span class="badge-tag">VENDREDI 20 NOVEMBRE 2026</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row">
+                        <div class="time-col">19h00</div>
+                        <div class="desc-col">
+                            <h3 class="event-title">Réception</h3>
+                            <p class="event-desc">Soirée festive, diner et réjouissances en votre compagnie.</p>
+                            <p class="event-loc">📍 Guinai fare à Dougoufissa — Kamsar</p>
+                            <span class="badge-tag">SAMEDI 21 NOVEMBRE 2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. LIEU & CARTE -->
+        <section id="lieu" class="sec-location">
+            <p class="sur-title">LOCALISATION</p>
+            <h2 class="section-title">Se rendre <span>aux événements</span></h2>
+            <div class="gold-divider-left"></div>
             
-            <div class="program-grid">
-                <div class="timeline-container">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">
-                            <span class="day">Ven 20</span>
-                            <span class="time">09h00</span>
-                        </div>
-                        <div class="timeline-desc">
-                            <h4>Mariage Religieux & Civil</h4>
-                            <p>Chez la mariée au bâtiment M12,<br>Kamsar Cité</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">
-                            <span class="day">Sam 21</span>
-                            <span class="time">19h00</span>
-                        </div>
-                        <div class="timeline-desc">
-                            <h4>Réception</h4>
-                            <p>Guinai fare à Dougoufissa</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="map-container">
-                    <div class="map-frame">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125345.24151703698!2d-14.686524354228943!3d10.655822396349514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDM5JzIxLjAiTiAxNMKwMzknMTEuNSJX!5e0!3m2!1sfr!2sfr!4v1634567890123!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125345.24151703698!2d-14.686524354228943!3d10.655822396349514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDM5JzIxLjAiTiAxNMKwMzknMTEuNSJX!5e0!3m2!1sfr!2sfr!4v1634567890123!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </section>
 
-        <!-- 4. SÉPARATEUR POUR TOUJOURS ET PHOTO DU COUPLE -->
-        <section class="sec-transition">
-            <div class="line-separator"></div>
-            <p class="transition-text">Pour toujours.</p>
-            <div class="rings-wrapper">
-                <svg class="wedding-rings-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="gold" x1="0%" y1="100%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="#9C7721" />
-                            <stop offset="25%" stop-color="#D4AF37" />
-                            <stop offset="50%" stop-color="#FFF3B0" />
-                            <stop offset="75%" stop-color="#D4AF37" />
-                            <stop offset="100%" stop-color="#9C7721" />
-                        </linearGradient>
-                        <filter id="drop-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                            <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.3"/>
-                        </filter>
-                    </defs>
-                    <circle cx="38" cy="35" r="18" fill="none" stroke="url(#gold)" stroke-width="4.5" filter="url(#drop-shadow)" />
-                    <circle cx="62" cy="35" r="18" fill="none" stroke="url(#gold)" stroke-width="4.5" filter="url(#drop-shadow)" />
-                    <path d="M 50 21 A 18 18 0 0 0 50 49" fill="none" stroke="url(#gold)" stroke-width="4.5" stroke-linecap="round" />
-                    <g transform="translate(62, 13)">
-                        <polygon points="0,-7 6,0 0,8 -6,0" fill="#FDFAF2" stroke="#B88E28" stroke-width="1" filter="url(#drop-shadow)" />
-                        <polygon points="-4,-1 4,-1 0,6" fill="#FFFFFF" />
-                        <path d="M-4,-1 L0,-5 L4,-1 Z" fill="#F4EFE6" />
-                    </g>
-                </svg>
+        <!-- 8. RSVP -->
+        <section id="rsvp" class="sec-rsvp">
+            <p class="sur-title">RSVP</p>
+            <h2 class="section-title">Confirmez <span>votre présence</span></h2>
+            <div class="gold-divider-center"></div>
+
+            <div class="presence-counter">
+                <span id="guest-count">0</span>
+                <p>Personnes ont déjà répondu présent</p>
             </div>
-            <div class="line-separator"></div>
-        </section>
 
-        <!-- PHOTO ENCADRÉE AVEC ORNEMENTS FLORAUX AUX ANGLES -->
-        <section class="sec-couple-photo">
-            <div class="framed-photo-card floral-framed">
-                <svg class="photo-corner top-l" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                    <g fill="none" stroke="#C99B41" stroke-width="1.5" stroke-linecap="round">
-                        <path d="M 5 5 Q 20 20 60 10 M 5 5 Q 20 20 10 60" />
-                        <path d="M 40 12 Q 45 5 52 10 Q 45 16 40 12 Z" fill="#E8CA88" opacity="0.7"/>
-                        <path d="M 12 40 Q 5 45 10 52 Q 16 45 12 40 Z" fill="#E8CA88" opacity="0.7"/>
-                    </g>
-                    <circle cx="18" cy="18" r="3.5" fill="#C99B41" />
-                    <circle cx="18" cy="12" r="2.5" fill="#E8CA88" opacity="0.8"/>
-                    <circle cx="18" cy="24" r="2.5" fill="#E8CA88" opacity="0.8"/>
-                    <circle cx="12" cy="18" r="2.5" fill="#E8CA88" opacity="0.8"/>
-                    <circle cx="24" cy="18" r="2.5" fill="#E8CA88" opacity="0.8"/>
-                </svg>
-
-                <svg class="photo-corner bottom-r" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                    <g fill="none" stroke="#C99B41" stroke-width="1.5" stroke-linecap="round">
-                        <path d="M 75 75 Q 60 60 20 70 M 75 75 Q 60 60 70 20" />
-                        <path d="M 40 68 Q 35 75 28 70 Q 35 64 40 68 Z" fill="#E8CA88" opacity="0.7"/>
-                        <path d="M 68 40 Q 75 35 70 28 Q 64 35 68 40 Z" fill="#E8CA88" opacity="0.7"/>
-                    </g>
-                    <circle cx="62" cy="62" r="3.5" fill="#C99B41" />
-                    <circle cx="62" cy="56" r="2.5" fill="#E8CA88" opacity="0.8"/>
-                    <circle cx="62" cy="68" r="2.5" fill="#E8CA88" opacity="0.8"/>
-                    <circle cx="56" cy="62" r="2.5" fill="#E8CA88" opacity="0.8"/>
-                    <circle cx="68" cy="62" r="2.5" fill="#E8CA88" opacity="0.8"/>
-                </svg>
-
-                <div class="photo-frame-inner">
-                    <img src="ous-mabinty-2.jpg" alt="Ousmane et Mabinty complices" class="framed-photo">
+            <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbz7aI8H_3zvgAr9E5cxwUFjit91s2xFgXGNHpMy0qb9yAZF9jh8kMERJbWRCamcpauw7w/exec" method="POST" class="rsvp-form-clean">
+                <div class="input-group">
+                    <input type="text" id="name" name="name" required placeholder="Votre Prénom & Nom">
                 </div>
-                <p class="photo-caption">"D'une simple rencontre est né un amour incommensurable, que nous avons décidé de protéger et d'attiser sa flamme chaque jour de notre vie."</p>
+                <div class="input-group">
+                    <select id="presence" name="presence" required>
+                        <option value="" disabled selected hidden>Serez-vous parmi nous ?</option>
+                        <option value="oui">Oui, avec grande joie !</option>
+                        <option value="non">Non, malheureusement</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <textarea id="message" name="message" rows="2" placeholder="Un petit mot pour les mariés"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Envoyer ma réponse</button>
+            </form>
+
+            <div id="form-message" class="hidden msg-success">
+                Merci du fond du cœur ! ❤️<br>
+                Votre réponse nous remplit de joie.
             </div>
         </section>
 
-        <!-- 5. COMITÉ D'HONNEUR -->
-        <section class="sec-honors">
-            <h2 class="section-title">COMITÉ D'HONNEUR</h2>
-            <div class="mini-gold-line"></div>
-
-            <div class="honors-grid">
-                <div class="honor-card">
-                    <span class="honor-role">Parrain</span>
-                    <h3 class="honor-name">Felix Ouenouno</h3>
-                </div>
-                <div class="honor-card">
-                    <span class="honor-role">Marraine</span>
-                    <h3 class="honor-name">Aminata Youssouf Keita</h3>
-                </div>
-                <div class="honor-card">
-                    <span class="honor-role">Témoin</span>
-                    <h3 class="honor-name">James Lucien Macauley</h3>
-                </div>
-                <div class="honor-card">
-                    <span class="honor-role">Demba</span>
-                    <h3 class="honor-name">Bountou Sylla</h3>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. RSVP -->
-        <section id="rsvp" class="sec-rsvp-wrapper">
-            <div class="rsvp-card">
-                <div class="flourish" style="font-size: 1.5rem; margin-bottom: 5px;">✉</div>
-                <h2 class="section-title">CONFIRMATION</h2>
-                <div class="mini-gold-line"></div>
-                
-                <div class="presence-counter">
-                    <span id="guest-count">0</span>
-                    <p>Personnes ont déjà répondu présent</p>
-                </div>
-                
-                <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbz7aI8H_3zvgAr9E5cxwUFjit91s2xFgXGNHpMy0qb9yAZF9jh8kMERJbWRCamcpauw7w/exec" method="POST" class="rsvp-form">
-                    <div class="form-group-elegant">
-                        <input type="text" id="name" name="name" required placeholder=" ">
-                        <label for="name">Votre Prénom & Nom</label>
-                    </div>
-                    <div class="form-group-elegant select-group">
-                        <select id="presence" name="presence" required>
-                            <option value="" disabled selected hidden>Serez-vous parmi nous ?</option>
-                            <option value="oui">Oui, avec grande joie !</option>
-                            <option value="non">Non, malheureusement</option>
-                        </select>
-                    </div>
-                    <div class="form-group-elegant">
-                        <textarea id="message" name="message" rows="1" placeholder=" "></textarea>
-                        <label for="message">Un petit mot pour les mariés</label>
-                    </div>
-                    <button type="submit" class="btn-rsvp">Envoyer ma réponse</button>
-                </form>
-                
-                <div id="form-message" class="hidden msg-success">
-                    Merci du fond du cœur ! ❤️<br>
-                    Votre réponse nous remplit de joie.<br>
-                    Nous avons tellement hâte de partager ce moment unique avec vous ✨
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. LIVRE D'OR -->
+        <!-- 9. LIVRE D'OR -->
         <section class="sec-guestbook">
-            <div class="flourish">✦ ❦ ✦</div>
-            <h2 class="section-title">VOS MOTS DOUX</h2>
-            <div class="mini-gold-line"></div>
+            <p class="sur-title">LIVRE D'OR</p>
+            <h2 class="section-title">Vos <span>mots doux</span></h2>
+            <div class="gold-divider-center"></div>
+
             <div class="carousel-container">
                 <div id="carousel-track" class="carousel-track">
                     <div class="carousel-msg">

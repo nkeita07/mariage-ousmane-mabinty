@@ -1,730 +1,572 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
-    --bg-cream: #FFFFFF;
-    --text-burgundy: #622229;   /* Bordeaux Prune d'origine */
-    --text-taupe: #6E5D54;      /* Taupe doux d'origine */
+    --bg-white: #FFFFFF;
+    --text-dark: #121212;
+    --text-muted: #666666;
+    --gold: #C99B41;
     --gold-light: #E8CA88;
-    --gold-dark: #C99B41;
+    --border-light: #EEEEEE;
 }
 
-/* ANTI-DÉBORDEMENT GLOBAL */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { width: 100%; max-width: 100vw; overflow-x: hidden; scroll-behavior: smooth; }
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #FFFFFF;
-    color: var(--text-burgundy);
-    position: relative;
+    background-color: var(--bg-white);
+    color: var(--text-dark);
     -webkit-font-smoothing: antialiased;
 }
 
-/* CANVAS NEIGE DE CŒURS AU PREMIER PLAN */
 #bg-sparkles {
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
     pointer-events: none;
     z-index: 99;
-    opacity: 0.95;
+    opacity: 0.7;
 }
 
-/* MASQUAGE STRICT DES ÉLÉMENTS INACTIFS */
-.hidden { 
-    display: none !important; 
-}
+.hidden { display: none !important; }
 
-/* UNIFORMISATION STRICTE DES TITRES */
-h1, h2, h3, h4, .date-title, .main-names, .time, .section-title { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-weight: 600; 
-    text-align: center; 
-    color: var(--text-burgundy) !important;
-}
-
-/* HARMONISATION UNIFORME DE TOUS LES GRANDS TITRES DE SECTION */
-.section-title { 
-    font-size: 2.8rem !important; 
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 5px; 
-    font-weight: 600;
-}
-
-section { 
-    width: 100%; 
-    max-width: 850px; 
-    margin: 0 auto; 
-    padding: 6vh 20px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    text-align: center;
-}
-
-.sur-title { 
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.75rem; 
-    letter-spacing: 4px; 
-    color: var(--text-taupe); 
-    text-transform: uppercase; 
-    margin-bottom: 12px; 
-    text-align: center; 
-    font-weight: 600; 
-}
-
-.sub-title { 
-    font-size: 1.15rem; 
-    color: var(--text-taupe); 
-    text-align: center; 
-    font-style: italic; 
-    font-family: 'Cormorant Garamond', serif; 
-    font-weight: 500;
-}
-
-.fade-text, .quote-text {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-style: italic !important;
-    color: var(--text-burgundy) !important;
-    text-align: center;
-    font-weight: 600 !important;
-}
-
-.fade-text {
-    font-size: 1.5rem !important;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    padding: 0 15px;
-}
-
-.quote-text {
-    font-size: 1.9rem !important;
-    line-height: 1.5;
-    max-width: 750px;
-    margin-bottom: 15px;
-}
-
-/* =========================================
-   STYLE HERO : FAIRE-PART LUXE CLASSIQUE
-   ========================================= */
-.hero-invitation-card {
-    position: relative;
-    padding: 8vh 30px 6vh;
-    margin: 0 auto 4vh; /* Marge supérieure à 0 pour collé au sommet */
-    background: #FFFFFF;
-    max-width: 780px;
-    box-shadow: 0 15px 45px rgba(98, 34, 41, 0.04);
-}
-
-.sec-hero { 
-    padding-top: 5vh; 
-}
-
-.card-border-outer {
-    position: absolute;
-    top: 12px; left: 12px; right: 12px; bottom: 12px;
-    border: 1px solid var(--gold-light);
-    pointer-events: none;
-}
-
-.card-border-inner {
-    position: absolute;
-    top: 18px; left: 18px; right: 18px; bottom: 18px;
-    border: 1.5px solid var(--gold-dark);
-    pointer-events: none;
-}
-
-.card-corner {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    z-index: 5;
-    pointer-events: none;
-}
-
-.card-corner.top-l { top: 25px; left: 25px; }
-.card-corner.top-r { top: 25px; right: 25px; }
-
-/* ARABESQUES ET SÉPARATEURS */
-.arabesque-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    width: 100%;
-    max-width: 280px;
-    margin: 15px 0;
-}
-
-.a-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
-}
-
-.a-emblem {
-    color: var(--gold-dark);
-    font-size: 0.9rem;
-    letter-spacing: 3px;
-}
-
-.hero-badge-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: var(--text-burgundy);
-    font-weight: 600;
-    margin: 10px 0 5px;
-}
-
-.mini-gold-line {
-    width: 45px;
-    height: 1px;
-    background-color: var(--gold-light);
-    margin: 6px auto 22px;
-}
-
-/* DISPOSITION VERTICALE DES PRÉNOMS */
-.names-vertical-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px 0;
-}
-
-.first-name, .second-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.8rem;
-    font-weight: 500;
-    letter-spacing: 6px;
-    color: var(--text-burgundy) !important;
-    line-height: 1.1;
-    text-transform: uppercase;
-}
-
-.ampersand-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin: 8px 0;
-}
-
-.amp-classic {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 2.8rem;
-    color: var(--gold-dark);
-    font-weight: 400;
-}
-
-.leaf-branch {
-    font-size: 1.1rem;
-    opacity: 0.8;
-}
-
-/* CADRE PHOTO ARCHE ROYALE (HERO) - AGRANDI */
-.hero-photo-frame-luxe {
-    position: relative;
-    width: 300px;
-    height: 400px;
-    margin: 25px auto 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.hero-photo-frame-luxe:hover {
-    transform: translateY(-5px);
-}
-
-.frame-outer-gold {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 1.5px solid var(--gold-dark);
-    border-radius: 150px 150px 12px 12px;
-    box-shadow: 0 22px 50px rgba(98, 34, 41, 0.08), inset 0 0 15px rgba(201, 155, 65, 0.2);
-}
-
-.frame-inner-gold {
-    width: calc(100% - 18px);
-    height: calc(100% - 18px);
-    border: 2px solid var(--gold-light);
-    border-radius: 141px 141px 8px 8px;
-    overflow: hidden;
-    background: #FFFFFF;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
-}
-
-.hero-photo { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    object-position: center top; 
-    transition: transform 0.6s ease;
-}
-
-.hero-photo-frame-luxe:hover .hero-photo {
-    transform: scale(1.03);
-}
-
-.gold-crest-emblem {
-    position: absolute;
-    bottom: -16px;
-    background: #FFFFFF;
-    padding: 3px 18px;
-    border: 1px solid var(--gold-light);
-    border-radius: 20px;
-    font-size: 0.85rem;
-    color: var(--gold-dark);
-    letter-spacing: 4px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.06);
-    z-index: 5;
-}
-
-/* =========================================
-   AFFICHAGE HARMONISÉ DE LA DATE
-   ========================================= */
-.date-display-enhanced {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-variant-numeric: lining-nums !important;
-    -moz-font-feature-settings: "lnum";
-    -webkit-font-feature-settings: "lnum";
-    font-feature-settings: "lnum";
-}
-
-.date-days, .date-year {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.2rem !important;
-    font-weight: 600;
-    color: var(--text-burgundy) !important;
-    letter-spacing: 2px;
-    line-height: 1;
-}
-
-.date-month {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.2rem !important;
-    font-weight: 600;
-    color: var(--text-burgundy) !important;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    line-height: 1;
-}
-
-/* =========================================
-   ÉCRAN D'OUVERTURE THÉÂTRAL (SANS VIDE BLANC)
-   ========================================= */
-.intro-screen.curtain-mode {
+/* 1. ÉCRAN D'OUVERTURE (ENVELOPPE) */
+.intro-screen {
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
-    z-index: 100;
-    overflow: hidden;
+    background-color: #FFFFFF;
+    z-index: 1000;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #FFFFFF;
-    perspective: 1200px;
+    transition: opacity 1.2s ease, visibility 1.2s ease;
 }
 
-.curtain-panel {
-    position: absolute;
-    top: 0;
-    width: 50.5%; /* Superposition de 0.5% pour supprimer la fissure du milieu */
-    height: 100%;
-    background-color: #FCFBF7;
-    transition: transform 1.6s cubic-bezier(0.77, 0, 0.175, 1);
-    z-index: 101;
-    box-shadow: 0 0 30px rgba(0,0,0,0.1);
-}
-
-.curtain-left { 
-    left: 0; 
-    border-right: 1.5px solid var(--gold-light); 
-}
-
-.curtain-right { 
-    right: 0; 
-    border-left: 1.5px solid var(--gold-light); 
-}
-
-.intro-screen.open .curtain-left { 
-    transform: translateX(-100%); 
-}
-
-.intro-screen.open .curtain-right { 
-    transform: translateX(100%); 
-}
-
-.corner-ornament {
-    position: absolute;
-    width: 120px;
-    height: 120px;
+.intro-screen.open {
+    opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    z-index: 102;
-    opacity: 0.9;
-    transition: transform 0.5s ease;
 }
 
-.top-left { top: 20px; left: 20px; }
-.bottom-left { bottom: 20px; left: 20px; }
-.top-right { top: 20px; right: 20px; }
-.bottom-right { bottom: 20px; right: 20px; }
+.envelope-surtitle {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
 
-.curtain-center {
-    position: absolute;
-    z-index: 105;
+.envelope-wrapper {
+    position: relative;
+    width: 360px;
+    height: 240px;
     cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.envelope-wrapper:hover {
+    transform: translateY(-5px);
+}
+
+.envelope-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.envelope-card-inner {
+    position: absolute;
+    top: 35px;
+    left: 30px;
+    right: 30px;
+    background: #FFFFFF;
+    border: 1px solid var(--gold-light);
+    padding: 18px 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.card-mini-head {
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.card-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.card-date-loc {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+.envelope-action {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-top: 30px;
+    text-transform: uppercase;
+}
+
+/* NAVBAR FIXE */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    z-index: 100;
+}
+
+.nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    margin-left: 30px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+/* SECTIONS STRUCTURE */
+main { padding-top: 70px; }
+
+section {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10vh 20px;
+}
+
+.sur-title {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--text-dark);
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.section-title span {
+    font-style: italic;
+    color: var(--gold);
+}
+
+.sub-title {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+.gold-divider-center {
+    width: 50px;
+    height: 1px;
+    background-color: var(--gold);
+    margin: 20px auto 30px;
+}
+
+.gold-divider-left {
+    width: 50px;
+    height: 1px;
+    background-color: var(--gold);
+    margin: 20px 0 40px;
+}
+
+/* 2. HERO SANS PHOTO */
+.sec-hero {
+    text-align: center;
+    padding-top: 15vh;
+}
+
+.hero-subhead {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.hero-names-block {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.4s ease;
+    margin-bottom: 30px;
 }
 
-/* SCEAU DE CIRE ROYAL EN 3D */
-.wax-seal-royal-3d {
-    position: relative;
-    width: 115px;
-    height: 115px;
-    background: radial-gradient(circle at 35% 35%, #FFF3B0 0%, #E8CA88 25%, #C99B41 55%, #8A5A1C 82%, #4A2B0A 100%);
-    border-radius: 48% 52% 49% 51% / 51% 48% 52% 49%;
-    box-shadow: 
-        0 18px 38px rgba(0, 0, 0, 0.28),
-        0 6px 12px rgba(98, 34, 41, 0.35),
-        inset 0 3px 8px rgba(255, 255, 255, 0.85),
-        inset 0 -4px 10px rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: sealPulse 2.8s infinite ease-in-out;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5.5rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1;
 }
 
-@keyframes sealPulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28), 0 0 0 0 rgba(201, 155, 65, 0.4); }
-    50% { transform: scale(1.05); box-shadow: 0 22px 42px rgba(0, 0, 0, 0.35), 0 0 0 15px rgba(201, 155, 65, 0); }
-}
-
-.seal-svg-royal {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.4));
-}
-
-.curtain-center:hover .wax-seal-royal-3d {
-    transform: scale(1.12) rotate(4deg);
-    animation: none;
-    box-shadow: 
-        0 22px 48px rgba(0, 0, 0, 0.35),
-        0 8px 16px rgba(98, 34, 41, 0.45),
-        inset 0 4px 10px rgba(255, 255, 255, 0.95);
-}
-
-.seal-tag-floating {
-    margin-top: 20px;
-    background: rgba(255, 255, 255, 0.96);
-    border: 1px solid var(--gold-light);
-    padding: 8px 24px;
-    border-radius: 30px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.curtain-center:hover .seal-tag-floating {
-    transform: translateY(3px);
-    background-color: var(--bg-cream);
-}
-
-.seal-tag-floating span {
+.hero-amp {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 1.25rem;
-    color: var(--text-burgundy);
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-size: 3.5rem;
+    color: var(--gold);
+    margin: 5px 0;
 }
 
-.intro-screen.open .curtain-center {
-    opacity: 0;
-    transform: scale(1.5) rotate(-15deg);
-    pointer-events: none;
+.hero-dates-line {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    color: var(--text-dark);
+    font-weight: 500;
+    margin-bottom: 8px;
 }
 
-/* CONTENU PRINCIPAL DIRECTEMENT VISIBLE */
-main {
-    position: relative;
-    z-index: 2;
-    opacity: 1;
+.hero-location-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--gold);
 }
 
-/* CITATION */
-.sec-quote { padding: 4vh 20px 6vh; }
-.flourish { color: var(--gold-dark); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 5px; opacity: 0.95; }
-
-/* SECTIONS DATES ET COMPTE À REBOURS */
-.sec-date {
-    padding-top: 5vh;
-    padding-bottom: 3vh;
+.fade-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--text-muted);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
-.sec-countdown {
-    padding-top: 2vh;
-    padding-bottom: 6vh;
+/* 3. CITATION */
+.sec-quote {
+    text-align: center;
+    padding: 6vh 20px;
 }
+
+.quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+/* 4. COMPTE À REBOURS */
+.sec-countdown { text-align: center; }
 
 .c-layout {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin: 25px 0;
-    width: 100%;
+    gap: 40px;
+    margin: 30px 0;
 }
 
 .c-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 70px;
 }
 
 .c-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3.6rem;
-    color: var(--text-burgundy) !important;
+    font-size: 3.8rem;
+    color: var(--text-dark);
     line-height: 1;
-    font-weight: 700;
-    font-variant-numeric: lining-nums !important;
 }
 
 .c-label {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.7rem;
-    text-transform: uppercase;
+    font-size: 0.65rem;
     letter-spacing: 2px;
-    color: var(--text-taupe);
+    color: var(--text-muted);
+    text-transform: uppercase;
     margin-top: 8px;
+}
+
+/* 5. ENTOURAGE / COMITÉ (STYLE DEUX COLONNES) */
+.entourage-columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.entourage-col {
+    flex: 1;
+}
+
+.col-separator {
+    width: 1px;
+    background-color: var(--border-light);
+    align-self: stretch;
+}
+
+.col-head {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 30px;
     font-weight: 600;
 }
 
-/* TRANSITION BAGUES ET PHOTO */
-.sec-transition { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 15px; padding: 4vh 20px; margin: 2vh auto; width: 100%; max-width: 650px; }
-.line-separator { flex: 1; height: 1px; background-color: var(--gold-dark); opacity: 0.4; }
-.transition-text { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: var(--gold-dark); line-height: 1; white-space: nowrap; font-weight: 400; }
-.rings-wrapper { display: flex; align-items: center; justify-content: flex-start; }
-.wedding-rings-svg { height: 55px; width: auto; margin-left: 5px; animation: floatRings 4s ease-in-out infinite; }
-@keyframes floatRings { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
-
-/* PHOTO ENCADRÉE AVEC FLEURS EN ANGLES */
-.sec-couple-photo { 
-    width: 100%; 
-    padding: 5vh 20px 7vh; 
-    display: flex; 
-    justify-content: center; 
+.person-block {
+    margin-bottom: 25px;
 }
 
-.framed-photo-card.floral-framed {
+.person-role {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.person-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--text-dark);
+}
+
+.person-name strong {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* 6. PROGRAMME (STYLE TIMELINE ÉPURÉE) */
+.timeline-v {
+    margin-top: 30px;
+    border-left: 1px solid var(--gold-light);
+    padding-left: 30px;
+}
+
+.timeline-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 45px;
     position: relative;
-    background: #FFFFFF;
-    border: 1px solid var(--gold-light);
-    outline: 1px solid var(--gold-dark);
-    outline-offset: -6px;
-    padding: 22px 18px 24px 18px;
-    max-width: 340px;
-    width: 100%;
-    box-shadow: 0 18px 40px rgba(98, 34, 41, 0.07);
-    text-align: center; 
-    border-radius: 2px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.framed-photo-card.floral-framed:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 22px 48px rgba(98, 34, 41, 0.12);
-}
-
-.photo-corner {
+.timeline-row::before {
+    content: '';
     position: absolute;
-    width: 65px;
-    height: 65px;
-    pointer-events: none;
-    z-index: 10;
+    left: -35px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    background: var(--gold);
+    border-radius: 50%;
 }
 
-.photo-corner.top-l { top: 2px; left: 2px; }
-.photo-corner.bottom-r { bottom: 2px; right: 2px; }
-
-.photo-frame-inner { 
-    width: 100%; 
-    height: 330px; 
-    overflow: hidden; 
-    border-radius: 2px; 
-    margin-bottom: 16px; 
-    border: 1px solid rgba(232, 202, 136, 0.5);
+.time-col {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    min-width: 80px;
+    line-height: 1;
 }
 
-.framed-photo { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    object-position: center top; 
+.desc-col { flex: 1; }
+
+.event-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    font-weight: 500;
 }
 
-.photo-caption { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-style: italic; 
-    font-size: 1.25rem; 
-    color: var(--text-burgundy) !important; 
+.event-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 300;
+}
+
+.event-loc {
+    font-size: 0.8rem;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.badge-tag {
+    display: inline-block;
+    background: #FAF8F5;
+    border: 1px solid var(--gold-light);
+    padding: 4px 12px;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: var(--gold);
     font-weight: 600;
-    line-height: 1.4;
 }
 
-/* COMITÉ D'HONNEUR */
-.sec-honors { width: 100%; padding: 6vh 20px; }
-
-.honors-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
-    width: 100%; max-width: 720px; margin: 10px auto;
+/* 7. LIEU & MAP */
+.map-wrapper {
+    width: 100%;
+    height: 380px;
+    border: 1px solid var(--border-light);
+    overflow: hidden;
+    margin-top: 20px;
 }
 
-.honor-card {
-    background: #FFF; border: 1px solid var(--gold-light);
-    padding: 22px 15px; border-radius: 2px; text-align: center;
-    box-shadow: 0 10px 25px rgba(98, 34, 41, 0.04);
+.map-wrapper iframe {
+    filter: grayscale(20%);
 }
 
-.honor-role { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-taupe); display: block; margin-bottom: 6px; font-weight: 600; }
-.honor-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--text-burgundy) !important; font-weight: 600; }
+/* 8. RSVP */
+.sec-rsvp { text-align: center; }
 
-/* PROGRAMME ET TIMELINE */
-.program-grid { display: grid; grid-template-columns: 1fr; gap: 50px; width: 100%; margin-top: 20px; align-items: stretch; }
-@media(min-width: 768px) { .program-grid { grid-template-columns: 1.2fr 1fr; gap: 60px; } }
-
-.timeline-container { position: relative; padding-left: 20px; padding-top: 10px; }
-.timeline-container::before { content: ''; position: absolute; left: 0; top: 15px; bottom: 30px; width: 1px; background-color: var(--gold-light); opacity: 0.6; }
-.timeline-item { position: relative; display: flex; align-items: flex-start; margin-bottom: 50px; }
-.timeline-item:last-child { margin-bottom: 0; }
-.timeline-dot { position: absolute; left: -25px; top: 10px; width: 10px; height: 10px; background: #FFF; border: 2px solid var(--gold-dark); transform: rotate(45deg); }
-
-.timeline-date { display: flex; flex-direction: column; min-width: 100px; margin-right: 20px; text-align: left; }
-.timeline-date .day { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; color: var(--text-burgundy) !important; line-height: 1; margin-bottom: 5px; font-weight: 600; }
-.timeline-date .time { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-taupe); letter-spacing: 1px; font-weight: 600; }
-
-.timeline-desc { padding-top: 5px; text-align: left; }
-.timeline-desc h4 { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text-burgundy) !important; margin-bottom: 8px; text-align: left; }
-.timeline-desc p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--text-taupe); font-style: italic; text-align: left; font-weight: 500; }
-
-.map-container { display: flex; align-items: center; justify-content: center; }
-.map-frame { width: 100%; border-radius: 4px; overflow: hidden; min-height: 300px; height: 100%; background: #FFF; border: 1px solid var(--gold-light); padding: 8px; box-shadow: 0 15px 35px rgba(98, 34, 41, 0.08); }
-.map-frame iframe { width: 100%; height: 100%; border-radius: 2px; filter: grayscale(30%) sepia(10%) contrast(95%); transition: 0.3s; }
-
-/* RSVP FORMULAIRE & MESSAGE DE SUCCÈS */
-.sec-rsvp-wrapper { width: 100%; padding: 8vh 20px; }
-.rsvp-card { background: #FFF; border: 1px solid var(--gold-light); padding: 50px 40px; border-radius: 2px; width: 100%; max-width: 600px; margin: 0 auto; box-shadow: 0 15px 35px rgba(98, 34, 41, 0.05); text-align: center; }
-.presence-counter { margin: 10px auto 30px; padding-bottom: 25px; border-bottom: 1px dashed #DFD5CD; max-width: 100%; }
-.presence-counter #guest-count { font-size: 4rem; font-family: 'Cormorant Garamond', serif; color: var(--text-burgundy) !important; line-height: 1; font-weight: 700; font-variant-numeric: lining-nums !important; }
-.presence-counter p { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); margin-top: 5px; font-weight: 600; }
-
-.rsvp-form { margin-top: 20px; width: 100%; }
-.form-group-elegant { position: relative; margin-bottom: 35px; text-align: left; }
-.form-group-elegant input, .form-group-elegant textarea, .form-group-elegant select { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid #DFD5CD; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-burgundy) !important; border-radius: 0; transition: border-color 0.3s; resize: none; font-weight: 600; }
-.form-group-elegant input:focus, .form-group-elegant textarea:focus, .form-group-elegant select:focus { outline: none; border-bottom-color: var(--gold-dark); }
-.form-group-elegant label { position: absolute; top: 12px; left: 0; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--text-taupe); pointer-events: none; transition: 0.3s ease all; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
-.form-group-elegant input:focus ~ label, .form-group-elegant input:not(:placeholder-shown) ~ label, .form-group-elegant textarea:focus ~ label, .form-group-elegant textarea:not(:placeholder-shown) ~ label { top: -15px; font-size: 0.65rem; color: var(--gold-dark); font-weight: 600; }
-
-.select-group select { appearance: none; -webkit-appearance: none; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-taupe); font-weight: 500; }
-.select-group select:focus, .select-group select:valid { color: var(--text-burgundy) !important; border-bottom-color: var(--gold-dark); }
-.select-group::after { content: '▼'; font-size: 0.6rem; color: var(--gold-dark); position: absolute; right: 0; top: 15px; pointer-events: none; }
-
-.btn-rsvp { width: 100%; background: transparent; color: var(--text-burgundy) !important; border: 1.5px solid var(--text-burgundy); padding: 18px; border-radius: 2px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.4s ease; margin-top: 10px; }
-.btn-rsvp:hover { background: var(--text-burgundy); color: #FFF !important; letter-spacing: 4px; }
-
-.msg-success { 
-    color: var(--text-burgundy) !important; 
-    font-family: 'Cormorant Garamond', serif; 
-    font-style: italic; 
-    font-size: 1.5rem; 
-    font-weight: 600; 
-    margin-top: 25px; 
-    text-align: center; 
-    line-height: 1.5; 
+.presence-counter {
+    margin-bottom: 30px;
 }
 
-/* LIVRE D'OR */
-.carousel-container { width: 100%; overflow: hidden; margin-top: 30px; }
-.carousel-track { display: flex; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); width: 100%; }
-.carousel-msg { min-width: 100%; padding: 20px; text-align: center; }
-.msg-text { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-style: italic; color: var(--text-burgundy) !important; margin-bottom: 15px; font-weight: 500; }
-.msg-author { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-taupe); font-weight: 600; }
+.presence-counter #guest-count {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: var(--gold);
+    line-height: 1;
+}
 
-/* MEDIA QUERIES (MOBILE) */
+.presence-counter p {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.rsvp-form-clean {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group input, .input-group select, .input-group textarea {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid var(--border-light);
+    background: transparent;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+    border-bottom-color: var(--gold);
+}
+
+.btn-submit {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--text-dark);
+    padding: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-submit:hover {
+    background: var(--text-dark);
+    color: #FFFFFF;
+}
+
+.msg-success {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-top: 20px;
+}
+
+/* 9. LIVRE D'OR */
+.sec-guestbook { text-align: center; }
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-msg {
+    min-width: 100%;
+    padding: 10px;
+}
+
+.msg-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.msg-author {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+}
+
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-    .corner-ornament {
-        width: 85px;
-        height: 85px;
-    }
-    .top-left { top: 10px; left: 10px; }
-    .bottom-left { bottom: 10px; left: 10px; }
-    .top-right { top: 10px; right: 10px; }
-    .bottom-right { bottom: 10px; right: 10px; }
-
-    .hero-invitation-card { padding: 6vh 15px 4vh; }
-    .first-name, .second-name { font-size: 2.5rem; letter-spacing: 3px; }
-    .amp-classic { font-size: 2.2rem; }
-    .card-corner { width: 50px; height: 50px; }
-
-    .section-title { font-size: 2.1rem !important; letter-spacing: 2px; }
-
-    .hero-photo-frame-luxe { 
-        width: 260px; 
-        height: 340px; 
-    }
-    .frame-outer-gold { border-radius: 130px 130px 10px 10px; }
-    .frame-inner-gold { border-radius: 121px 121px 6px 6px; }
-
-    .wax-seal-royal-3d { width: 95px; height: 95px; }
-
-    .framed-photo-card.floral-framed { max-width: 290px; padding: 18px 14px 20px 14px; }
-    .photo-frame-inner { height: 270px; }
-    .photo-corner { width: 50px; height: 50px; }
-
-    .fade-text { font-size: 1.25rem !important; }
-    .quote-text { font-size: 1.45rem !important; }
-
-    .date-display-enhanced { gap: 8px; }
-    .date-days, .date-month, .date-year {
-        font-size: 2.1rem !important;
-        letter-spacing: 1.5px;
-    }
-
-    .c-layout { gap: 15px; }
-    .c-num { font-size: 2.6rem; }
-    .c-item { min-width: 50px; }
-
-    .honors-grid { grid-template-columns: 1fr; gap: 12px; }
-    .honor-card { padding: 18px 12px; }
-    .honor-name { font-size: 1.35rem; }
-
-    .sec-transition { gap: 10px; }
-    .transition-text { font-size: 2.2rem; }
-    .wedding-rings-svg { height: 40px; }
-
-    .timeline-container { padding-left: 15px; }
-    .timeline-container::before { left: 0; }
-    .timeline-dot { left: -20px; }
-    .timeline-date { min-width: 75px; margin-right: 15px; }
-    .timeline-date .day { font-size: 1.6rem; }
+    .navbar { padding: 0 20px; }
+    .nav-links { display: none; }
     
-    .map-frame { min-height: 250px; }
-    .rsvp-card { padding: 40px 20px; }
+    .hero-name { font-size: 3.8rem; }
+    .hero-amp { font-size: 2.5rem; }
+    
+    .entourage-columns {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .col-separator { display: none; }
+    
+    .c-layout { gap: 18px; }
+    .c-num { font-size: 2.8rem; }
 }

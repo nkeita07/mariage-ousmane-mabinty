@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================
-       1. ANIMATION DE PLUIE D'ÉTINCELLES & CŒURS
+       1. ANIMATION DES ÉTINCELLES D'ARRIÈRE-PLAN
        ========================================= */
     const canvas = document.getElementById("bg-sparkles");
     if (canvas) {
         const ctx = canvas.getContext("2d");
         let particles = [];
-        const particleCount = 45;
+        const particleCount = 35;
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -22,20 +22,18 @@ document.addEventListener("DOMContentLoaded", () => {
             reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * -canvas.height;
-                this.size = Math.random() * 8 + 6;
-                this.speedY = Math.random() * 0.8 + 0.3;
+                this.size = Math.random() * 2.5 + 1;
+                this.speedY = Math.random() * 0.6 + 0.2;
                 this.speedX = Math.random() * 0.4 - 0.2;
-                this.opacity = Math.random() * 0.6 + 0.3;
-                this.isHeart = Math.random() < 0.4;
-                const colors = ['#C99B41', '#E8CA88', '#622229', '#D4AF37'];
-                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.opacity = Math.random() * 0.5 + 0.2;
+                this.color = '#C99B41';
             }
 
             update() {
                 this.y += this.speedY;
                 this.x += this.speedX;
 
-                if (this.y > canvas.height + 20) {
+                if (this.y > canvas.height + 10) {
                     this.reset();
                     this.y = -10;
                 }
@@ -45,22 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 ctx.save();
                 ctx.globalAlpha = this.opacity;
                 ctx.fillStyle = this.color;
-
-                if (this.isHeart) {
-                    ctx.beginPath();
-                    const topCurveHeight = this.size * 0.3;
-                    ctx.moveTo(this.x, this.y + topCurveHeight);
-                    ctx.bezierCurveTo(this.x, this.y, this.x - this.size / 2, this.y, this.x - this.size / 2, this.y + topCurveHeight);
-                    ctx.bezierCurveTo(this.x - this.size / 2, this.y + (this.size + topCurveHeight) / 2, this.x, this.y + this.size, this.x, this.y + this.size);
-                    ctx.bezierCurveTo(this.x, this.y + this.size, this.x + this.size / 2, this.y + (this.size + topCurveHeight) / 2, this.x + this.size / 2, this.y + topCurveHeight);
-                    ctx.bezierCurveTo(this.x + this.size / 2, this.y, this.x, this.y, this.x, this.y + topCurveHeight);
-                    ctx.closePath();
-                    ctx.fill();
-                } else {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size / 3, 0, Math.PI * 2);
-                    ctx.fill();
-                }
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
                 ctx.restore();
             }
         }
@@ -78,30 +63,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       2. OUVERTURE DIRECTE ET NETTE DU RIDEAU
+       2. OUVERTURE DE L'ENVELOPPE D'INTRO
        ========================================= */
     const curtainTrigger = document.getElementById("curtain-trigger");
     const introScreen = document.getElementById("intro-screen");
 
     if (curtainTrigger && introScreen) {
-        let isOpened = false;
-        
         document.body.style.overflow = "hidden";
 
         curtainTrigger.addEventListener("click", () => {
-            if (isOpened) return;
-            isOpened = true;
-
             introScreen.classList.add("open");
-
-            setTimeout(() => {
-                document.body.style.overflow = "auto";
-                introScreen.style.pointerEvents = "none";
-            }, 1400);
-
-            setTimeout(() => {
-                introScreen.style.display = "none";
-            }, 1800);
+            document.body.style.overflow = "auto";
         });
     }
 
@@ -117,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const difference = weddingDate - now;
 
             if (difference < 0) {
-                countdownContainer.innerHTML = "<p style='font-size: 1.5rem; color: var(--text-burgundy); font-family: \"Cormorant Garamond\", serif;'>C'est le grand jour ! ❤️</p>";
+                countdownContainer.innerHTML = "<p style='font-size: 1.5rem; color: var(--gold); font-family: \"Cormorant Garamond\", serif;'>C'est le grand jour ! ❤️</p>";
                 return;
             }
 
