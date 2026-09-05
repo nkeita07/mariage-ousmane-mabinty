@@ -10,33 +10,53 @@
 
     <canvas id="bg-sparkles"></canvas>
 
-    <!-- 1. ÉCRAN D'OUVERTURE : ENVELOPPE DORÉE SUR FOND BLANC -->
     <div id="intro-screen" class="intro-screen">
         <p class="envelope-surtitle">UNE INVITATION VOUS ATTEND</p>
 
-        <div class="envelope-wrapper" id="curtain-trigger">
-            <svg class="envelope-svg" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
-                <!-- Corps de l'enveloppe -->
-                <path d="M 20 240 L 20 80 L 200 180 L 380 80 L 380 240 Z" fill="#FAF8F5" stroke="#C99B41" stroke-width="1.5"/>
-                <!-- Rabat supérieur -->
-                <path d="M 20 80 L 200 10 L 380 80 L 200 120 Z" fill="#FFFFFF" stroke="#C99B41" stroke-width="1.5"/>
-            </svg>
+        <div class="envelope-wrapper-floating" id="curtain-trigger">
+            <div class="envelope-container">
+                
+                <div class="envelope-top-flap">
+                    <svg viewBox="0 0 380 120" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 0 120 L 190 0 L 380 120 Z" fill="#F4EFE6" stroke="#C99B41" stroke-width="1.2"/>
+                    </svg>
+                </div>
 
-            <!-- Carte sortant de l'enveloppe -->
-            <div class="envelope-card-inner">
-                <p class="card-mini-head">VOUS ÊTES CORDIALEMENT INVITÉ(E) AU MARIAGE DE</p>
-                <h2 class="card-names">Ousmane & Mabinty</h2>
-                <p class="card-date-loc">20 & 21 · 11 · 2026 — KAMSAR</p>
+                <div class="envelope-back"></div>
+
+                <div class="envelope-card-inner">
+                    <p class="card-mini-head">VOUS ÊTES CORDIALEMENT INVITÉ(E) AU MARIAGE DE</p>
+                    <h2 class="card-names">Ousmane & Mabinty</h2>
+                    <p class="card-date-loc">20 & 21 · 11 · 2026 — KAMSAR</p>
+                </div>
+
+                <div class="envelope-front-pocket">
+                    <svg viewBox="0 0 380 130" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 0 0 L 190 80 L 380 0 L 380 130 L 0 130 Z" fill="#FAF8F5" stroke="#C99B41" stroke-width="1.2"/>
+                        <path d="M 0 130 L 190 70 M 380 130 L 190 70" stroke="#E8CA88" stroke-width="0.8" opacity="0.6"/>
+                    </svg>
+                </div>
+
             </div>
         </div>
 
         <p class="envelope-action">CLIQUEZ POUR OUVRIR</p>
     </div>
 
-    <!-- BARRE DE NAVIGATION FIXE -->
     <header class="navbar">
-        <div class="nav-brand">Ousmane & Mabinty</div>
-        <nav class="nav-links">
+        <div class="nav-brand">
+            <span>Ousmane</span>
+            <span class="brand-amp">&</span>
+            <span>Mabinty</span>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-links" id="nav-links">
             <a href="#entourage">ENTOURAGE</a>
             <a href="#programme">PROGRAMME</a>
             <a href="#lieu">LIEUX</a>
@@ -46,8 +66,9 @@
 
     <main id="main-content">
         
-        <!-- 2. HERO : ANNONCE PRINCIPALE SANS PHOTO -->
         <section class="sec-hero">
+            <div class="gold-line-subtle"></div>
+
             <p class="hero-subhead">NOUS AVONS L'IMMENSE BONHEUR DE VOUS INVITER À CÉLÉBRER NOTRE UNION</p>
             
             <div class="hero-names-block">
@@ -58,28 +79,20 @@
 
             <p class="hero-dates-line">VENDREDI 20 NOVEMBRE & SAMEDI 21 NOVEMBRE 2026</p>
             <p class="hero-location-line">Kamsar — Guinée</p>
-            <div class="gold-divider-center"></div>
+            
+            <div class="gold-line-subtle"></div>
 
-            <p class="fade-text">
+            <p class="fade-text" style="margin-top: 25px;">
                 Par la grâce d'Allah, nos cœurs se sont choisis pour ne faire qu'un. C'est avec amour et une immense joie que nous vous invitons chaleureusement à célébrer notre union.
             </p>
         </section>
 
-        <!-- 3. CITATION -->
-        <section class="sec-quote">
-            <p class="quote-text">
-                "D'une simple rencontre est né un amour incommensurable, que nous avons décidé de protéger et d'attiser sa flamme chaque jour de notre vie."
-            </p>
-        </section>
-
-        <!-- 4. COMPTE À REBOURS -->
         <section class="sec-countdown">
             <p class="sur-title">L'ATTENTE TOUCHE À SA FIN</p>
             <div id="countdown" class="c-layout"></div>
             <p class="sub-title">Chaque seconde nous rapproche de vous.</p>
         </section>
 
-        <!-- 5. ENTOURAGE / COMITÉ D'HONNEUR (DEUX COLONNES) -->
         <section id="entourage" class="sec-entourage">
             <p class="sur-title">NOTRE ENTOURAGE</p>
             <h2 class="section-title">Ceux qui nous <span>entourent</span></h2>
@@ -87,7 +100,6 @@
             <div class="gold-divider-left"></div>
 
             <div class="entourage-columns">
-                <!-- Colonne Marié -->
                 <div class="entourage-col">
                     <p class="col-head">LE MARIÉ & SES PROCHES</p>
                     <div class="person-block">
@@ -106,7 +118,6 @@
 
                 <div class="col-separator"></div>
 
-                <!-- Colonne Mariée -->
                 <div class="entourage-col">
                     <p class="col-head">LA MARIÉE & SES PROCHES</p>
                     <div class="person-block">
@@ -125,7 +136,6 @@
             </div>
         </section>
 
-        <!-- 6. PROGRAMME -->
         <section id="programme" class="sec-program">
             <p class="sur-title">LE PROGRAMME</p>
             <h2 class="section-title">Deux jours <span>de célébration</span></h2>
@@ -134,30 +144,49 @@
 
             <div class="program-layout">
                 <div class="timeline-v">
+                    
                     <div class="timeline-row">
                         <div class="time-col">09h00</div>
                         <div class="desc-col">
-                            <h3 class="event-title">Mariage Religieux & Civil</h3>
-                            <p class="event-desc">Célébration de l'union devant Dieu et la République.</p>
-                            <p class="event-loc">📍 Chez la mariée au bâtiment M12 — Kamsar Cité</p>
+                            <h3 class="event-title">Mariage Religieux</h3>
+                            <p class="event-desc">Célébration de l'union devant Dieu.</p>
                             <span class="badge-tag">VENDREDI 20 NOVEMBRE 2026</span>
                         </div>
                     </div>
 
                     <div class="timeline-row">
-                        <div class="time-col">19h00</div>
+                        <div class="time-col">11h00</div>
+                        <div class="desc-col">
+                            <h3 class="event-title">Signature Civil</h3>
+                            <p class="event-desc">Officialisation de notre union devant l'État civil.</p>
+                            <span class="badge-tag">VENDREDI 20 NOVEMBRE 2026</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row">
+                        <div class="time-col">16h00</div>
+                        <div class="desc-col">
+                            <h3 class="event-title">Guinai Faré</h3>
+                            <p class="event-desc">Célébration traditionnelle en musique et danses.</p>
+                            <p class="event-loc">📍 À Dougoufissa</p>
+                            <span class="badge-tag">VENDREDI 20 NOVEMBRE 2026</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row">
+                        <div class="time-col">16h00</div>
                         <div class="desc-col">
                             <h3 class="event-title">Réception</h3>
-                            <p class="event-desc">Soirée festive, diner et réjouissances en votre compagnie.</p>
-                            <p class="event-loc">📍 Guinai fare à Dougoufissa — Kamsar</p>
+                            <p class="event-desc">Grand repas, fête et réjouissances avec tous nos invités.</p>
+                            <p class="event-loc">📍 À Dougoufissa</p>
                             <span class="badge-tag">SAMEDI 21 NOVEMBRE 2026</span>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- 7. LIEU & CARTE -->
         <section id="lieu" class="sec-location">
             <p class="sur-title">LOCALISATION</p>
             <h2 class="section-title">Se rendre <span>aux événements</span></h2>
@@ -168,7 +197,6 @@
             </div>
         </section>
 
-        <!-- 8. RSVP -->
         <section id="rsvp" class="sec-rsvp">
             <p class="sur-title">RSVP</p>
             <h2 class="section-title">Confirmez <span>votre présence</span></h2>
@@ -202,7 +230,6 @@
             </div>
         </section>
 
-        <!-- 9. LIVRE D'OR -->
         <section class="sec-guestbook">
             <p class="sur-title">LIVRE D'OR</p>
             <h2 class="section-title">Vos <span>mots doux</span></h2>

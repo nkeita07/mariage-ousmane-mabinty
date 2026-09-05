@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.speedY = Math.random() * 0.6 + 0.2;
                 this.speedX = Math.random() * 0.4 - 0.2;
                 this.opacity = Math.random() * 0.5 + 0.2;
-                this.color = '#C99B41';
+                this.color = '#D4AF37';
             }
 
             update() {
@@ -63,22 +63,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       2. OUVERTURE DE L'ENVELOPPE D'INTRO
+       2. GESTION DU MENU BURGER MOBILE
        ========================================= */
-    const curtainTrigger = document.getElementById("curtain-trigger");
-    const introScreen = document.getElementById("intro-screen");
+    const navToggle = document.getElementById("nav-toggle");
+    const navLinks = document.getElementById("nav-links");
 
-    if (curtainTrigger && introScreen) {
-        document.body.style.overflow = "hidden";
+    if (navToggle && navLinks) {
+        navToggle.addEventListener("click", () => {
+            navToggle.classList.toggle("active");
+            navLinks.classList.toggle("active");
+        });
 
-        curtainTrigger.addEventListener("click", () => {
-            introScreen.classList.add("open");
-            document.body.style.overflow = "auto";
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navToggle.classList.remove("active");
+                navLinks.classList.remove("active");
+            });
         });
     }
 
     /* =========================================
-       3. COMPTE À REBOURS
+       3. OUVERTURE DE L'ENVELOPPE ET REDIRECTION
+       ========================================= */
+    const introScreen = document.getElementById("intro-screen");
+
+    if (introScreen) {
+        document.body.style.overflow = "hidden";
+
+        introScreen.addEventListener("click", () => {
+            introScreen.classList.add("open-animation");
+
+            setTimeout(() => {
+                introScreen.classList.add("open");
+                document.body.style.overflow = "auto";
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 1000);
+        });
+    }
+
+    /* =========================================
+       4. COMPTE À REBOURS
        ========================================= */
     const countdownContainer = document.getElementById("countdown");
     if (countdownContainer) {
@@ -111,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       4. GOOGLE SHEETS RSVP & LIVRE D'OR
+       5. GOOGLE SHEETS RSVP & LIVRE D'OR
        ========================================= */
     const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbz7aI8H_3zvgAr9E5cxwUFjit91s2xFgXGNHpMy0qb9yAZF9jh8kMERJbWRCamcpauw7w/exec';
     const guestCountElem = document.getElementById("guest-count");
