@@ -10,6 +10,7 @@
 
     <canvas id="bg-sparkles"></canvas>
 
+    <!-- 1. ÉCRAN D'OUVERTURE ENVELOPPE -->
     <div id="intro-screen" class="intro-screen">
         <p class="envelope-surtitle">UNE INVITATION VOUS ATTEND</p>
 
@@ -43,6 +44,7 @@
         <p class="envelope-action">CLIQUEZ POUR OUVRIR</p>
     </div>
 
+    <!-- 2. BARRE DE NAVIGATION FIXE EN HAUT SANS PANNEAU LATÉRAL -->
     <header class="navbar">
         <div class="nav-brand">
             <span>Ousmane</span>
@@ -50,13 +52,7 @@
             <span>Mabinty</span>
         </div>
 
-        <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <nav class="nav-links" id="nav-links">
+        <nav class="nav-links">
             <a href="#entourage">ENTOURAGE</a>
             <a href="#programme">PROGRAMME</a>
             <a href="#lieu">LIEUX</a>
@@ -66,6 +62,7 @@
 
     <main id="main-content">
         
+        <!-- HERO -->
         <section class="sec-hero">
             <div class="gold-line-subtle"></div>
 
@@ -87,12 +84,15 @@
             </p>
         </section>
 
+
+        <!-- COMPTE À REBOURS -->
         <section class="sec-countdown">
             <p class="sur-title">L'ATTENTE TOUCHE À SA FIN</p>
             <div id="countdown" class="c-layout"></div>
             <p class="sub-title">Chaque seconde nous rapproche de vous.</p>
         </section>
 
+        <!-- ENTOURAGE -->
         <section id="entourage" class="sec-entourage">
             <p class="sur-title">NOTRE ENTOURAGE</p>
             <h2 class="section-title">Ceux qui nous <span>entourent</span></h2>
@@ -136,6 +136,7 @@
             </div>
         </section>
 
+        <!-- PROGRAMME : TIMELINE AVEC DATES EN TITRES CIBLÉS -->
         <section id="programme" class="sec-program">
             <p class="sur-title">LE PROGRAMME</p>
             <h2 class="section-title">Deux jours <span>de célébration</span></h2>
@@ -143,50 +144,65 @@
             <div class="gold-divider-left"></div>
 
             <div class="program-layout">
-                <div class="timeline-v">
-                    
-                    <div class="timeline-row">
-                        <div class="time-col">09h00</div>
-                        <div class="desc-col">
-                            <h3 class="event-title">Mariage Religieux</h3>
-                            <p class="event-desc">Célébration de l'union devant Dieu.</p>
-                            <span class="badge-tag">VENDREDI 20 NOVEMBRE 2026</span>
-                        </div>
+                
+                <!-- JOUR 1 -->
+                <div class="timeline-day-block">
+                    <div class="timeline-day-header">
+                        <h3 class="timeline-day-title">Vendredi 20 novembre 2026</h3>
+                        <div class="timeline-day-line"></div>
                     </div>
 
-                    <div class="timeline-row">
-                        <div class="time-col">11h00</div>
-                        <div class="desc-col">
-                            <h3 class="event-title">Signature Civil</h3>
-                            <p class="event-desc">Officialisation de notre union devant l'État civil.</p>
-                            <span class="badge-tag">VENDREDI 20 NOVEMBRE 2026</span>
+                    <div class="timeline-v">
+                        <div class="timeline-row">
+                            <div class="time-col">09h00</div>
+                            <div class="desc-col">
+                                <h3 class="event-title">Mariage Religieux</h3>
+                                <p class="event-desc">Célébration de l'union devant Dieu.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-row">
+                            <div class="time-col">11h00</div>
+                            <div class="desc-col">
+                                <h3 class="event-title">Signature Civil</h3>
+                                <p class="event-desc">Officialisation de notre union devant l'État civil.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-row">
+                            <div class="time-col">16h00</div>
+                            <div class="desc-col">
+                                <h3 class="event-title">Guinai Faré</h3>
+                                <p class="event-desc">Célébration traditionnelle en musique et danses.</p>
+                                <p class="event-loc">📍 À Dougoufissa</p>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="timeline-row">
-                        <div class="time-col">16h00</div>
-                        <div class="desc-col">
-                            <h3 class="event-title">Guinai Faré</h3>
-                            <p class="event-desc">Célébration traditionnelle en musique et danses.</p>
-                            <p class="event-loc">📍 À Dougoufissa</p>
-                            <span class="badge-tag">VENDREDI 20 NOVEMBRE 2026</span>
-                        </div>
-                    </div>
-
-                    <div class="timeline-row">
-                        <div class="time-col">16h00</div>
-                        <div class="desc-col">
-                            <h3 class="event-title">Réception</h3>
-                            <p class="event-desc">Grand repas, fête et réjouissances avec tous nos invités.</p>
-                            <p class="event-loc">📍 À Dougoufissa</p>
-                            <span class="badge-tag">SAMEDI 21 NOVEMBRE 2026</span>
-                        </div>
-                    </div>
-
                 </div>
+
+                <!-- JOUR 2 -->
+                <div class="timeline-day-block">
+                    <div class="timeline-day-header">
+                        <h3 class="timeline-day-title">Samedi 21 novembre 2026</h3>
+                        <div class="timeline-day-line"></div>
+                    </div>
+
+                    <div class="timeline-v">
+                        <div class="timeline-row">
+                            <div class="time-col">16h00</div>
+                            <div class="desc-col">
+                                <h3 class="event-title">Réception</h3>
+                                <p class="event-desc">Grand repas, fête et réjouissances avec tous nos invités.</p>
+                                <p class="event-loc">📍 À Dougoufissa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
+        <!-- LIEU -->
         <section id="lieu" class="sec-location">
             <p class="sur-title">LOCALISATION</p>
             <h2 class="section-title">Se rendre <span>aux événements</span></h2>
@@ -197,6 +213,7 @@
             </div>
         </section>
 
+        <!-- RSVP -->
         <section id="rsvp" class="sec-rsvp">
             <p class="sur-title">RSVP</p>
             <h2 class="section-title">Confirmez <span>votre présence</span></h2>
@@ -230,6 +247,7 @@
             </div>
         </section>
 
+        <!-- LIVRE D'OR -->
         <section class="sec-guestbook">
             <p class="sur-title">LIVRE D'OR</p>
             <h2 class="section-title">Vos <span>mots doux</span></h2>

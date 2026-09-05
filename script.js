@@ -63,27 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       2. GESTION DU MENU BURGER MOBILE
-       ========================================= */
-    const navToggle = document.getElementById("nav-toggle");
-    const navLinks = document.getElementById("nav-links");
-
-    if (navToggle && navLinks) {
-        navToggle.addEventListener("click", () => {
-            navToggle.classList.toggle("active");
-            navLinks.classList.toggle("active");
-        });
-
-        navLinks.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-                navToggle.classList.remove("active");
-                navLinks.classList.remove("active");
-            });
-        });
-    }
-
-    /* =========================================
-       3. OUVERTURE DE L'ENVELOPPE ET REDIRECTION
+       2. OUVERTURE DE L'ENVELOPPE ET REDIRECTION
        ========================================= */
     const introScreen = document.getElementById("intro-screen");
 
@@ -102,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       4. COMPTE À REBOURS
+       3. COMPTE À REBOURS
        ========================================= */
     const countdownContainer = document.getElementById("countdown");
     if (countdownContainer) {
@@ -135,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       5. GOOGLE SHEETS RSVP & LIVRE D'OR
+       4. GOOGLE SHEETS RSVP & LIVRE D'OR
        ========================================= */
     const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbz7aI8H_3zvgAr9E5cxwUFjit91s2xFgXGNHpMy0qb9yAZF9jh8kMERJbWRCamcpauw7w/exec';
     const guestCountElem = document.getElementById("guest-count");
