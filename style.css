@@ -51,7 +51,9 @@ body {
     }
 }
 
-/* ÉCRAN D'OUVERTURE ENVELOPPE */
+/* =========================================
+   ÉCRAN D'OUVERTURE ENVELOPPE
+   ========================================= */
 .intro-screen {
     position: fixed;
     top: 0; left: 0;
@@ -176,9 +178,7 @@ body {
     user-select: none;
 }
 
-/* =========================================
-   NAVBAR FIXE EN HAUT (SANS PANNEAU LATÉRAL)
-   ========================================= */
+/* NAVBAR FIXE EN HAUT */
 .navbar {
     position: fixed;
     top: 0; left: 0; width: 100%;
@@ -386,56 +386,7 @@ section {
     margin-top: 8px;
 }
 
-/* ENTOURAGE / COMITÉ */
-.entourage-columns {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
-    margin-top: 20px;
-}
-
-.entourage-col { flex: 1; }
-
-.col-separator {
-    width: 1px;
-    background-color: var(--border-light);
-    align-self: stretch;
-}
-
-.col-head {
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    color: var(--gold);
-    margin-bottom: 30px;
-    font-weight: 600;
-}
-
-.person-block { margin-bottom: 25px; }
-
-.person-role {
-    font-size: 0.6rem;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    display: block;
-    margin-bottom: 4px;
-}
-
-.person-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: var(--text-dark);
-}
-
-.person-name strong {
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-/* =========================================
-   PROGRAMME : STYLE DE LA DATES EN TITRE
-   ========================================= */
+/* PROGRAMME */
 .timeline-day-block {
     margin-bottom: 50px;
 }
@@ -491,9 +442,9 @@ section {
 
 .time-col {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--gold);
-    min-width: 80px;
+    min-width: 65px;
     line-height: 1;
 }
 
@@ -519,6 +470,99 @@ section {
     color: var(--text-dark);
 }
 
+/* ENTOURAGE / COMITÉ */
+.entourage-columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.entourage-col { flex: 1; }
+
+.col-separator {
+    width: 1px;
+    background-color: var(--border-light);
+    align-self: stretch;
+}
+
+.col-head {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.person-block { margin-bottom: 25px; }
+
+.person-role {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.person-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--text-dark);
+}
+
+.person-name strong {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* PHOTO & CITATION ENCADRÉE */
+.sec-photo-quote {
+    padding: 6vh 20px;
+    text-align: center;
+}
+
+.photo-quote-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.photo-frame {
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid var(--gold-light);
+    padding: 12px;
+    background: #FAF8F5;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.couple-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.quote-box {
+    border: 1px solid var(--gold);
+    padding: 25px 30px;
+    background: #FFFFFF;
+    position: relative;
+}
+
+.quote-box-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
 /* LIEU & MAP */
 .map-wrapper {
     width: 100%;
@@ -532,23 +576,6 @@ section {
 
 /* RSVP */
 .sec-rsvp { text-align: center; }
-
-.presence-counter { margin-bottom: 30px; }
-
-.presence-counter #guest-count {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem;
-    color: var(--gold);
-    line-height: 1;
-}
-
-.presence-counter p {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin-top: 5px;
-}
 
 .rsvp-form-clean {
     max-width: 500px;
@@ -675,4 +702,8 @@ section {
     
     .c-layout { gap: 18px; }
     .c-num { font-size: 2.8rem; }
+
+    .quote-box-text {
+        font-size: 1.3rem;
+    }
 }

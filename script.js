@@ -118,41 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
        4. GOOGLE SHEETS RSVP & LIVRE D'OR
        ========================================= */
     const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbz7aI8H_3zvgAr9E5cxwUFjit91s2xFgXGNHpMy0qb9yAZF9jh8kMERJbWRCamcpauw7w/exec';
-    const guestCountElem = document.getElementById("guest-count");
     const carouselTrack = document.getElementById('carousel-track');
-
-    function animateValue(id, start, end, duration) {
-        if (!document.getElementById(id)) return;
-        if (start === end) {
-            document.getElementById(id).innerHTML = end;
-            return;
-        }
-        let range = end - start;
-        let current = start;
-        let increment = end > start ? 1 : -1;
-        let stepTime = Math.abs(Math.floor(duration / Math.max(Math.abs(range), 1)));
-        let obj = document.getElementById(id);
-        let timer = setInterval(function() {
-            current += increment;
-            obj.innerHTML = current;
-            if (current == end) { clearInterval(timer); }
-        }, stepTime);
-    }
 
     function fetchGuestData() {
         fetch(googleScriptUrl)
             .then(res => res.json())
             .then(data => {
-                let count = 0;
-                if (data.totalOui !== undefined) count = data.totalOui;
-                else if (data.totalGuests !== undefined) count = data.totalGuests;
-                else if (data.count !== undefined) count = data.count;
-                else if (data.messages && Array.isArray(data.messages)) count = data.messages.length;
-
-                if (guestCountElem) {
-                    animateValue("guest-count", 0, count, 1200);
-                }
-
                 if (carouselTrack && data.messages && data.messages.length > 0) {
                     carouselTrack.innerHTML = '';
                     data.messages.forEach(item => {
@@ -169,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(err => {
                 console.error("Erreur récupération Google Sheets :", err);
-                if (guestCountElem) guestCountElem.textContent = "11";
             });
     }
 
