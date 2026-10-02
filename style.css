@@ -468,16 +468,30 @@ section {
     color: var(--text-dark);
 }
 
-/* ENTOURAGE / COMITÉ */
+/* =========================================
+   ENTOURAGE - ALIGNEMENT ET ÉQUILIBRE REVISITÉS
+   ========================================= */
 .entourage-columns {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center; /* Alignement centré sur l'axe vertical */
     gap: 40px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-.entourage-col { flex: 1; }
+.entourage-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.entourage-col-left {
+    justify-content: center;
+}
+
+.entourage-col-right {
+    justify-content: space-between;
+}
 
 .col-separator {
     width: 1px;
@@ -485,7 +499,13 @@ section {
     align-self: stretch;
 }
 
-.person-block { margin-bottom: 25px; }
+.person-block { 
+    margin-bottom: 25px; 
+}
+
+.person-block:last-child {
+    margin-bottom: 0;
+}
 
 .person-role {
     font-family: 'Montserrat', sans-serif;
@@ -502,6 +522,7 @@ section {
     font-size: 1.8rem;
     font-weight: 400;
     color: var(--text-dark);
+    line-height: 1.2;
 }
 
 .person-name strong {
