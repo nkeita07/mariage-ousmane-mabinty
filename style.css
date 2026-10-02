@@ -239,7 +239,7 @@ section {
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    padding: 10vh 20px;
+    padding: 8vh 20px;
 }
 
 .sur-title {
@@ -469,14 +469,19 @@ section {
 }
 
 /* =========================================
-   ENTOURAGE - ALIGNEMENT ET ÉQUILIBRE REVISITÉS
+   ENTOURAGE - ALIGNEMENT ULTRA RESPONSIVE
    ========================================= */
+.sec-entourage {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
 .entourage-columns {
     display: flex;
-    justify-content: space-between;
-    align-items: center; /* Alignement centré sur l'axe vertical */
+    justify-content: center;
+    align-items: center;
     gap: 40px;
-    margin-top: 30px;
+    width: 100%;
 }
 
 .entourage-col {
@@ -486,17 +491,21 @@ section {
 }
 
 .entourage-col-left {
-    justify-content: center;
+    align-items: flex-end;
+    text-align: right;
 }
 
 .entourage-col-right {
-    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .col-separator {
     width: 1px;
+    height: 130px;
     background-color: var(--border-light);
-    align-self: stretch;
+    align-self: center;
+    flex-shrink: 0;
 }
 
 .person-block { 
@@ -630,8 +639,8 @@ section {
     text-transform: uppercase;
 }
 
-/* MOBILE RESPONSIVE */
-@media (max-width: 768px) {
+/* MOBILE & ÉCRAN RÉDUIT RESPONSIVE */
+@media (max-width: 820px) {
     .navbar {
         padding: 0 15px;
         height: 65px;
@@ -661,9 +670,15 @@ section {
     
     .entourage-columns {
         flex-direction: column;
-        gap: 30px;
+        gap: 25px;
+        align-items: center;
     }
     
+    .entourage-col-left, .entourage-col-right {
+        align-items: center;
+        text-align: center;
+    }
+
     .col-separator { display: none; }
     
     .c-layout { gap: 18px; }
